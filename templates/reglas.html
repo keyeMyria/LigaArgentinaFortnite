@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+<section class='section'>
+
+    <nav class="level">
+        <div class="level-item has-text-centered">
+            <figure class="image">
+              <img src="{% static 'logo.png' %}">
+        </div>
+        </nav>
+
+
+
+    <div class="container">
+        <div class="content has-text-centered">
+          <h1 class="title">
+            Reglas del Torneo
+          </h1>
+          <p class="subtitle">
+            Como funciona, <strong>Terminos y condiciones</strong>!
+          </p>
+         </div>
+    </div>
+  </section>
+
+
+{% endblock %}

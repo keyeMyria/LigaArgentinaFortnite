@@ -1,0 +1,39 @@
+{% extends "account/base.html" %}
+{% load static from staticfiles %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <section class='section'>
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <figure class="image">
+                  <img src="{% static 'logo.png' %}">
+            </div>
+            </nav>
+
+<div class="content has-text-centered">
+    <h1 class='title'>{% trans "Cerrar Sesion" %}</h1>
+
+    <p>{% trans 'Estas seguro que quieres cerrar sesion?' %}</p>
+
+    <form method="post" action="{% url 'account_logout' %}">
+      {% csrf_token %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
+      <button class='button' type="submit">{% trans 'Salir' %}</button>
+
+    </form>
+</div>
+
+    </section>
+    </div>
+
+
+{% endblock %}

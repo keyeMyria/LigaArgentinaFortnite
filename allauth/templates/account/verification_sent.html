@@ -1,0 +1,27 @@
+{% extends "account/base.html" %}
+{% load static from staticfiles %}
+{% load i18n %}
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    <section class='section'>
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <figure class="image">
+                  <img src="{% static 'logo.png' %}">
+            </div>
+            </nav>
+
+<div class="content has-text-centered">
+    <h1 class= 'title'>{% trans "Verifica tu direccion de correo electronico" %}</h1>
+
+    <p>{% blocktrans %}Te hemos enviado un e-mail de confirmacion. Entra al link proporcionado para completar el proceso de registro. Por cualquier inconveniente no dudes en contactarnos.{% endblocktrans %}</p>
+</div>
+
+
+</section>
+</div>
+{% endblock %}

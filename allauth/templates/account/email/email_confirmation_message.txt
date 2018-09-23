@@ -1,0 +1,8 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Bienvenido a la {{ site_name }}!
+
+Hola {{ user_display }}!
+
+Para confirmar tu direccion de correo electronico, haz click en el siguiente link: {{ activate_url }}
+{% endblocktrans %}{% endautoescape %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Muchas Gracias, {{ site_name }}!
+{{ site_domain }}{% endblocktrans %}

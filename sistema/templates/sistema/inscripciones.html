@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <div class="content has-text-centered">
+          <h1 class="title">
+            Inscripciones!
+          </h1>
+          {% for plat in inst1 %}
+
+                {{ plat.user }}
+                {{ plat.plataforma }}
+
+          {% endfor %}
+          {{ inst1 }}
+
+
+                    </div>
+               </div>
+               <section class='section'>
+                   <div class="container">
+                       <form class="site-form" action='{% url 'inscripciones' %}' method="post">
+                           {% csrf_token %}
+                           {{ form }}
+                           <button class="button primaryAction" type="submit">Inscribirme</button>
+                       </form>
+
+                   </div>
+               </section>
+
+             </section>
+
+
+
+
+
+{% endblock %}

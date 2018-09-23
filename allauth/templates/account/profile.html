@@ -1,0 +1,110 @@
+{% extends "account/base.html" %}
+{% load account %}
+{% load static from staticfiles %}
+
+
+{% block content %}
+
+<section class='section section-padding-large'>
+
+</section>
+
+<div class="container">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-6">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification">
+
+                <figure class="image is-1by1">
+                    <img src="{% static 'logo.png' %}">
+                </figure>
+            </article>
+          </div>
+          {% if estado == False %}
+          <div class="tile is-parent">
+            <article class="tile is-danger is-child notification">
+              <p class="title has-text-centered">NO VERIFICADA!</p>
+              <p class="subtitle has-text-centered"></p>
+              <section class='section'>
+                  <p class="content has-text-centered">Puedes ver como verificar tu cuenta mas abajo!</p>
+              </section>
+
+                  <p class="content has-text-centered">Recuerda que si no verificas tu cuenta no podras participar.</p>
+
+
+
+            </article>
+          {% endif %}
+          {% if estado == True %}
+          <div class="tile is-parent">
+            <article class="tile is-success is-child notification">
+              <p class="title has-text-centered">Cuenta de Epic Verificada!</p>
+              <section class='section'>
+                  <p class="subtitle has-text-centered">Ya estas participando!</p>
+              </section>
+
+            </article>
+          {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification">
+          <div class="content">
+            <p class="title has-text-centered">Estadisticas</p>
+            <p class="subtitle has-text-centered">K/D<p class="title has-text-centered">{{ kd }}</p></p>
+            <p class="subtitle has-text-centered">Wins<p class="title has-text-centered">{{ wins }}</p></p>
+            <p class="subtitle has-text-centered">Kills<p class="title has-text-centered">{{ kills }}</p></p>
+            <p class="subtitle has-text-centered">Partidas<p class="title has-text-centered">{{ mp }}</p></p>
+
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification">
+          <div class="content">
+            <p class="title has-text-centered">Cuenta</p>
+            <p class="subtitle"></p>
+            <div class="content">
+                <p class="subtitle has-text-centered">Usuario:</p>
+                <p class="subtitle has-text-centered has-text-weight-semibold">{% user_display user %}</p>
+                <p class="subtitle has-text-centered">Plataforma: <a class="subtitle has-text-centered has-text-weight-semibold">{{ p }}</a></p>
+                <p class="subtitle has-text-centered">E-Mail:</p>
+                <p class="subtitle has-text-centered has-text-weight-semibold">{{request.user.email}}</p>
+                <section class='section'>
+                    <p class="subtitle has-text-centered has-text-weight-semibold"><a class="button is-fullwidth" href="{% url 'account_change_password' %}">Cambiar Contrasena</a></p>
+                    <p class="subtitle has-text-centered has-text-weight-semibold"><a class="button is-fullwidth" href="{% url 'account_logout' %}">Cerrar Sesion</a></p>
+                </section>
+
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+</div>
+{% if estado == 0 %}
+<section class='section'>
+<div class="container">
+      <article class="tile is-warning is-12 is-child notification">
+        <p class="title has-text-centered">Como Verificar Tu Cuenta</p>
+        <p class="subtitle has-text-centered"></p>
+
+            <p class="content has-text-centered">Para que podamos verificar que la cuenta de Epic Games proporcionada te pertenece, necesitamos que nos agregues como amigo en Epic Games. Una vez enviada la invitacion, puede tardar un tiempo para que verifiquemos tu cuenta.</p>
+
+</div>
+</section>
+{% endif %}
+
+<section class='section section-padding-large'>
+
+</section>
+
+
+{% endblock %}

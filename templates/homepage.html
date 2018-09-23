@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+
+<section class='section'>
+<div class="container">
+      <article class="tile is-primary is-12 is-child notification">
+        <p class="title has-text-centered">Inscripciones Abiertas!</p>
+</div>
+
+</section>
+
+<nav class="level">
+    <div class="level-item has-text-centered">
+        <figure class="image">
+          <img src="{% static 'logo.png' %}">
+    </div>
+    </nav>
+
+<section class='section'>
+
+
+    <div class="container">
+        <div class="content has-text-centered">
+          <h1 class="title">
+            Como Funciona la Liga Argentina de Fortnite?
+          </h1>
+          <p class="subtitle">
+            Registrate para inscribirte! <strong>Demuestra tus habilidades y gana</strong>!
+          </p>
+         </div>
+    </div>
+  </section>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+
+<section class='section'>
+<div class="container">
+      <article class="tile is-info is-12 is-child notification">
+        <p class="title has-text-centered">Tabla de Posiciones General PS4!</p>
+
+</div>
+</section>
+  <section>
+      <div class="container">
+          <table class="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th><abbr title="Posicion">Pos</abbr></th>
+                  <th><abbr title="Usuario">Usuario</th>
+                  <th><abbr title="Twitch">Twitch</abbr></th>
+                  <th><abbr title="Puntaje">Puntage General</abbr></th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                {% for usuario in participantes %}
+                <tr>
+                    <th>-</th>
+                    <td>{{ usuario.user }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ usuario.general }}</td>
+                </tr>
+
+                {% endfor %}
+
+
+      </div>
+  </section>
+
+
+{% endblock %}

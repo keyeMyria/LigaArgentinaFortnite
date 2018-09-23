@@ -1,0 +1,67 @@
+{% extends "account/base.html" %}
+{% load account %}
+{% load static from staticfiles %}
+
+
+{% block content %}
+
+<section class='section section-padding-large'>
+
+</section>
+
+<div class="container">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-6">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification">
+              <p class="title has-text-centered">{% user_display user %}</p>
+                <figure class="image is-1by1">
+                    <img src="{% static 'logo.png' %}">
+                </figure>
+            </article>
+
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification">
+              <p class="title has-text-centered">Inscripto</p>
+              <p class="subtitle"></p>
+
+            </article>
+          </div>
+        </div>
+
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification">
+          <div class="content">
+            <p class="title has-text-centered">Estadisticas</p>
+            <p class="subtitle has-text-centered">Kills<p class="title has-text-centered">{{ kills }}</p></p>
+            <p class="subtitle has-text-centered">Wins<p class="title has-text-centered">{{ wins }}</p></p>
+            <p class="subtitle has-text-centered">Partidas<p class="title has-text-centered">{{ mp }}</p></p>
+            <p class="subtitle has-text-centered">K/D<p class="title has-text-centered">{{ kd }}</p></p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification">
+          <div class="content">
+            <p class="title has-text-centered">Cuenta</p>
+            <p class="subtitle"></p>
+            <div class="content">
+              <!-- Content -->
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+</div>
+<section class='section section-padding-large'>
+
+</section>
+
+
+{% endblock %}

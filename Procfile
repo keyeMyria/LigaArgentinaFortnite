@@ -1,1 +1,1 @@
-web: gunicorn torneo.wsgi --log-file
+web: gunicorn torneo.wsgi --log-file -

@@ -113,12 +113,8 @@ WSGI_APPLICATION = 'torneo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbi7sjjget23l7',
-        'USER': 'nudgmxbadtryrb',
-        'PASSWORD': '7a3b2403238e9fa88b494e99a46a7258c5b8ec0f66c4ba8952abb44f0d18886e',
-        'HOST': 'ec2-54-235-94-36.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

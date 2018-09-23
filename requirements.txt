@@ -12,4 +12,4 @@ requests==2.19.1
 requests-oauthlib==1.0.0
 urllib3==1.23
 whitenoise==4.1
-windows-curses==1.0
+

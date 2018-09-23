@@ -31,7 +31,7 @@ SECRET_KEY = 't+xx-go%&%j(pii++m&973m76m%)21h2#j!91a@^0u)o0wgz%)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.2.162', '127.0.0.1', 'quiroserver.ddns.net', 'ligafortnitearg.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.2.162', '127.0.0.1', 'quiroserver.ddns.net', 'ligafortnitearg.herokuapp.com', 'www.lafortnite.com']
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'sistema.forms.SignupForm'
 # Application definition

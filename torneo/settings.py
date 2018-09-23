@@ -87,16 +87,16 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-try:
-   from .local_settings import *
-except ImportError:
-    raise Exception("A local_settings.py file is required to run this project")
+# try:
+#    from .local_settings import *
+# except ImportError:
+#     raise Exception("A local_settings.py file is required to run this project")
 
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mmquiroga10@gmail.com'
-EMAIL_HOST_PASSWORD = EMAIL_PASS
+EMAIL_HOST_PASSWORD = 'EMAIL_PASS'
 EMAIL_PORT = 587
 ACCOUNT_USERNAME_REQUIRED=True
 ACCOUNT_AUTHENTICATION_METHOD='email'

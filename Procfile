@@ -1,1 +1,1 @@
-web: gunicorn torneo:app
+web: gunicorn torneo:torneo

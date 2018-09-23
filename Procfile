@@ -1,1 +1,1 @@
-web: gunicorn torneo:app --log-file -
+web: gunicorn torneo:app

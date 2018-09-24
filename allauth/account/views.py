@@ -836,20 +836,23 @@ def profile(request):
     us = request.user.username
     pp = request.user.first_name
     url1 = URL + pp + '/' + us
+
+
     respuesta = requests.get(url1, headers=headers)
-    resultado = respuesta.json()['lifeTimeStats']
-
-    for r in resultado:
-        if r['key'] == 'Wins':
-            wins = r['value']
-        if r['key'] == 'Kills':
-            kills = r['value']
-        if r['key'] == 'Matches Played':
-            partidas = r['value']
-        if r['key'] == 'K/d':
-            kd = r['value']
-        if r['key'] == 'Matches Played':
-            mp = r['value']
-
-
-    return render(request, 'account/profile.html', {'wins': wins, 'kills': kills, 'partidas': partidas, 'kd': kd, 'mp': mp, 'us': us, 'p': pp, 'verificado': verificado, 'estado': estado})
+    resultado = respuesta.json()
+    if 'error' in resultado.keys():
+        return render(request, 'account/profile_not_found.html')
+    else:
+        resultado = respuesta.json()['lifeTimeStats']
+        for r in resultado:
+            if r['key'] == 'Wins':
+                wins = r['value']
+            if r['key'] == 'Kills':
+                kills = r['value']
+            if r['key'] == 'Matches Played':
+                partidas = r['value']
+            if r['key'] == 'K/d':
+                kd = r['value']
+            if r['key'] == 'Matches Played':
+                mp = r['value']
+        return render(request, 'account/profile.html', {'wins': wins, 'kills': kills, 'partidas': partidas, 'kd': kd, 'mp': mp, 'us': us, 'p': pp, 'verificado': verificado, 'estado': estado})

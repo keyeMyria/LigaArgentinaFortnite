@@ -264,12 +264,11 @@ class BaseSignupForm(_base_signup_form_class()):
     #                               attrs={ 'class': 'input' ,'placeholder':
     #                                      _('plat'),
     #                                      'autofocus': 'autofocus'}))
-    username = forms.CharField(label=_("USUARIO DE EPIC GAMES"),
+    username = forms.CharField(label=_("USUARIO DE EPIC GAMES (Reevisa que tu usuario este bien escrito)(No PSN!)"),
                                min_length=app_settings.USERNAME_MIN_LENGTH,
                                widget=forms.TextInput(
                                    attrs={ 'class': 'input' ,'placeholder':
-                                          _('USUARIO DE EPIC GAMES'),
-                                          'autofocus': 'autofocus'}))
+                                          _('Usuario de Epic Games')}))
     email = forms.EmailField(widget=forms.TextInput(
         attrs={ 'class': 'input' ,'type': 'email',
                'placeholder': _('E-mail')}))

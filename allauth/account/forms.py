@@ -271,12 +271,12 @@ class BaseSignupForm(_base_signup_form_class()):
                                           _('Usuario de Epic Games')}))
     email = forms.EmailField(widget=forms.TextInput(
         attrs={ 'class': 'input' ,'type': 'email',
-               'placeholder': _('E-mail')}))
+               'placeholder': _('E-mail'), 'autofocus':'autofocus'}))
 
     def __init__(self, *args, **kwargs):
-        email_required = kwargs.pop('email_required',
+        email_required = kwargs.pop('Email Obligatorio',
                                     app_settings.EMAIL_REQUIRED)
-        self.username_required = kwargs.pop('username_required',
+        self.username_required = kwargs.pop('Nombre de Usuario Obligatorio',
                                             app_settings.USERNAME_REQUIRED)
         super(BaseSignupForm, self).__init__(*args, **kwargs)
         username_field = self.fields['username']
@@ -300,7 +300,7 @@ class BaseSignupForm(_base_signup_form_class()):
                 widget=forms.TextInput(
                     attrs={
                          'class': 'input' ,'type': 'email',
-                        'placeholder': _('E-mail address confirmation')
+                        'placeholder': _('Confirmacion de E-mail')
                     }
                 )
             )

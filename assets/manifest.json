@@ -1,0 +1,38 @@
+{
+  "short_name": "LAF",
+  "name": "Liga Argentina de Fortnite",
+  "icons": [
+    {
+      "src": "/static/img/launcher-icon-1x.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/static/img/launcher-icon-2x.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/static/img/launcher-icon-4x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+    {
+    "src": "/static/img/icon-128x128.png",
+    "type": "image/png",
+    "sizes": "128x128"
+    }, {
+   "src": "/static/img/apple-touch-icon.png",
+   "type": "image/png",
+   "sizes": "152x152"
+   }, {
+   "src": "/static/img/ms-touch-icon-144x144-precomposed.png",
+   "type": "image/png",
+   "sizes": "144x144"
+   }, {
+   "src": "/static/img/chrome-touch-icon-192x192.png",
+   "type": "image/png",
+   "sizes": "192x192"
+   }],
+   "start_url": "/"
+}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load account %}
 {% load static from staticfiles %}
 <!DOCTYPE html>
 
@@ -32,7 +33,6 @@
                     <td><a href="https://www.twitch.tv/{{ usuario.user.last_name }}" target="_blank">{{ usuario.user.last_name }}</a></td>
                     <td>{{ usuario.general }}</td>
                 </tr>
-
                 {% endfor %}
 
 

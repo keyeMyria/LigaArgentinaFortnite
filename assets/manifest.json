@@ -36,5 +36,5 @@
    }],
    "start_url": "/",
    "background_color": "#222222",
-   "display": "standalone",
+   "display": "standalone"
 }

@@ -30,7 +30,7 @@
                 <tr>
                     <th>{{ forloop.counter }}</th>
                     <td>{{ usuario.user }}</td>
-                    <td>{{ usuario.user.last_name }}</td>
+                    <td><a href="https://www.twitch.tv/{{ usuario.user.last_name }}">{{ usuario.user.last_name }}</a></td>
                     <td>{{ usuario.general }}</td>
                 </tr>
                 {% endfor %}

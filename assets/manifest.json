@@ -34,5 +34,7 @@
    "type": "image/png",
    "sizes": "192x192"
    }],
-   "start_url": "/"
+   "start_url": "/",
+   "background_color": "#222222",
+   "display": "standalone",
 }

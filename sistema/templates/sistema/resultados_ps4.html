@@ -33,7 +33,7 @@
                 <tr>
                     <th>{{ forloop.counter }}</th>
                     <td>{{ usuario.user }}</td>
-                    <td>{{ usuario.user.last_name }}</td>
+                    <td><a href="https://www.twitch.tv/{{ usuario.user.last_name }}" target="_blank">{{ usuario.user.last_name }}</a></td>
                     <td>{{ usuario.kills }}</td>
                     <td>{{ usuario.wins }}</td>
                     <td>{{ usuario.kd }}</td>

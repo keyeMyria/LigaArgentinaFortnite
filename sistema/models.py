@@ -25,6 +25,7 @@ class Perfil(models.Model):
     kd = models.CharField(max_length=4, blank=True, default=0)
     puntos = models.IntegerField(blank=True, default=0)
     general = models.IntegerField(blank=True, default=0)
+    equipo = models.CharField(max_length=20, blank=True, default=0)
 
 
 

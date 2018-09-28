@@ -1,9 +1,18 @@
 {% load static from staticfiles %}
 
+@font-face {
+    font-family: 'iciel_crocanteregular';
+    src: url('/static/fonts/iciel-crocante-webfont.woff2') format('woff2'),
+         url('/static/fonts/iciel-crocante-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .hero-image {
   background-image: url('/static/season_6.jpg');
   background-color: #cccccc;
-  height: 700px;
+  height: 600px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,6 +20,7 @@
 }
 
 .hero-text {
+    font-family: 'iciel_crocanteregular'
   text-align: center;
   position: absolute;
   top: 50%;

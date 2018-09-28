@@ -9,15 +9,6 @@
 
 }
 
-.hero-image {
-  background-image: url('/static/season_6.jpg');
-  background-color: #cccccc;
-  height: 700px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
 
 .hero-text {
     font-family: 'iciel_crocanteregular'
@@ -28,6 +19,20 @@
   transform: translate(-50%, -50%);
   color: white;
   text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000;
+}
+
+
+@media only screen
+and (max-width : 320px) {
+    .hero-image {
+      background-image: url('/static/season_6.jpg');
+      background-color: #cccccc;
+      height: 700px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
 }
 
 @media only screen

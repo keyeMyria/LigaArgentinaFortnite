@@ -23,7 +23,7 @@
 
 
 @media only screen
-and (max-width : 320px) {
+and (min-width : 320px) {
     .hero-image {
       background-image: url('/static/season_6.jpg');
       background-color: #cccccc;

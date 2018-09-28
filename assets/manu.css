@@ -1,3 +1,5 @@
+{% load static%}
+
 .hero-image {
   background-image: url("{% static 'season_6.jpg' %}");
   background-color: #cccccc;

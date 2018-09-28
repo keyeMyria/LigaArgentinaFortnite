@@ -1,5 +1,5 @@
 .hero-image {
-  background-image: url("/w3images/photographer.jpg");
+  background-image: url("{% static 'season_6.jpg' %}");
   background-color: #cccccc;
   height: 500px;
   background-position: center;

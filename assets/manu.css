@@ -27,7 +27,7 @@ and (min-width : 600px) {
     .hero-image {
       background-image: url('/static/season_6.jpg');
       background-color: #cccccc;
-      height: 700px;
+      height: 800px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;

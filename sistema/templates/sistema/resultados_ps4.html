@@ -15,31 +15,27 @@
     <div class="container">
         <table class="table is-fullwidth">
             <thead>
-                <tr>
-                  <th><abbr title="Posicion">Pos</abbr></th>
-                  <th><abbr title="Usuario">Usuario</th>
-                  <th><abbr title="Twitch">Twitch</abbr></th>
-                  <th><abbr title="Kills">Kills</abbr></th>
-                  <th><abbr title="Wins">Wins</abbr></th>
-                  <th><abbr title="K/M">K/M</abbr></th>
-                  <th><abbr title="Puntaje">Puntos</abbr></th>
+              <tr>
+                <th><abbr title="Posicion">Pos</abbr></th>
+                <th><abbr title="Usuario">Team</abbr></th>
+                <th><abbr title="Twitch">Players</abbr></th>
+                <th><abbr title="Twitch">Kills</abbr></th>
+                <th><abbr title="Twitch">Wins</abbr></th>
+                <th><abbr title="Puntaje">Puntos</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
 
-
-                </tr>
-              </thead>
-              <tbody>
-
-                {% for usuario in participantes %}
-                <tr>
-                    <th>{{ forloop.counter }}</th>
-                    <td>{{ usuario.user }}</td>
-                    <td><a href="https://www.twitch.tv/{{ usuario.user.last_name }}" target="_blank">{{ usuario.user.last_name }}</a></td>
-                    <td>{{ usuario.kills }}</td>
-                    <td>{{ usuario.wins }}</td>
-                    <td>{{ usuario.kd }}</td>
-                    <td>{{ usuario.puntos }}</td>
-                </tr>
-                {% endfor %}
+              {% for usuario in participantes %}
+              <tr>
+                  <th>{{ forloop.counter }}</th>
+                  <th>{{ usuario.equipo }}</th>
+                  <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
+                  <td>{{ usuario.kills_totales }}</td>
+                  <td>{{ usuario.wins_totales }}</td>
+                  <td>{{ usuario.puntos }}</td>
+              </tr>
+              {% endfor %}
 
 
     </div>

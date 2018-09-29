@@ -877,4 +877,4 @@ def profile(request):
                     kd_2 = r['value']
                 if r['key'] == 'Matches Played':
                     mp_2 = r['value']
-            return render(request, 'account/profile.html', {'wins_1': wins_1, 'kills_1': kills_1, 'partidas_1': partidas_1, 'kd_1': kd_1, 'mp_1': mp_1, 'u1': u1, 'p': pp, 'verificado': verificado, 'estado': estado, 'wins_2': wins_2, 'kills_2': kills_2, 'partidas_2': partidas_2, 'kd_2': kd_2, 'mp_2': mp_2, 'u2': u2})
+            return render(request, 'account/profile.html', {'wins_1': wins_1, 'kills_1': kills_1, 'partidas_1': partidas_1, 'kd_1': kd_1, 'mp_1': mp_1, 'u1': u1, 'p': pp, 'verificado': verificado, 'estado': estado, 'wins_2': wins_2, 'kills_2': kills_2})

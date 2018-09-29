@@ -27,25 +27,47 @@ def resetear_torneo(modeladmin, request, queryset):
 resetear_torneo.short_description = "XXX Resetear torneo XXX"
 
 def comenzar_torneo(modeladmin, request, queryset):
+    #ENVIAR MAIL DE COMIENZO
     for user in User.objects.all():
         send_mail('EL TORNEO ACBA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])
+
+    #VARIABLES API
     URL = "https://api.fortnitetracker.com/v1/profile/"
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
     usuarios = Perfil.verificados.all()
     for user in usuarios:
-        plataforma = user.user.first_name
-        nombre = user.user.username
-        url1 = URL + plataforma + '/' + nombre
-        respuesta = requests.get(url1, headers=headers)
-        resultado = respuesta.json()['lifeTimeStats']
-        for r in resultado:
-            if r['key'] == 'Wins':
-                wins = r['value']
-            if r['key'] == 'Kills':
-                kills = r['value']
-            if r['key'] == 'Matches Played':
-                partidas = r['value']
-        Perfil.objects.filter(user__username=nombre).update(prekills=kills, prewins=wins, prepartidas=partidas)
+        plataforma = user.user.last_name
+        u1 = user.user.username
+        u2 = user.user.first_name
+        url1 = URL + plataforma + '/' + u1
+        url2 = URL + plataforma + '/' + u2
+        respuesta_1 = requests.get(url1, headers=headers)
+        resultado_1 = respuesta_1.json()
+        respuesta_2 = requests.get(url1, headers=headers)
+        resultado_2 = respuesta_2.json()
+        if 'error' in resultado_1.keys():
+            no = no
+        else:
+            resultado_1 = respuesta_1.json()['lifeTimeStats']
+            for r in resultado_1:
+                if r['key'] == 'Wins':
+                    prewins_1 = r['value']
+                if r['key'] == 'Kills':
+                    prekills_1 = r['value']
+                if r['key'] == 'Matches Played':
+                    prepartidas_1 = r['value']
+            if 'error' in resultado_2.keys():
+                no2 = no2
+            else:
+                resultado_2 = respuesta_2.json()['lifeTimeStats']
+                for r in resultado_2:
+                    if r['key'] == 'Wins':
+                        prewins_2 = r['value']
+                    if r['key'] == 'Kills':
+                        prekills_2 = r['value']
+                    if r['key'] == 'Matches Played':
+                        prepartidas_2 = r['value']
+                Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 def finalizar_torneo(modeladmin, request, queryset):

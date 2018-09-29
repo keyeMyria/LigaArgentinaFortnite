@@ -13,6 +13,31 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-6">
         <div class="tile">
+            {% if estado == False %}
+            <div class="tile is-parent">
+              <article class="tile is-danger is-child notification">
+                <p class="title has-text-centered">NO VERIFICADA!</p>
+                <p class="subtitle has-text-centered"></p>
+                <section class='section'>
+                    <p class="content has-text-centered">Puedes ver como verificar tu cuenta mas abajo!</p>
+                </section>
+
+                    <p class="content has-text-centered">Recuerda que si no verificas tu cuenta no podras participar.</p>
+
+
+
+              </article>
+            {% endif %}
+            {% if estado == True %}
+            <div class="tile is-parent">
+              <article class="tile is-success is-child notification">
+                <p class="title has-text-centered">Cuenta de Epic Verificada!</p>
+                <section class='section'>
+                    <p class="subtitle has-text-centered">Ya estas participando!</p>
+                </section>
+
+              </article>
+            {% endif %}
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification">
 
@@ -21,31 +46,7 @@
                 </figure>
             </article>
           </div>
-          {% if estado == False %}
-          <div class="tile is-parent">
-            <article class="tile is-danger is-child notification">
-              <p class="title has-text-centered">NO VERIFICADA!</p>
-              <p class="subtitle has-text-centered"></p>
-              <section class='section'>
-                  <p class="content has-text-centered">Puedes ver como verificar tu cuenta mas abajo!</p>
-              </section>
 
-                  <p class="content has-text-centered">Recuerda que si no verificas tu cuenta no podras participar.</p>
-
-
-
-            </article>
-          {% endif %}
-          {% if estado == True %}
-          <div class="tile is-parent">
-            <article class="tile is-success is-child notification">
-              <p class="title has-text-centered">Cuenta de Epic Verificada!</p>
-              <section class='section'>
-                  <p class="subtitle has-text-centered">Ya estas participando!</p>
-              </section>
-
-            </article>
-          {% endif %}
 
           </div>
         </div>

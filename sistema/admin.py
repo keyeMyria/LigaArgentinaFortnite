@@ -136,7 +136,7 @@ def finalizar_torneo(modeladmin, request, queryset):
         kills_1 = postkills_1 - prekills_1
         kills_2 = postkills_2 - prekills_2
         kills_totales = kills_1 + kills_2
-        puntoswins = wins_torneo * 15
+        puntoswins = wins_totales * 15
         puntos = puntoswins + kills_totales
         partidas_totales = postpartidas_1 - prepartidas_1
         #OPERACIONES GENERALES

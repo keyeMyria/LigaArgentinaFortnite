@@ -828,31 +828,53 @@ email_verification_sent = EmailVerificationSentView.as_view()
 
 
 def profile(request):
+    #SISTEMA PARA MANDAR VARIABLE DE VERIFICACION
     verificado = Perfil.objects.filter(user=request.user)
     for ver in verificado:
-        estado = ver.VERIFICACION
+        estado = ver.VERIFICACION_2
+    #SISTEMA API
     URL = "https://api.fortnitetracker.com/v1/profile/"
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
-    us = request.user.username
-    pp = request.user.first_name
-    url1 = URL + pp + '/' + us
-
-
-    respuesta = requests.get(url1, headers=headers)
-    resultado = respuesta.json()
-    if 'error' in resultado.keys():
+    u1 = request.user.username
+    u2 = request.user.first_name
+    pp = request.user.last_name
+    url1 = URL + pp + '/' + u1
+    url2 = URL + pp + '/' + u2
+    #PEDIDO API
+    respuesta_1 = requests.get(url1, headers=headers)
+    resultado_1 = respuesta.json()
+    respuesta_2 = requests.get(url2, headers=headers)
+    resultado_2 = respuesta.json()
+    #PROCESAMIENTO DE VARIABLES PRIMER USUARIO
+    if 'error' in resultado_1.keys():
         return render(request, 'account/profile_not_found.html')
     else:
-        resultado = respuesta.json()['lifeTimeStats']
-        for r in resultado:
+        resultado_1 = respuesta_1.json()['lifeTimeStats']
+        for r in resultado_1:
             if r['key'] == 'Wins':
-                wins = r['value']
+                wins_1 = r['value']
             if r['key'] == 'Kills':
-                kills = r['value']
+                kills_1 = r['value']
             if r['key'] == 'Matches Played':
-                partidas = r['value']
+                partidas_1 = r['value']
             if r['key'] == 'K/d':
-                kd = r['value']
+                kd_1 = r['value']
             if r['key'] == 'Matches Played':
-                mp = r['value']
-        return render(request, 'account/profile.html', {'wins': wins, 'kills': kills, 'partidas': partidas, 'kd': kd, 'mp': mp, 'us': us, 'p': pp, 'verificado': verificado, 'estado': estado})
+                mp_1 = r['value']
+        #PROCESAMIENTO DE VARIABLES SEGUNDO USUARIO
+        if 'error' in resultado_2.keys():
+            return render(request, 'account/profile_not_found.html')
+        else:
+            resultado_2 = respuesta_2.json()['lifeTimeStats']
+            for r in resultado_2:
+                if r['key'] == 'Wins':
+                    wins_2 = r['value']
+                if r['key'] == 'Kills':
+                    kills_2 = r['value']
+                if r['key'] == 'Matches Played':
+                    partidas_2 = r['value']
+                if r['key'] == 'K/d':
+                    kd_2 = r['value']
+                if r['key'] == 'Matches Played':
+                    mp_2 = r['value']
+            return render(request, 'account/profile.html', {'wins_1': wins_1, 'kills_1': kills_1, 'partidas_1': partidas_1, 'kd_1': kd_1, 'mp_1': mp_1, 'u1': u1, 'p': pp, 'verificado': verificado, 'estado': estado, 'wins_2': wins_2, 'kills_2': kills_2, 'partidas_2': partidas_2, 'kd_2': kd_2, 'mp_2': mp_2, 'u2': u2})

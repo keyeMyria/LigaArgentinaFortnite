@@ -28,8 +28,8 @@ resetear_torneo.short_description = "XXX Resetear torneo XXX"
 
 def comenzar_torneo(modeladmin, request, queryset):
     #ENVIAR MAIL DE COMIENZO
-    for user in User.objects.all():
-        send_mail('EL TORNEO ACBA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])
+    #for user in User.objects.all():
+    #    send_mail('EL TORNEO ACABA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])
 
     #VARIABLES API
     URL = "https://api.fortnitetracker.com/v1/profile/"

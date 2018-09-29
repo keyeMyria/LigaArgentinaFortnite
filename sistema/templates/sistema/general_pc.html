@@ -22,6 +22,7 @@
                   <th><abbr title="Twitch">Players</abbr></th>
                   <th><abbr title="Twitch">Twitch</abbr></th>
                   <th><abbr title="Twitch">Twitch</abbr></th>
+                  <th><abbr title="Twitch">K/M</abbr></th>
                   <th><abbr title="Puntaje">Puntage General</abbr></th>
                 </tr>
               </thead>
@@ -34,6 +35,7 @@
                     <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                     <td><a href="https://www.twitch.tv/{{ usuario.twitch_1 }}" target="_blank">{{ usuario.twitch_1 }}</a></td>
                     <td><a href="https://www.twitch.tv/{{ usuario.twitch_2 }}" target="_blank">{{ usuario.twitch_2 }}</a></td>
+                    <td>{{ usuario.kd }}</td>
                     <td>{{ usuario.general }}</td>
                 </tr>
                 {% endfor %}

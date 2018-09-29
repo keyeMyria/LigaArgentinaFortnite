@@ -37,6 +37,8 @@ class Perfil(models.Model):
     partidas_2 = models.IntegerField(blank=True, default=0)
     twitch_2 = models.CharField(max_length=20, blank=True, default='')
 #GENERAL
+    kills_totales = models.CharField(max_length=10, blank=True, default=0)
+    wins_totales = models.CharField(max_length=10, blank=True, default=0)
     kd = models.CharField(max_length=4, blank=True, default=0)
     puntos = models.IntegerField(blank=True, default=0)
     general = models.IntegerField(blank=True, default=0)

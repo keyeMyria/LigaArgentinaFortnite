@@ -7,28 +7,41 @@ import requests
 
 class PerfilManager(models.Manager):
     def get_queryset(self):
-        return super(PerfilManager, self).get_queryset().filter(VERIFICACION=True)
+        return super(PerfilManager, self).get_queryset().filter(VERIFICACION_2=True)
 
 
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    VERIFICACION = models.BooleanField(default=False)
-    prekills = models.IntegerField(blank=True, default=0)
-    postkills = models.IntegerField(blank=True, default=0)
-    kills = models.IntegerField(blank=True, default=0)
-    prewins = models.IntegerField(blank=True, default=0)
-    postwins = models.IntegerField(blank=True, default=0)
-    wins = models.IntegerField(blank=True, default=0)
-    prepartidas = models.IntegerField(blank=True, default=0)
-    postpartidas = models.IntegerField(blank=True, default=0)
-    partidas = models.IntegerField(blank=True, default=0)
+    VERIFICACION_1 = models.BooleanField(default=False)
+    VERIFICACION_2 = models.BooleanField(default=False)
+#USUARIO 1
+    prekills_1 = models.IntegerField(blank=True, default=0)
+    postkills_1 = models.IntegerField(blank=True, default=0)
+    kills_1 = models.IntegerField(blank=True, default=0)
+    prewins_1 = models.IntegerField(blank=True, default=0)
+    postwins_1 = models.IntegerField(blank=True, default=0)
+    wins_1 = models.IntegerField(blank=True, default=0)
+    prepartidas_1 = models.IntegerField(blank=True, default=0)
+    postpartidas_1 = models.IntegerField(blank=True, default=0)
+    partidas_1 = models.IntegerField(blank=True, default=0)
+    twitch_1 = models.CharField(max_length=20, blank=True, default=0)
+#USUARIO 2
+    prekills_2 = models.IntegerField(blank=True, default=0)
+    postkills_2 = models.IntegerField(blank=True, default=0)
+    kills_2 = models.IntegerField(blank=True, default=0)
+    prewins_2 = models.IntegerField(blank=True, default=0)
+    postwins_2 = models.IntegerField(blank=True, default=0)
+    wins_2 = models.IntegerField(blank=True, default=0)
+    prepartidas_2 = models.IntegerField(blank=True, default=0)
+    postpartidas_2 = models.IntegerField(blank=True, default=0)
+    partidas_2 = models.IntegerField(blank=True, default=0)
+    twitch_2 = models.CharField(max_length=20, blank=True, default=0)
+#GENERAL
     kd = models.CharField(max_length=4, blank=True, default=0)
     puntos = models.IntegerField(blank=True, default=0)
     general = models.IntegerField(blank=True, default=0)
     equipo = models.CharField(max_length=20, blank=True, default=0)
-
-
-
+#MANAGERS
     objects = models.Manager()
     verificados = PerfilManager()
 

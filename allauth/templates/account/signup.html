@@ -10,7 +10,7 @@
     <div class="container">
         <h1 class='title'>{% trans "Registrate" %}</h1>
 
-        <p>{% blocktrans %}Ya tienes una cuenta? <a href="{{ login_url }}">Log In</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Ya tienes una cuenta? <a href="{{ login_url }}">Iniciar Sesion</a>.{% endblocktrans %}</p>
 
         <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}

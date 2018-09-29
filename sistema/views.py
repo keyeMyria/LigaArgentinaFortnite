@@ -15,21 +15,21 @@ from django.contrib.auth.models import User
 
 
 def resultadospc(request):
-    userobjectpc = Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-puntos', '-kd')
+    userobjectpc = Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-puntos')
     return render(request, 'sistema/resultados_pc.html', {'participantes': userobjectpc})
 
 def resultadosps4(request):
-    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True).order_by('-puntos', '-kd')
+    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True).order_by('-puntos')
     return render(request, 'sistema/resultados_ps4.html', {'participantes': userobjectpc})
 
 def resultados_no(request):
     return render(request, 'sistema/resultados_no_publicados.html')
 
 def general_pc(request):
-    userobjectpc = Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-general')
+    userobjectpc = Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-general', '-kd')
     return render(request, 'sistema/general_pc.html', {'participantes': userobjectpc})
 
 def general_ps4(request):
-    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True).order_by('-general')
+    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True).order_by('-general', '-kd')
     return render(request, 'sistema/general_ps4.html', {'participantes': userobjectpc})
 # Create your views here.

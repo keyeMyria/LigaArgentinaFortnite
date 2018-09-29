@@ -9,7 +9,7 @@ class Inscripcion(forms.ModelForm):
 
 class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=30, label='Segundo Participante (USUARIO DE EPIC GAMES, NO PSN)', required=False, widget=forms.TextInput(attrs={ 'class': 'input' ,'placeholder':('Usuario de Epic del segundo participante'),'autofocus': 'autofocus'}))
-    last_name = forms.ChoiceField(label='Plataforma ( pc o ps4 )', choices= ( ('pc', 'pc'), ('psn', 'psn'), ) ,widget=forms.Select(attrs={ 'class': 'input' ,'placeholder':('pc, ps4 (minusculas)'),'autofocus': 'autofocus'}))
+    last_name = forms.ChoiceField(label='Plataforma ( PC o PSN )', choices= ( ('pc', 'pc'), ('psn', 'psn'), ) ,widget=forms.Select(attrs={ 'class': 'input' ,'placeholder':('pc, ps4 (minusculas)'),'autofocus': 'autofocus'}))
     equipo = forms.CharField(max_length=30, label='Nombre del Equipo', required=False, widget=forms.TextInput(attrs={ 'class': 'input' ,'placeholder':('Equipo'),'autofocus': 'autofocus'}))
     twitch_1 = forms.CharField(max_length=30, label='Twitch del primer participante', required=False, widget=forms.TextInput(attrs={ 'class': 'input' ,'placeholder':('Usuario de Twitch'),'autofocus': 'autofocus'}))
     twitch_2 = forms.CharField(max_length=30, label='Twitch del segundo participante', required=False, widget=forms.TextInput(attrs={ 'class': 'input' ,'placeholder':('Usuario de Twitch'),'autofocus': 'autofocus'}))

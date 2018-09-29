@@ -149,14 +149,13 @@ def finalizar_torneo(modeladmin, request, queryset):
         prekills_liga = user.kills_liga
         prekills_liga = int(prekills_liga)
         postkills_liga = prekills_liga + kills_totales
-
+        km = 0
         if postkills_liga == 0 or postpartidas_liga == 0:
             nola = '0'
         else:
-            km0 = postkills_liga / postpartidas_liga
-            km1 = Decimal(km0)
-            km2 = round(km1,2)
-        km3 = km2
+            km = postkills_liga / postpartidas_liga
+            km = Decimal(km)
+            km = round(km,2)
         Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km3, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, general=nuevogeneral)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 

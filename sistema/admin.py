@@ -146,7 +146,7 @@ def finalizar_torneo(modeladmin, request, queryset):
         prepartidas_liga = user.partidas_liga
         prepartidas_liga = int(prepartidas_liga)
         postpartidas_liga = prepartidas_liga + partidas_totales
-        prekills_liga = user.prekills_liga
+        prekills_liga = user.kills_liga
         prekills_liga = int(prekills_liga)
         postkills_liga = prekills_liga + kills_totales
 

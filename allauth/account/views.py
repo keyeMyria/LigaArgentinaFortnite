@@ -842,9 +842,9 @@ def profile(request):
     url2 = URL + pp + '/' + u2
     #PEDIDO API
     respuesta_1 = requests.get(url1, headers=headers)
-    resultado_1 = respuesta.json()
+    resultado_1 = respuesta_1.json()
     respuesta_2 = requests.get(url2, headers=headers)
-    resultado_2 = respuesta.json()
+    resultado_2 = respuesta_2.json()
     #PROCESAMIENTO DE VARIABLES PRIMER USUARIO
     if 'error' in resultado_1.keys():
         return render(request, 'account/profile_not_found.html')

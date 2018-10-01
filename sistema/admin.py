@@ -88,10 +88,10 @@ def finalizar_torneo(modeladmin, request, queryset):
             url1 = URL + plataforma + '/' + u1
             url2 = URL + plataforma + '/' + u2
             respuesta_1 = requests.get(url1, headers=headers)
-            time.sleep(2)
+            #time.sleep(2)
             resultado_1 = respuesta_1.json()
             respuesta_2 = requests.get(url1, headers=headers)
-            time.sleep(2)
+            #time.sleep(2)
             resultado_2 = respuesta_2.json()
             if 'error' in resultado_1.keys():
                 no = no

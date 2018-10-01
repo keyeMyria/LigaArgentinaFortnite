@@ -179,7 +179,7 @@ class UserAdmin(BaseUserAdmin):
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('equipo', 'VERIFICACION_2')
+    list_display = ('equipo', 'VERIFICACION_2', 'user__username')
     ordering = ('VERIFICACION_2', )
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 

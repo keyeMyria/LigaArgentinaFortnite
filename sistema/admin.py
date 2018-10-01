@@ -179,8 +179,8 @@ class UserAdmin(BaseUserAdmin):
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
 admin.site.unregister(User)
-admin.site.register(User, UserAdmin, UserAdmin2)
-admin.site.register(Perfil)
+admin.site.register(User, UserAdmin)
+admin.site.register(Perfil, UserAdmin2)
 
 
 

@@ -173,8 +173,8 @@ finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 
 class UserAdmin(BaseUserAdmin):
-    ordering = ('date_joined')
-    #list_display = ('username', 'first_name', 'perfil__equipo', 'last_name', 'perfil__VERIFICACION_2')
+    #ordering = ('date_joined')
+    list_display = ('username', 'first_name', 'last_name', 'emailaddress', 'date_joined')
     inlines = [PerfilInline]
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 

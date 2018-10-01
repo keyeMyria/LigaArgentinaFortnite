@@ -174,7 +174,13 @@ finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
-    list_display = ('username', 'first_name', 'last_name', 'email', 'date_joined', 'VERIFICACION_2')
+    list_display = ('username', 'first_name', 'last_name', 'email', 'date_joined')
+
+    def get_ver(self, obj):
+        return obj.perfil.VERIFICACION_2
+    get_author.short_description = 'Author'
+    get_author.admin_order_field = 'book__author'
+
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2',)
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]

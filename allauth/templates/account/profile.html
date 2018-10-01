@@ -10,19 +10,18 @@
           <article class="tile is-danger is-12 is-child notification">
             <p class="title has-text-centered">Team {{ request.user.perfil.equipo }} </p>
     </div>
-</section>
-{% if estado == 0 %}
-<section class='section'>
-<div class="container">
-      <article class="tile is-warning is-12 is-child notification">
-        <p class="title has-text-centered">Como Verificar Tu Cuenta</p>
-        <p class="subtitle has-text-centered"></p>
+    {% if estado == 0 %}
+    <div class="container">
+          <article class="tile is-warning is-12 is-child notification">
+            <p class="title has-text-centered">Como Verificar Tu Cuenta</p>
+            <p class="subtitle has-text-centered"></p>
 
-            <p class="content has-text-centered">Para que podamos verificar que la cuenta de Epic Games proporcionada te pertenece, necesitamos que agregues a <strong>LA_Fortnite_Liga</strong> como amigo en Epic Games. Una vez enviada la invitacion, puede tardar un tiempo para que verifiquemos tu cuenta.</p>
+                <p class="content has-text-centered">Para que podamos verificar que la cuenta de Epic Games proporcionada te pertenece, necesitamos que agregues a <strong>LA_Fortnite_Liga</strong> como amigo en Epic Games. Una vez enviada la invitacion, puede tardar un tiempo para que verifiquemos tu cuenta.</p>
 
-</div>
+    </div>
+    {% endif %}
 </section>
-{% endif %}
+
 
 <div class="container">
     <div class="tile is-ancestor">

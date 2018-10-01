@@ -117,7 +117,8 @@ def finalizar_torneo_sin_calculos(modeladmin, request, queryset):
                         prekills_2 = r['value']
                     if r['key'] == 'Matches Played':
                         prepartidas_2 = r['value']
-                Perfil.objects.filter(user__username=u1).update(poskills_1=prekills_1, postwins_1=prewins_1, postpartidas_1=prepartidas_1, postkills_2=prekills_2, postwins_2=prewins_2, postpartidas_2=prepartidas_2)
+                Perfil.objects.filter(user__username=u1).update(poskills_1=prekills_1, postwins_1=prewins_1, postpartidas_1=prepartidas_1)
+                Perfil.objects.filter(user__username=u1).update(postkills_2=prekills_2, postwins_2=prewins_2, postpartidas_2=prepartidas_2)
 finalizar_torneo_sin_calculos.short_description = "FINALIZAR SIN CALCULOS"
 
 

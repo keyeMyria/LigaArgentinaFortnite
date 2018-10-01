@@ -180,6 +180,8 @@ class UserAdmin(BaseUserAdmin):
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('equipo', 'VERIFICACION_2')
+    ordering = ('VERIFICACION_2', )
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

@@ -215,6 +215,7 @@ def finalizar_torneo(modeladmin, request, queryset):
                 km = round(km,2)
             Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1)
             Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
+            Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, partidas_1=partidas_totales, partidas_2=partidas_totales, kills_2=kills_2)
             Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, general=nuevogeneral)
 finalizar_torneo.short_description = "FINALIZAR TORNEO viejo"
 

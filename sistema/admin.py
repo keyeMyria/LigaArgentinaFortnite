@@ -49,9 +49,7 @@ def comenzar_torneo(modeladmin, request, queryset):
         resultado_1 = respuesta_1.json()
         respuesta_2 = requests.get(url2, headers=headers)
         resultado_2 = respuesta_2.json()
-        if 'error' in resultado_1.keys():
-            no = no
-        else:
+        if 'lifeTimeStats' in resultado_1.keys():
             resultado_1 = respuesta_1.json()['lifeTimeStats']
             for r in resultado_1:
                 if r['key'] == 'Wins':

@@ -839,7 +839,6 @@ def profile(request):
     u2 = request.user.first_name
     u1 = u1.replace(" ", "%20")
     u2 = u2.replace(" ", "%20")
-
     pp = request.user.last_name
     url1 = URL + pp + '/' + u1
     url2 = URL + pp + '/' + u2

@@ -39,6 +39,8 @@ def comenzar_torneo(modeladmin, request, queryset):
         plataforma = user.user.last_name
         u1 = user.user.username
         u2 = user.user.first_name
+        u1 = u1.replace(" ", "%20")
+        u2 = u2.replace(" ", "%20")
         url1 = URL + plataforma + '/' + u1
         url2 = URL + plataforma + '/' + u2
         respuesta_1 = requests.get(url1, headers=headers)
@@ -79,6 +81,8 @@ def finalizar_torneo(modeladmin, request, queryset):
             plataforma = user.user.last_name
             u1 = user.user.username
             u2 = user.user.first_name
+            u1 = u1.replace(" ", "%20")
+            u2 = u2.replace(" ", "%20")
             url1 = URL + plataforma + '/' + u1
             url2 = URL + plataforma + '/' + u2
             respuesta_1 = requests.get(url1, headers=headers)

@@ -118,7 +118,7 @@ def finalizar_torneo_sin_calculos(modeladmin, request, queryset):
                     if r['key'] == 'Matches Played':
                         prepartidas_2 = r['value']
                 Perfil.objects.filter(user__username=u1).update(poskills_1=prekills_1, postwins_1=prewins_1, postpartidas_1=prepartidas_1, postkills_2=prekills_2, postwins_2=prewins_2, postpartidas_2=prepartidas_2)
-comenzar_torneo.short_description = "FINALIZAR SIN CALCULOS"
+finalizar_torneo_sin_calculos.short_description = "FINALIZAR SIN CALCULOS"
 
 
 
@@ -217,7 +217,7 @@ finalizar_torneo.short_description = "FINALIZAR TORNEO viejo"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, finalizar_torneo_sin_calculos]
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

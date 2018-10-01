@@ -164,7 +164,7 @@ def finalizar_torneo(modeladmin, request, queryset):
                             postkills_2 = r['value']
                         if r['key'] == 'Matches Played':
                             postpartidas_2 = r['value']
-            PRE Y POST VARIABLES
+            #PRE Y POST VARIABLES
             postwins_1 = int(postwins_1)
             postwins_2 = int(postwins_2)
             postkills_1 = int(postkills_1)

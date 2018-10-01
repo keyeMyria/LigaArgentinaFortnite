@@ -47,7 +47,7 @@ def comenzar_torneo(modeladmin, request, queryset):
         url2 = URL + plataforma + '/' + u2
         respuesta_1 = requests.get(url1, headers=headers)
         resultado_1 = respuesta_1.json()
-        respuesta_2 = requests.get(url1, headers=headers)
+        respuesta_2 = requests.get(url2, headers=headers)
         resultado_2 = respuesta_2.json()
         if 'error' in resultado_1.keys():
             no = no
@@ -93,7 +93,7 @@ def finalizar_torneo_sin_calculos(modeladmin, request, queryset):
         url2 = URL + plataforma + '/' + u2
         respuesta_1 = requests.get(url1, headers=headers)
         resultado_1 = respuesta_1.json()
-        respuesta_2 = requests.get(url1, headers=headers)
+        respuesta_2 = requests.get(url2, headers=headers)
         resultado_2 = respuesta_2.json()
         if 'error' in resultado_1.keys():
             no = no
@@ -138,7 +138,7 @@ def finalizar_torneo(modeladmin, request, queryset):
             respuesta_1 = requests.get(url1, headers=headers)
             #time.sleep(2)
             resultado_1 = respuesta_1.json()
-            respuesta_2 = requests.get(url1, headers=headers)
+            respuesta_2 = requests.get(url2, headers=headers)
             #time.sleep(2)
             resultado_2 = respuesta_2.json()
             if 'error' in resultado_1.keys():

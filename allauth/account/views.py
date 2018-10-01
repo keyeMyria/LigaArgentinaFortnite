@@ -837,8 +837,8 @@ def profile(request):
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
     u1 = request.user.username
     u2 = request.user.first_name
-    u1 = u1.replace(" ", "_")
-    u2 = u2.replace(" ", "_")
+    u1 = u1.replace(" ", "%20")
+    u2 = u2.replace(" ", "%20")
 
     pp = request.user.last_name
     url1 = URL + pp + '/' + u1

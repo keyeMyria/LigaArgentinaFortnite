@@ -174,10 +174,12 @@ finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
-    list_display = ('username', 'first_name', 'last_name', 'email', 'date_joined', 'get_ver')
+    list_display = ('username', 'first_name', 'last_name', 'get_team','email', 'date_joined', 'get_ver')
 
     def get_ver(self, obj):
         return obj.perfil.VERIFICACION_2
+    def get_team(self, obj):
+        return obj.perfil.equipo
     #get_author.short_description = 'Author'
     #get_author.admin_order_field = 'book__author'
 

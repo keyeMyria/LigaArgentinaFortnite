@@ -172,9 +172,9 @@ def finalizar_torneo(modeladmin, request, queryset):
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 
-class UserAdmin(BaseUserAdmin):
-    #ordering = ('date_joined')
+class UserAdmin(BaseUserAdmin):    
     list_display = ('username', 'first_name', 'last_name', 'email', 'date_joined')
+    ordering = ('date_joined')
     inlines = [PerfilInline]
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 

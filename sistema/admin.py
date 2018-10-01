@@ -171,7 +171,8 @@ def finalizar_torneo(modeladmin, request, queryset):
             Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, general=nuevogeneral)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
-class UserAdmin2(admin.ModelAdmin):
+class UserAdmin2(UserAdmin):
+    ordering = ('date_joined')
     list_display = ('username', 'first_name', 'perfil__equipo', 'last_name', 'perfil__VERIFICACION_2')
 
 class UserAdmin(BaseUserAdmin):

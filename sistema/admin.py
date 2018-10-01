@@ -178,9 +178,12 @@ class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
+class Perfil_list(Perfil):
+    list_display = ('user', 'VERIFICACION_2')
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-admin.site.register(Perfil)
+admin.site.register(Perfil_list)
 
 
 

@@ -178,8 +178,8 @@ class UserAdmin(BaseUserAdmin):
 
     def get_ver(self, obj):
         return obj.perfil.VERIFICACION_2
-    get_author.short_description = 'Author'
-    get_author.admin_order_field = 'book__author'
+    #get_author.short_description = 'Author'
+    #get_author.admin_order_field = 'book__author'
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2',)

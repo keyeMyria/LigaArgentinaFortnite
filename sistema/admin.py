@@ -51,14 +51,10 @@ def comenzar_torneo(modeladmin, request, queryset):
             respuesta_2 = requests.get(url2, headers=headers)
             resultado_2 = respuesta_2.json()
             if 'lifeTimeStats' in resultado_1.keys():
-                resultado_1 = respuesta_1.json()['lifeTimeStats']
-                for r in resultado_1:
-                    if r['key'] == 'Wins':
-                        prewins_1 = r['value']
-                    if r['key'] == 'Kills':
-                        prekills_1 = r['value']
-                    if r['key'] == 'Matches Played':
-                        prepartidas_1 = r['value']
+                prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
+                prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
+                #top5 = respuesta_1.json()['stats']['p10']['top5']['value']
+                prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
                 if 'lifeTimeStats' in resultado_2.keys():
                     resultado_2 = respuesta_2.json()['lifeTimeStats']
                     for r in resultado_2:

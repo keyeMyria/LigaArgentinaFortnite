@@ -56,14 +56,10 @@ def comenzar_torneo(modeladmin, request, queryset):
                 #top5 = respuesta_1.json()['stats']['p10']['top5']['value']
                 prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
                 if 'lifeTimeStats' in resultado_2.keys():
-                    resultado_2 = respuesta_2.json()['lifeTimeStats']
-                    for r in resultado_2:
-                        if r['key'] == 'Wins':
-                            prewins_2 = r['value']
-                        if r['key'] == 'Kills':
-                            prekills_2 = r['value']
-                        if r['key'] == 'Matches Played':
-                            prepartidas_2 = r['value']
+                    prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
+                    prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
+                    #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
+                    prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
                     Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 

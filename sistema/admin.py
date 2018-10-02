@@ -53,14 +53,14 @@ def comenzar_torneo(modeladmin, request, queryset):
             if 'lifeTimeStats' in resultado_1.keys():
                 prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
                 prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
-                #top5 = respuesta_1.json()['stats']['p10']['top5']['value']
+                pretop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
                 prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
                 if 'lifeTimeStats' in resultado_2.keys():
                     prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
                     prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
                     #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
                     prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
-                    Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+                    Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 
@@ -88,7 +88,7 @@ def finalizar_torneo(modeladmin, request, queryset):
                     if 'lifeTimeStats' in resultado_1.keys():
                         postwins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
                         postkills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
-                        #top5 = respuesta_1.json()['stats']['p10']['top5']['value']
+                        posttop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
                         postpartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
                         if 'lifeTimeStats' in resultado_2.keys():
                             postwins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
@@ -120,6 +120,11 @@ def finalizar_torneo(modeladmin, request, queryset):
                             kills_liga = int(kills_liga)
                             partidas_liga = user.partidas_liga
                             partidas_liga = int(partidas_liga)
+                            #PRUEBA TOP5
+                            pretop5_1 = user.pretop5_1
+                            pretop5_1 = int(pretop5_1)
+                            posttop5_1 = int(posttop5_1)
+                            top5_1 = posttop5_1 - pretop5_1
                             #OPERACIONES TORNEO
                             wins_1 = postwins_1 - prewins_1
                             wins_2 = postwins_2 - prewins_2
@@ -128,7 +133,8 @@ def finalizar_torneo(modeladmin, request, queryset):
                             kills_2 = postkills_2 - prekills_2
                             kills_totales = kills_1 + kills_2
                             puntoswins = wins_totales * 15
-                            puntos = puntoswins + kills_totales
+                            puntostop5 = top5_1 * 4
+                            puntos = puntoswins + kills_totales + puntostop5
                             partidas_totales_1 = postpartidas_1 - prepartidas_1
                             partidas_totales_2 = postpartidas_2 - prepartidas_2
                             partidas_totales = 0
@@ -153,7 +159,7 @@ def finalizar_torneo(modeladmin, request, queryset):
                                 km = postkills_liga / postpartidas_liga
                                 km = Decimal(km)
                                 km = round(km,2)
-                            Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1)
+                            Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1, posttop5_1=posttop5_1, top5_1=top5_1)
                             Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
                             Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, partidas_1=partidas_totales, partidas_2=partidas_totales, kills_2=kills_2, wins_2=wins_2)
                             Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, partidas_totales=partidas_totales, general=nuevogeneral)

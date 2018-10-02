@@ -38,7 +38,7 @@ def comenzar_torneo(modeladmin, request, queryset):
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
     usuarios = Perfil.verificados.all()
     for user in usuarios:
-        if user.prekills_1 == '0':
+        if user.prekills_1 == 0:
             plataforma = user.user.last_name
             u1 = user.user.username
             u2 = user.user.first_name

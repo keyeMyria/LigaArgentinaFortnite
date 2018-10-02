@@ -77,90 +77,91 @@ def finalizar_torneo(modeladmin, request, queryset):
         headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
         usuarios = Perfil.verificados.all()
         for user in usuarios:
-            plataforma = user.user.last_name
-            u1 = user.user.username
-            u2 = user.user.first_name
-            u1 = u1.replace(" ", "%20")
-            u2 = u2.replace(" ", "%20")
-            url1 = URL + plataforma + '/' + u1
-            url2 = URL + plataforma + '/' + u2
-            respuesta_1 = requests.get(url1, headers=headers)
-            #time.sleep(2)
-            resultado_1 = respuesta_1.json()
-            respuesta_2 = requests.get(url2, headers=headers)
-            #time.sleep(2)
-            resultado_2 = respuesta_2.json()
-            if 'lifeTimeStats' in resultado_1.keys():
-                resultado_1 = respuesta_1.json()['lifeTimeStats']
-                for r in resultado_1:
-                    if r['key'] == 'Wins':
-                        postwins_1 = r['value']
-                    if r['key'] == 'Kills':
-                        postkills_1 = r['value']
-                    if r['key'] == 'Matches Played':
-                        postpartidas_1 = r['value']
-                if 'lifeTimeStats' in resultado_2.keys():
-                    resultado_2 = respuesta_2.json()['lifeTimeStats']
-                    for r in resultado_2:
+            if user.prekills_1 != '0':
+                plataforma = user.user.last_name
+                u1 = user.user.username
+                u2 = user.user.first_name
+                u1 = u1.replace(" ", "%20")
+                u2 = u2.replace(" ", "%20")
+                url1 = URL + plataforma + '/' + u1
+                url2 = URL + plataforma + '/' + u2
+                respuesta_1 = requests.get(url1, headers=headers)
+                #time.sleep(2)
+                resultado_1 = respuesta_1.json()
+                respuesta_2 = requests.get(url2, headers=headers)
+                #time.sleep(2)
+                resultado_2 = respuesta_2.json()
+                if 'lifeTimeStats' in resultado_1.keys():
+                    resultado_1 = respuesta_1.json()['lifeTimeStats']
+                    for r in resultado_1:
                         if r['key'] == 'Wins':
-                            postwins_2 = r['value']
+                            postwins_1 = r['value']
                         if r['key'] == 'Kills':
-                            postkills_2 = r['value']
+                            postkills_1 = r['value']
                         if r['key'] == 'Matches Played':
-                            postpartidas_2 = r['value']
-                    #PRE Y POST VARIABLES
-                    postwins_1 = int(postwins_1)
-                    postwins_2 = int(postwins_2)
-                    postkills_1 = int(postkills_1)
-                    postkills_2 = int(postkills_2)
-                    prekills_1 = user.prekills_1
-                    prekills_2 = user.prekills_2
-                    prekills_1 = int(prekills_1)
-                    prekills_2 = int(prekills_2)
-                    prewins_1 = user.prewins_1
-                    prewins_2 = user.prewins_2
-                    prewins_1 = int(prewins_1)
-                    prewins_2 = int(prewins_2)
-                    postpartidas_1 = int(postpartidas_1)
-                    prepartidas_1 = user.prepartidas_1
-                    prepartidas_1 = int(prepartidas_1)
-                    partidas_liga = user.partidas_liga
-                    partidas_liga = int(partidas_liga)
-                    kills_liga = user.kills_liga
-                    kills_liga = int(kills_liga)
-                    partidas_liga = user.partidas_liga
-                    partidas_liga = int(partidas_liga)
-                    #OPERACIONES TORNEO
-                    wins_1 = postwins_1 - prewins_1
-                    wins_2 = postwins_2 - prewins_2
-                    wins_totales = wins_1
-                    kills_1 = postkills_1 - prekills_1
-                    kills_2 = postkills_2 - prekills_2
-                    kills_totales = kills_1 + kills_2
-                    puntoswins = wins_totales * 15
-                    puntos = puntoswins + kills_totales
-                    partidas_totales = postpartidas_1 - prepartidas_1
-                    #OPERACIONES GENERALES
-                    pregeneral = user.general
-                    pregeneral = int(pregeneral)
-                    nuevogeneral = pregeneral + puntos
-                    prepartidas_liga = user.partidas_liga
-                    prepartidas_liga = int(prepartidas_liga)
-                    postpartidas_liga = prepartidas_liga + partidas_totales
-                    prekills_liga = user.kills_liga
-                    prekills_liga = int(prekills_liga)
-                    postkills_liga = prekills_liga + kills_totales
-                    km = 0
-                    if postkills_liga == 0 or postpartidas_liga == 0:
-                        nola = '0'
-                    else:
-                        km = postkills_liga / postpartidas_liga
-                        km = Decimal(km)
-                        km = round(km,2)
-                    Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1)
-                    Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
-                    Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, partidas_1=partidas_totales, partidas_2=partidas_totales, kills_2=kills_2)
-                    Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, general=nuevogeneral)
+                            postpartidas_1 = r['value']
+                    if 'lifeTimeStats' in resultado_2.keys():
+                        resultado_2 = respuesta_2.json()['lifeTimeStats']
+                        for r in resultado_2:
+                            if r['key'] == 'Wins':
+                                postwins_2 = r['value']
+                            if r['key'] == 'Kills':
+                                postkills_2 = r['value']
+                            if r['key'] == 'Matches Played':
+                                postpartidas_2 = r['value']
+                        #PRE Y POST VARIABLES
+                        postwins_1 = int(postwins_1)
+                        postwins_2 = int(postwins_2)
+                        postkills_1 = int(postkills_1)
+                        postkills_2 = int(postkills_2)
+                        prekills_1 = user.prekills_1
+                        prekills_2 = user.prekills_2
+                        prekills_1 = int(prekills_1)
+                        prekills_2 = int(prekills_2)
+                        prewins_1 = user.prewins_1
+                        prewins_2 = user.prewins_2
+                        prewins_1 = int(prewins_1)
+                        prewins_2 = int(prewins_2)
+                        postpartidas_1 = int(postpartidas_1)
+                        prepartidas_1 = user.prepartidas_1
+                        prepartidas_1 = int(prepartidas_1)
+                        partidas_liga = user.partidas_liga
+                        partidas_liga = int(partidas_liga)
+                        kills_liga = user.kills_liga
+                        kills_liga = int(kills_liga)
+                        partidas_liga = user.partidas_liga
+                        partidas_liga = int(partidas_liga)
+                        #OPERACIONES TORNEO
+                        wins_1 = postwins_1 - prewins_1
+                        wins_2 = postwins_2 - prewins_2
+                        wins_totales = wins_1
+                        kills_1 = postkills_1 - prekills_1
+                        kills_2 = postkills_2 - prekills_2
+                        kills_totales = kills_1 + kills_2
+                        puntoswins = wins_totales * 15
+                        puntos = puntoswins + kills_totales
+                        partidas_totales = postpartidas_1 - prepartidas_1
+                        #OPERACIONES GENERALES
+                        pregeneral = user.general
+                        pregeneral = int(pregeneral)
+                        nuevogeneral = pregeneral + puntos
+                        prepartidas_liga = user.partidas_liga
+                        prepartidas_liga = int(prepartidas_liga)
+                        postpartidas_liga = prepartidas_liga + partidas_totales
+                        prekills_liga = user.kills_liga
+                        prekills_liga = int(prekills_liga)
+                        postkills_liga = prekills_liga + kills_totales
+                        km = 0
+                        if postkills_liga == 0 or postpartidas_liga == 0:
+                            nola = '0'
+                        else:
+                            km = postkills_liga / postpartidas_liga
+                            km = Decimal(km)
+                            km = round(km,2)
+                        Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1)
+                        Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
+                        Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, partidas_1=partidas_totales, partidas_2=partidas_totales, kills_2=kills_2)
+                        Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, general=nuevogeneral)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 

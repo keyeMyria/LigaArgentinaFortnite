@@ -124,8 +124,11 @@ def finalizar_torneo(modeladmin, request, queryset):
                         prewins_1 = int(prewins_1)
                         prewins_2 = int(prewins_2)
                         postpartidas_1 = int(postpartidas_1)
+                        postpartidas_2 = int(postpartidas_2)
                         prepartidas_1 = user.prepartidas_1
                         prepartidas_1 = int(prepartidas_1)
+                        prepartidas_2 = user.prepartidas_2
+                        prepartidas_2 = int(prepartidas_2)
                         partidas_liga = user.partidas_liga
                         partidas_liga = int(partidas_liga)
                         kills_liga = user.kills_liga
@@ -141,7 +144,13 @@ def finalizar_torneo(modeladmin, request, queryset):
                         kills_totales = kills_1 + kills_2
                         puntoswins = wins_totales * 15
                         puntos = puntoswins + kills_totales
-                        partidas_totales = postpartidas_1 - prepartidas_1
+                        partidas_totales_1 = postpartidas_1 - prepartidas_1
+                        partidas_totales_2 = postpartidas_2 - prepartidas_2
+                        partidas_totales = 0
+                        if partidas_totales_1 != 0:
+                            partidas_totales = partidas_totales_1
+                        else:
+                            partidas_totales = partidas_totales_2
                         #OPERACIONES GENERALES
                         pregeneral = user.general
                         pregeneral = int(pregeneral)
@@ -161,8 +170,8 @@ def finalizar_torneo(modeladmin, request, queryset):
                             km = round(km,2)
                         Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1)
                         Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
-                        Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, partidas_1=partidas_totales, partidas_2=partidas_totales, kills_2=kills_2)
-                        Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, general=nuevogeneral)
+                        Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, partidas_1=partidas_totales, partidas_2=partidas_totales, kills_2=kills_2, wins_2=wins_2)
+                        Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, partidas_liga=postpartidas_liga, kills_liga=postkills_liga, partidas_totales=partidas_totales, general=nuevogeneral)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 

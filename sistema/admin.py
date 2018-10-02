@@ -92,9 +92,7 @@ def finalizar_torneo(modeladmin, request, queryset):
             respuesta_2 = requests.get(url2, headers=headers)
             #time.sleep(2)
             resultado_2 = respuesta_2.json()
-            if 'error' in resultado_1.keys():
-                no = no
-            else:
+            if 'lifeTimeStats' in resultado_1.keys():
                 resultado_1 = respuesta_1.json()['lifeTimeStats']
                 for r in resultado_1:
                     if r['key'] == 'Wins':

@@ -38,36 +38,37 @@ def comenzar_torneo(modeladmin, request, queryset):
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
     usuarios = Perfil.verificados.all()
     for user in usuarios:
-        plataforma = user.user.last_name
-        u1 = user.user.username
-        u2 = user.user.first_name
-        u1 = u1.replace(" ", "%20")
-        u2 = u2.replace(" ", "%20")
-        url1 = URL + plataforma + '/' + u1
-        url2 = URL + plataforma + '/' + u2
-        respuesta_1 = requests.get(url1, headers=headers)
-        resultado_1 = respuesta_1.json()
-        respuesta_2 = requests.get(url2, headers=headers)
-        resultado_2 = respuesta_2.json()
-        if 'lifeTimeStats' in resultado_1.keys():
-            resultado_1 = respuesta_1.json()['lifeTimeStats']
-            for r in resultado_1:
-                if r['key'] == 'Wins':
-                    prewins_1 = r['value']
-                if r['key'] == 'Kills':
-                    prekills_1 = r['value']
-                if r['key'] == 'Matches Played':
-                    prepartidas_1 = r['value']
-            if 'lifeTimeStats' in resultado_2.keys():
-                resultado_2 = respuesta_2.json()['lifeTimeStats']
-                for r in resultado_2:
+        if user.prekills_1 == '0':
+            plataforma = user.user.last_name
+            u1 = user.user.username
+            u2 = user.user.first_name
+            u1 = u1.replace(" ", "%20")
+            u2 = u2.replace(" ", "%20")
+            url1 = URL + plataforma + '/' + u1
+            url2 = URL + plataforma + '/' + u2
+            respuesta_1 = requests.get(url1, headers=headers)
+            resultado_1 = respuesta_1.json()
+            respuesta_2 = requests.get(url2, headers=headers)
+            resultado_2 = respuesta_2.json()
+            if 'lifeTimeStats' in resultado_1.keys():
+                resultado_1 = respuesta_1.json()['lifeTimeStats']
+                for r in resultado_1:
                     if r['key'] == 'Wins':
-                        prewins_2 = r['value']
+                        prewins_1 = r['value']
                     if r['key'] == 'Kills':
-                        prekills_2 = r['value']
+                        prekills_1 = r['value']
                     if r['key'] == 'Matches Played':
-                        prepartidas_2 = r['value']
-                Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+                        prepartidas_1 = r['value']
+                if 'lifeTimeStats' in resultado_2.keys():
+                    resultado_2 = respuesta_2.json()['lifeTimeStats']
+                    for r in resultado_2:
+                        if r['key'] == 'Wins':
+                            prewins_2 = r['value']
+                        if r['key'] == 'Kills':
+                            prekills_2 = r['value']
+                        if r['key'] == 'Matches Played':
+                            prepartidas_2 = r['value']
+                    Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 

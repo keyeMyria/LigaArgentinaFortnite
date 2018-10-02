@@ -85,23 +85,15 @@ def finalizar_torneo(modeladmin, request, queryset):
                 #time.sleep(2)
                 resultado_2 = respuesta_2.json()
                 if 'lifeTimeStats' in resultado_1.keys():
-                    resultado_1 = respuesta_1.json()['lifeTimeStats']
-                    for r in resultado_1:
-                        if r['key'] == 'Wins':
-                            postwins_1 = r['value']
-                        if r['key'] == 'Kills':
-                            postkills_1 = r['value']
-                        if r['key'] == 'Matches Played':
-                            postpartidas_1 = r['value']
+                    postwins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
+                    postkills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
+                    #top5 = respuesta_1.json()['stats']['p10']['top5']['value']
+                    postpartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
                     if 'lifeTimeStats' in resultado_2.keys():
-                        resultado_2 = respuesta_2.json()['lifeTimeStats']
-                        for r in resultado_2:
-                            if r['key'] == 'Wins':
-                                postwins_2 = r['value']
-                            if r['key'] == 'Kills':
-                                postkills_2 = r['value']
-                            if r['key'] == 'Matches Played':
-                                postpartidas_2 = r['value']
+                        postwins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
+                        postkills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
+                        #top5 = respuesta_2.json()['stats']['p10']['top5']['value']
+                        postpartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
                         #PRE Y POST VARIABLES
                         postwins_1 = int(postwins_1)
                         postwins_2 = int(postwins_2)

@@ -114,7 +114,7 @@ def finalizar_torneo(modeladmin, request, queryset):
                             prepartidas_1 = int(prepartidas_1)
                             prepartidas_2 = user.prepartidas_2
                             prepartidas_2 = int(prepartidas_2)
-                            partidas_liga = user.muertes_liga
+                            muertes_liga = user.muertes_liga
                             partidas_liga = int(muertes_liga)
                             kills_liga = user.kills_liga
                             kills_liga = int(kills_liga)

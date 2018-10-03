@@ -189,7 +189,7 @@ class UserAdmin(BaseUserAdmin):
     #get_author.admin_order_field = 'book__author'
 
     ordering = ('-date_joined', )
-    list_filter = ('perfil__VERIFICACION_2',)
+    list_filter = ('perfil__VERIFICACION_2', 'perfil__equipo')
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
 class PerfilAdmin(admin.ModelAdmin):

@@ -51,6 +51,7 @@ class Perfil(models.Model):
     puntos = models.IntegerField(blank=True, default=0)
     general = models.IntegerField(blank=True, default=0)
     equipo = models.CharField(max_length=20, blank=True, default=0)
+    comentario = models.CharField(max_length=100, blank=True, default=0)
 #MANAGERS
     objects = models.Manager()
     verificados = PerfilManager()

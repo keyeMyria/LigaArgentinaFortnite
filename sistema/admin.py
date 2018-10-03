@@ -166,10 +166,10 @@ def finalizar_torneo(modeladmin, request, queryset):
                             Perfil.objects.filter(user__username=u1).update(muertes_liga=postmuertes_liga, muertes_totales=muertes_totales)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
-def comentario(modeladmin, request, queryset):
+def comentario_1(modeladmin, request, queryset):
     com = '-'
     Perfil.objects.update(comentario=com)
-comentario.short_description = "comentario"
+comentario_1.short_description = "comentario"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
@@ -197,7 +197,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, comentario]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, comentario_1]
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('user', 'equipo', 'VERIFICACION_2')

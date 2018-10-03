@@ -166,6 +166,14 @@ def finalizar_torneo(modeladmin, request, queryset):
                             Perfil.objects.filter(user__username=u1).update(muertes_liga=postmuertes_liga, muertes_totales=muertes_totales)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
+def comentario(modeladmin, request, queryset):
+        #VARIABLES API
+        URL = "https://api.fortnitetracker.com/v1/profile/"
+        headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
+        usuarios = Perfil.objetcts.all()
+        for user in usuarios:
+            Perfil.objects.update(comentario='0')
+comentario.short_description = "FINALIZAR TORNEO"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
@@ -193,7 +201,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, comentario]
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('user', 'equipo', 'VERIFICACION_2')

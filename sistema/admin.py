@@ -168,7 +168,7 @@ finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
-    list_display = ('usuario1', 'usuario2', 'plataforma', 'equipo','email', 'date_joined', 'ver', 'prekills', 'postkills')
+    list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'date_joined', 'ver', 'prekills', 'postkills')
 
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2

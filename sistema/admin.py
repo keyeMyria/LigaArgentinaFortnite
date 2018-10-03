@@ -55,7 +55,7 @@ def comenzar_torneo(modeladmin, request, queryset):
                 prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
                 pretop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
                 prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
-                if 'stats' in resultado_2.keys():
+                if 'p10' in resultado_2.keys():
                     prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
                     prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
                     #top2 = respuesta_2.json()['stats']['p10']['top5']['value']

@@ -28,7 +28,7 @@ class Perfil(models.Model):
     #FIN PRUEBA TOP 5
     prepartidas_1 = models.IntegerField(blank=True, default=0)
     postpartidas_1 = models.IntegerField(blank=True, default=0)
-    partidas_1 = models.IntegerField(blank=True, default=0)
+    muertes_1 = models.IntegerField(blank=True, default=0)
     twitch_1 = models.CharField(max_length=20, blank=True, default='')
 #USUARIO 2
     prekills_2 = models.IntegerField(blank=True, default=0)
@@ -39,7 +39,7 @@ class Perfil(models.Model):
     wins_2 = models.IntegerField(blank=True, default=0)
     prepartidas_2 = models.IntegerField(blank=True, default=0)
     postpartidas_2 = models.IntegerField(blank=True, default=0)
-    partidas_2 = models.IntegerField(blank=True, default=0)
+    muertes_2 = models.IntegerField(blank=True, default=0)
     twitch_2 = models.CharField(max_length=20, blank=True, default='')
 #GENERAL
     muertes_totales = models.CharField(max_length=10, blank=True, default=0)

@@ -138,7 +138,7 @@ def finalizar_torneo(modeladmin, request, queryset):
                             muertes_1 = postpartidas_1 - prepartidas_1 - wins_totales
                             muertes_2 = postpartidas_2 - prepartidas_2 - wins_totales
                             muertes_totales = 0
-                            if partidas_totales_1 != 0:
+                            if muertes_1 != 0:
                                 muertes_totales = muertes_1
                             else:
                                 muertes_totales = muertes_2

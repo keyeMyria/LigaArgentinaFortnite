@@ -167,13 +167,9 @@ def finalizar_torneo(modeladmin, request, queryset):
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 def comentario(modeladmin, request, queryset):
-        #VARIABLES API
-        URL = "https://api.fortnitetracker.com/v1/profile/"
-        headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
-        usuarios = Perfil.objetcts.all()
-        for user in usuarios:
-            Perfil.objects.update(comentario='0')
-comentario.short_description = "FINALIZAR TORNEO"
+    com = '-'
+    Perfil.objects.update(comentario=com)
+comentario.short_description = "comentario"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]

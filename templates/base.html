@@ -3,15 +3,6 @@
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top" lang="en" dir="ltr">
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126919734-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-126919734-1');
-        </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
@@ -21,6 +12,15 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/icon180.png' %}">
         <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
         <title>Liga Argentina de Fortnite</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126919734-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-126919734-1');
+        </script>
     </head>
     <body>
         <nav class="navbar is-danger is-transparent is-fixed-top" v-on:click="toggleNav">

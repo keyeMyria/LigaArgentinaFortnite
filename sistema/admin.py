@@ -135,8 +135,8 @@ def finalizar_torneo(modeladmin, request, queryset):
                             puntoswins = wins_totales * 15
                             puntostop5 = top5_1 * 4
                             puntos = puntoswins + kills_totales + puntostop5
-                            partidas_totales_1 = postpartidas_1 - prepartidas_1
-                            partidas_totales_2 = postpartidas_2 - prepartidas_2
+                            partidas_totales_1 = postpartidas_1 - prepartidas_1 - wins_totales
+                            partidas_totales_2 = postpartidas_2 - prepartidas_2 - wins_totales
                             partidas_totales = 0
                             if partidas_totales_1 != 0:
                                 partidas_totales = partidas_totales_1
@@ -189,7 +189,7 @@ class UserAdmin(BaseUserAdmin):
     #get_author.admin_order_field = 'book__author'
 
     ordering = ('-date_joined', )
-    list_filter = ('perfil__VERIFICACION_2', 'plataforma')
+    list_filter = ('perfil__VERIFICACION_2', 'last_name')
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
 class PerfilAdmin(admin.ModelAdmin):

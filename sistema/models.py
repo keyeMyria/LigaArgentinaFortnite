@@ -26,8 +26,8 @@ class Perfil(models.Model):
     posttop5_1 = models.IntegerField(blank=True, default=0)
     top5_1 = models.IntegerField(blank=True, default=0)
     #FIN PRUEBA TOP 5
-    premuertes_1 = models.IntegerField(blank=True, default=0)
-    postmuertes_1 = models.IntegerField(blank=True, default=0)
+    prepartidas_1 = models.IntegerField(blank=True, default=0)
+    postpartidas_1 = models.IntegerField(blank=True, default=0)
     partidas_1 = models.IntegerField(blank=True, default=0)
     twitch_1 = models.CharField(max_length=20, blank=True, default='')
 #USUARIO 2
@@ -37,8 +37,8 @@ class Perfil(models.Model):
     prewins_2 = models.IntegerField(blank=True, default=0)
     postwins_2 = models.IntegerField(blank=True, default=0)
     wins_2 = models.IntegerField(blank=True, default=0)
-    premuertes_2 = models.IntegerField(blank=True, default=0)
-    postmuertes_2 = models.IntegerField(blank=True, default=0)
+    prepartidas_2 = models.IntegerField(blank=True, default=0)
+    postpartidas_2 = models.IntegerField(blank=True, default=0)
     partidas_2 = models.IntegerField(blank=True, default=0)
     twitch_2 = models.CharField(max_length=20, blank=True, default='')
 #GENERAL

@@ -44,6 +44,8 @@ def comenzar_torneo(modeladmin, request, queryset):
     for user in usuarios:
         if user.prekills_1 == 0:
             plataforma = user.user.last_name
+            if plataforma == 'psn':
+                plataforma = 'ps4'
             u1 = user.user.username
             u2 = user.user.first_name
             u1 = u1.replace(" ", "%20")
@@ -54,10 +56,9 @@ def comenzar_torneo(modeladmin, request, queryset):
             ID_1_ = ID_1.json()
             ID_2 = requests.request("POST", URL_id, data=payload_id_2, headers=headers)
             ID_2_ = ID_2.json()
-            time.sleep(1)
             if 'uid' in ID_1_.keys():
                 ID_1 = ID_1.json()['uid']
-                payload_stats_1 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"user_id\"\r\n\r\n" + ID_1 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"platform\"\r\n\r\n" + plataforma +  "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"window\"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
+                payload_stats_1 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"user_id\"\r\n\r\n" + ID_1 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"platform\"\r\n\r\n" + plataforma + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"window\"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
                 STATS_1 = requests.request("POST", URL_stats, data=payload_stats_1, headers=headers)
                 STATS_1_ = STATS_1.json()
                 if 'username' in STATS_1_.keys():

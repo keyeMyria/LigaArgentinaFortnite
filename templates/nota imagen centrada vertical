@@ -4,3 +4,18 @@
           <img src="{% static 'logo.png' %}">
     </div>
     </nav>
+
+
+    <div class="content has-text-centered">
+        <section>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <a href="https://www.instagram.com/wasd.cordoba/" target="_blank">
+                    <figure class='image' >
+                        <img src="{% static 'sponsors/logo_wasd_chico.png' %}">
+                    </figure>
+                    </a>
+                </div>
+                </nav>
+        </section>
+    </div>

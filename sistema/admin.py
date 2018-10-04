@@ -40,7 +40,7 @@ def comenzar_torneo(modeladmin, request, queryset):
         'content-type': "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
         'Authorization': "3870d925f574303458005063b9ef7e31"
         }
-    usuarios = Perfil.verificados.all()[:1]
+    usuarios = Perfil.verificados.all()[:10]
     for user in usuarios:
         if user.prekills_1 == 0:
             plataforma = user.user.last_name

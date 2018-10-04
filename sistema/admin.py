@@ -54,6 +54,7 @@ def comenzar_torneo(modeladmin, request, queryset):
             ID_1_ = ID_1.json()
             ID_2 = requests.request("POST", URL_id, data=payload_id_2, headers=headers)
             ID_2_ = ID_2.json()
+            time.sleep(1)
             if 'uid' in ID_1_.keys():
                 ID_1 = ID_1.json()['uid']
                 payload_stats_1 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"user_id\"\r\n\r\n" + ID_1 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"platform\"\r\n\r\n" + plataforma +  "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"window\"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
@@ -65,6 +66,7 @@ def comenzar_torneo(modeladmin, request, queryset):
                     pretop5_1 = STATS_1.json()['stats']['placetop5_duo']
                     prepartidas_1 = STATS_1.json()['stats']['matchesplayed_duo']
                     if 'uid' in ID_2_.keys():
+                        time.sleep(1)
                         ID_2 = ID_2.json()['uid']
                         payload_stats_2 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"user_id\"\r\n\r\n" + ID_2 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"platform\"\r\n\r\n" + plataforma +  "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"window\"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
                         STATS_2 = requests.request("POST", URL_stats, data=payload_stats_2, headers=headers)

@@ -34,49 +34,33 @@ def comenzar_torneo(modeladmin, request, queryset):
     #    send_mail('EL TORNEO ACABA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])
 
     #VARIABLES API
-    URL_id = "https://fortnite-public-api.theapinetwork.com/prod09/users/id"
-    URL_stats = 'https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats'
-    headers = {
-        'content-type': "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-        'Authorization': "3870d925f574303458005063b9ef7e31"
-        }
-    usuarios = Perfil.verificados.all()[:5]
+    URL = "https://api.fortnitetracker.com/v1/profile/"
+    headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
+    usuarios = Perfil.verificados.all()
     for user in usuarios:
         if user.prekills_1 == 0:
             plataforma = user.user.last_name
-            if plataforma == 'psn':
-                plataforma = 'ps4'
             u1 = user.user.username
             u2 = user.user.first_name
             u1 = u1.replace(" ", "%20")
             u2 = u2.replace(" ", "%20")
-            payload_id_1 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n" + u1 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
-            payload_id_2 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n" + u2 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
-            ID_1 = requests.request("POST", URL_id, data=payload_id_1, headers=headers)
-            ID_1_ = ID_1.json()
-            ID_2 = requests.request("POST", URL_id, data=payload_id_2, headers=headers)
-            ID_2_ = ID_2.json()
-            if 'uid' in ID_1_.keys():
-                ID_1 = ID_1.json()['uid']
-                payload_stats_1 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"user_id\"\r\n\r\n" + ID_1 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"platform\"\r\n\r\n" + plataforma + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"window\"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
-                STATS_1 = requests.request("POST", URL_stats, data=payload_stats_1, headers=headers)
-                STATS_1_ = STATS_1.json()
-                if 'username' in STATS_1_.keys():
-                    prewins_1 = STATS_1.json()['stats']['placetop1_duo']
-                    prekills_1 = STATS_1.json()['stats']['kills_duo']
-                    pretop5_1 = STATS_1.json()['stats']['placetop5_duo']
-                    prepartidas_1 = STATS_1.json()['stats']['matchesplayed_duo']
-                    if 'uid' in ID_2_.keys():
-                        ID_2 = ID_2.json()['uid']
-                        payload_stats_2 = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"user_id\"\r\n\r\n" + ID_2 + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"platform\"\r\n\r\n" + plataforma +  "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"window\"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
-                        STATS_2 = requests.request("POST", URL_stats, data=payload_stats_2, headers=headers)
-                        STATS_2_ = STATS_2.json()
-                        if 'username' in STATS_2_.keys():
-                            prewins_2 = STATS_2.json()['stats']['placetop1_duo']
-                            prekills_2 = STATS_2.json()['stats']['kills_duo']
-                            pretop5_2 = STATS_2.json()['stats']['placetop5_duo']
-                            prepartidas_2 = STATS_2.json()['stats']['matchesplayed_duo']
-                        Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+            url1 = URL + plataforma + '/' + u1
+            url2 = URL + plataforma + '/' + u2
+            respuesta_1 = requests.get(url1, headers=headers)
+            resultado_1 = respuesta_1.json()
+            respuesta_2 = requests.get(url2, headers=headers)
+            resultado_2 = respuesta_2.json()
+            if 'lifeTimeStats' in resultado_1.keys():
+                prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
+                prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
+                pretop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
+                prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
+                if 'lifeTimeStats' in resultado_2.keys():
+                    prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
+                    prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
+                    #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
+                    prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
+                    Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 

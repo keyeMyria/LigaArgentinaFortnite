@@ -40,3 +40,4 @@ def comenzar_torneo_rq():
                     #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
                     prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
                     Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+                    time.sleep(2)

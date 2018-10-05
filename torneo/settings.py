@@ -15,6 +15,7 @@ import os
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
 
+DJANGO_SETTINGS_MODULE=settings rq worker high default low
 
 SEND_BROKEN_LINK_EMAILS=True
 

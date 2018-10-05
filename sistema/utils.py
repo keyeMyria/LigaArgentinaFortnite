@@ -7,7 +7,7 @@ from decimal import Decimal
 from django.core.mail import send_mail
 import time
 
-def comenzar_torneo_rq():
+def comenzar_torneo_rq(modeladmin, request, queryset):
     #ENVIAR MAIL DE COMIENZO
     #for user in User.objects.all():
     #    send_mail('EL TORNEO ACABA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])

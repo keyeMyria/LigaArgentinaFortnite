@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from utils import comenzar_torneo_rq
+from .utils import comenzar_torneo_rq
 from rq import Queue
 from worker import conn
 

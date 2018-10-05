@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 import time
 from .utils import comenzar_torneo_rq
 from rq import Queue
-from worker import conn
+from run-worker import conn
 
 q = Queue(connection=conn)
 

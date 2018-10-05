@@ -26,11 +26,11 @@ def comenzar_torneo_rq():
             url1 = URL + plataforma + '/' + u1
             url2 = URL + plataforma + '/' + u2
             respuesta_1 = requests.get(url1, headers=headers)
+            time.sleep(1.5)
             resultado_1 = respuesta_1.json()
-            time.sleep(1)
             respuesta_2 = requests.get(url2, headers=headers)
+            time.sleep(1.5)
             resultado_2 = respuesta_2.json()
-            time.sleep(1)
             if 'lifeTimeStats' in resultado_1.keys():
                 prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
                 prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']

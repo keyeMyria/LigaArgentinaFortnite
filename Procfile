@@ -1,2 +1,2 @@
 web: gunicorn torneo.wsgi --log-file -
-worker: python worker.py
+worker: python torneo/manage.py rqworker high default low

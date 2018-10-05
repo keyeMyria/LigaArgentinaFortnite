@@ -1,2 +1,2 @@
-web: gunicorn --pythonpath="$PWD/torneo" config.wsgi:application
+web: gunicorn torneo.wsgi --log-file -
 worker: python manage.py rqworker default

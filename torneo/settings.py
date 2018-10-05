@@ -58,11 +58,8 @@ INSTALLED_APPS = [
 
 RQ_QUEUES = {
     'default': {
-         'HOST': 'localhost',
-         'PORT': '6379',
-         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'),  # If you're
-         'DB': 0,
-         'DEFAULT_TIMEOUT': 480,
+         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
+         'DEFAULT_TIMEOUT': 500,
      }
 }
 

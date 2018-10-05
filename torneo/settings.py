@@ -82,7 +82,7 @@ RQ_QUEUES = {
     }
 }
 
-DJANGO_SETTINGS_MODULE=settings rq worker high default low
+#DJANGO_SETTINGS_MODULE=settings rq worker high default low
 
 SITE_ID = 1
 

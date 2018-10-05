@@ -9,7 +9,7 @@ import time
 from .utils import comenzar_torneo_rq
 from rq import Queue
 from worker import conn
-
+import django_rq
 q = Queue(connection=conn)
 
 
@@ -34,7 +34,7 @@ def resetear_torneo(modeladmin, request, queryset):
 resetear_torneo.short_description = "XXX Resetear torneo XXX"
 
 def comenzar_torneo(modeladmin, request, queryset):
-    q.enqueue(comenzar_torneo_rq)
+    django_rq.enqueue(comenzar_torneo_rq)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 

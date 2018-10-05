@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     #'allauth.socialaccount.providers.twitch',
 ]
 
-Q_QUEUES = {
+RQ_QUEUES = {
     'default': {
         'HOST': 'localhost',
         'PORT': 6379,

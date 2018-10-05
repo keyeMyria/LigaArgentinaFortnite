@@ -16,6 +16,9 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+urlpatterns += [
+    path('django-rq/', include('django_rq.urls'))
+]
 
 admin.site.site_header = "Administrador LAF"
 admin.site.site_title = "Panel de la Liga Argentina de Fortnite"

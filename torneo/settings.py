@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'sistema'
+    'sistema',
+    "django_rq"
     #'allauth.socialaccount.providers.facebook',
     #'allauth.socialaccount.providers.twitch',
 ]

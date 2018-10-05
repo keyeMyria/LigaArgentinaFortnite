@@ -34,7 +34,7 @@ def resetear_torneo(modeladmin, request, queryset):
 resetear_torneo.short_description = "XXX Resetear torneo XXX"
 
 def comenzar_torneo(modeladmin, request, queryset):
-    django_rq.enqueue(comenzar_torneo_rq, foo, bar=baz)
+    django_rq.enqueue(comenzar_torneo_rq)
     #django_rq.enqueue(comenzar_torneo_rq(modeladmin, request, queryset))
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 

@@ -16,7 +16,8 @@ def comenzar_torneo_rq():
     time.sleep(1.5)
     URL = "https://api.fortnitetracker.com/v1/profile/"
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
-    usuarios = Perfil.verificados.all()
+    usuarios = Perfil.verificados.order_by('user__date_joined')
+    #Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-puntos')
     for user in usuarios:
         if user.prekills_1 == 0:
             plataforma = user.user.last_name

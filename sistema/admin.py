@@ -35,7 +35,6 @@ def comenzar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(comenzar_torneo_rq)
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
-
 def finalizar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(finalizar_torneo_rq)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"

@@ -14,7 +14,7 @@ import os
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
-
+from validators import user_val
 
 SEND_BROKEN_LINK_EMAILS=True
 
@@ -152,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#ACCOUNT_USERNAME_VALIDATORS = 
+ACCOUNT_USERNAME_VALIDATORS = user_val
 
 
 # Internationalization

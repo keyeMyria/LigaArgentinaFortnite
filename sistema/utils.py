@@ -153,6 +153,7 @@ def calcular_puntajes_general_rq():
     usuarios = Perfil.verificados.order_by('user__date_joined')
     for user in usuarios:
         #PUNTOS GENERAL
+        u1 = user.user.username
         pregeneral = user.general
         pregeneral = int(pregeneral)
         puntos = user.puntos

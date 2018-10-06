@@ -47,6 +47,7 @@ def verificar_usuario(modeladmin, request, queryset):
     for user in queryset:
         user.perfil.VERIFICACION_2 = True
         user.save()
+        send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])
 verificar_usuario.short_description = "VERIFICAR USUARIO"
 
 class UserAdmin(BaseUserAdmin):

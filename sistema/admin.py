@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq
 from rq import Queue
 from worker import conn
 import django_rq
@@ -39,6 +39,10 @@ def finalizar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(finalizar_torneo_rq)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
+def calcular_puntajes_general(modeladmin, request, queryset):
+    django_rq.enqueue(calcular_puntajes_general_rq)
+calcular_puntajes_general.short_description = "--CALCULAR GENERALES--"
+
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
@@ -65,7 +69,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general]
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('user', 'equipo', 'VERIFICACION_2')

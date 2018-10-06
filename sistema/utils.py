@@ -46,10 +46,9 @@ def comenzar_torneo_rq():
 
 def finalizar_torneo_rq():
         #VARIABLES API
-        time.sleep(2)
         URL = "https://api.fortnitetracker.com/v1/profile/"
         headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
-        usuarios = Perfil.verificados.all()
+        usuarios = Perfil.verificados.order_by('user__date_joined')
         for user in usuarios:
             if user.prekills_1 != 0:
                 if user.postkills_1 == 0:
@@ -61,10 +60,10 @@ def finalizar_torneo_rq():
                     url1 = URL + plataforma + '/' + u1
                     url2 = URL + plataforma + '/' + u2
                     respuesta_1 = requests.get(url1, headers=headers)
-                    time.sleep(1.5)
+                    time.sleep(2)
                     resultado_1 = respuesta_1.json()
                     respuesta_2 = requests.get(url2, headers=headers)
-                    time.sleep(1.5)
+                    time.sleep(2)
                     resultado_2 = respuesta_2.json()
                     if 'lifeTimeStats' in resultado_1.keys():
                         postwins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
@@ -143,9 +142,39 @@ def finalizar_torneo_rq():
                             Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1, posttop5_1=posttop5_1, top5_1=top5_1)
                             Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
                             Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, muertes_1=muertes_totales, muertes_2=muertes_totales, kills_2=kills_2, wins_2=wins_2)
-                            Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, kills_liga=postkills_liga, general=nuevogeneral)
-                            Perfil.objects.filter(user__username=u1).update(muertes_liga=postmuertes_liga, muertes_totales=muertes_totales)
+                            Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales)
+                            Perfil.objects.filter(user__username=u1).update(muertes_totales=muertes_totales)
 
 def mail_comienzo_torneo_rq():
     for user in User.objects.all():
         send_mail('El torneo esta por comenzar!', 'Conectate y preparate!', 'mmquiroga10@gmail.com', [user.email])
+
+def calcular_puntajes_general_rq():
+    usuarios = Perfil.verificados.order_by('user__date_joined')
+    for user in usuarios:
+        #PUNTOS GENERAL
+        pregeneral = user.general
+        pregeneral = int(pregeneral)
+        puntos = user.puntos
+        puntos = int(puntos)
+        nuevogeneral = pregeneral + puntos
+        #KD
+        premuertes_liga = user.muertes_liga
+        premuertes_liga = int(premuertes_liga)
+        muertes_totales = user.muertes_totales
+        muertes_totales = int(muertes_totales)
+        postmuertes_liga = premuertes_liga + muertes_totales
+        prekills_liga = user.kills_liga
+        prekills_liga = int(prekills_liga)
+        kills_totales = user.kills_totales
+        kills_totales = int(kills_totales)
+        postkills_liga = prekills_liga + kills_totales
+        km = 0
+        if postkills_liga == 0 or postmuertes_liga == 0:
+            nola = '0'
+        else:
+            km = postkills_liga / postmuertes_liga
+            km = Decimal(km)
+            km = round(km,2)
+
+        Perfil.objects.filter(user__username=u1).update(kd=km, general=nuevogeneral, muertes_liga=postmuertes_liga, kills_liga=postkills_liga)

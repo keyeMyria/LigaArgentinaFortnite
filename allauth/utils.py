@@ -37,7 +37,7 @@ def _generate_unique_username_base(txts, regex=None):
     from .account.adapter import get_adapter
     adapter = get_adapter()
     username = None
-    regex = regex or r'[^\w\s@+.-]'
+    regex = regex or r'[^\w\s@+.-$]'
     for txt in txts:
         if not txt:
             continue

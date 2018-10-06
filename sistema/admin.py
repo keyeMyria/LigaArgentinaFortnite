@@ -16,6 +16,7 @@ q = Queue(connection=conn)
 class PerfilInline (admin.StackedInline):
     model = Perfil
     can_delete = False
+    
 
 def mail_comienzo_torneo(modeladmin, request, queryset):
     for user in User.objects.all():

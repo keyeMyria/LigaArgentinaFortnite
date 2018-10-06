@@ -6,21 +6,18 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq
 from rq import Queue
 from worker import conn
 import django_rq
 q = Queue(connection=conn)
 
-
 class PerfilInline (admin.StackedInline):
     model = Perfil
     can_delete = False
 
-
 def mail_comienzo_torneo(modeladmin, request, queryset):
-    for user in User.objects.all():
-        send_mail('El torneo esta por comenzar!', 'Conectate y preparate!', 'mmquiroga10@gmail.com', [user.email])
+    django_rq.enqueue(mail_comienzo_torneo_rq)
 mail_comienzo_torneo.short_description = "MAIL POR COMENZAR"
 
 def resetear_todo(modeladmin, request, queryset):
@@ -36,18 +33,12 @@ resetear_torneo.short_description = "XXX Resetear torneo XXX"
 
 def comenzar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(comenzar_torneo_rq)
-    #django_rq.enqueue(comenzar_torneo_rq(modeladmin, request, queryset))
 comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 
 def finalizar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(finalizar_torneo_rq)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
-
-def comentario_1(modeladmin, request, queryset):
-    com = '-'
-    Perfil.objects.update(comentario=com)
-comentario_1.short_description = "comentario"
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]

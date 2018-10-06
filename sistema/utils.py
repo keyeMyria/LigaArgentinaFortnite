@@ -44,7 +44,6 @@ def comenzar_torneo_rq():
                     prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
                     Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 
-
 def finalizar_torneo_rq():
         #VARIABLES API
         time.sleep(1.5)
@@ -146,3 +145,7 @@ def finalizar_torneo_rq():
                             Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, muertes_1=muertes_totales, muertes_2=muertes_totales, kills_2=kills_2, wins_2=wins_2)
                             Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, kills_liga=postkills_liga, general=nuevogeneral)
                             Perfil.objects.filter(user__username=u1).update(muertes_liga=postmuertes_liga, muertes_totales=muertes_totales)
+
+def mail_comienzo_torneo_rq():
+    for user in User.objects.all():
+        send_mail('El torneo esta por comenzar!', 'Conectate y preparate!', 'mmquiroga10@gmail.com', [user.email])

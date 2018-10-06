@@ -3,7 +3,7 @@ from django.contrib import admin
 from . import app_settings
 from .adapter import get_adapter
 from .models import EmailAddress, EmailConfirmation
-
+from django import forms
 
 class EmailAddressAdmin(admin.ModelAdmin):
     list_display = ('email', 'user', 'primary', 'verified')

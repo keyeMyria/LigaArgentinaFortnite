@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq
 from rq import Queue
 from worker import conn
 import django_rq
@@ -16,7 +16,7 @@ q = Queue(connection=conn)
 class PerfilInline (admin.StackedInline):
     model = Perfil
     can_delete = False
-    
+
 
 def mail_comienzo_torneo(modeladmin, request, queryset):
     for user in User.objects.all():
@@ -41,105 +41,7 @@ comenzar_torneo.short_description = "COMENZAR TORNEO"
 
 
 def finalizar_torneo(modeladmin, request, queryset):
-        #VARIABLES API
-        URL = "https://api.fortnitetracker.com/v1/profile/"
-        headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
-        usuarios = Perfil.verificados.all()
-        for user in usuarios:
-            if user.prekills_1 != 0:
-                if user.postkills_1 == 0:
-                    plataforma = user.user.last_name
-                    u1 = user.user.username
-                    u2 = user.user.first_name
-                    u1 = u1.replace(" ", "%20")
-                    u2 = u2.replace(" ", "%20")
-                    url1 = URL + plataforma + '/' + u1
-                    url2 = URL + plataforma + '/' + u2
-                    respuesta_1 = requests.get(url1, headers=headers)
-                    #time.sleep(2)
-                    resultado_1 = respuesta_1.json()
-                    respuesta_2 = requests.get(url2, headers=headers)
-                    #time.sleep(2)
-                    resultado_2 = respuesta_2.json()
-                    if 'lifeTimeStats' in resultado_1.keys():
-                        postwins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
-                        postkills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
-                        posttop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
-                        postpartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
-                        if 'lifeTimeStats' in resultado_2.keys():
-                            postwins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
-                            postkills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
-                            #top5 = respuesta_2.json()['stats']['p10']['top5']['value']
-                            postpartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
-                            #PRE Y POST VARIABLES
-                            postwins_1 = int(postwins_1)
-                            postwins_2 = int(postwins_2)
-                            postkills_1 = int(postkills_1)
-                            postkills_2 = int(postkills_2)
-                            prekills_1 = user.prekills_1
-                            prekills_2 = user.prekills_2
-                            prekills_1 = int(prekills_1)
-                            prekills_2 = int(prekills_2)
-                            prewins_1 = user.prewins_1
-                            prewins_2 = user.prewins_2
-                            prewins_1 = int(prewins_1)
-                            prewins_2 = int(prewins_2)
-                            postpartidas_1 = int(postpartidas_1)
-                            postpartidas_2 = int(postpartidas_2)
-                            prepartidas_1 = user.prepartidas_1
-                            prepartidas_1 = int(prepartidas_1)
-                            prepartidas_2 = user.prepartidas_2
-                            prepartidas_2 = int(prepartidas_2)
-                            muertes_liga = user.muertes_liga
-                            partidas_liga = int(muertes_liga)
-                            kills_liga = user.kills_liga
-                            kills_liga = int(kills_liga)
-                            partidas_liga = user.muertes_liga
-                            partidas_liga = int(muertes_liga)
-                            #PRUEBA TOP5
-                            pretop5_1 = user.pretop5_1
-                            pretop5_1 = int(pretop5_1)
-                            posttop5_1 = int(posttop5_1)
-                            top5_1 = posttop5_1 - pretop5_1
-                            #OPERACIONES TORNEO
-                            wins_1 = postwins_1 - prewins_1
-                            wins_2 = postwins_2 - prewins_2
-                            wins_totales = wins_1
-                            kills_1 = postkills_1 - prekills_1
-                            kills_2 = postkills_2 - prekills_2
-                            kills_totales = kills_1 + kills_2
-                            puntoswins = wins_totales * 15
-                            puntostop5 = top5_1 * 4
-                            puntos = puntoswins + kills_totales + puntostop5
-                            muertes_1 = postpartidas_1 - prepartidas_1 - wins_totales
-                            muertes_2 = postpartidas_2 - prepartidas_2 - wins_totales
-                            muertes_totales = 0
-                            if muertes_1 != 0:
-                                muertes_totales = muertes_1
-                            else:
-                                muertes_totales = muertes_2
-                            #OPERACIONES GENERALES
-                            pregeneral = user.general
-                            pregeneral = int(pregeneral)
-                            nuevogeneral = pregeneral + puntos
-                            premuertes_liga = user.muertes_liga
-                            premuertes_liga = int(premuertes_liga)
-                            postmuertes_liga = premuertes_liga + muertes_totales
-                            prekills_liga = user.kills_liga
-                            prekills_liga = int(prekills_liga)
-                            postkills_liga = prekills_liga + kills_totales
-                            km = 0
-                            if postkills_liga == 0 or postmuertes_liga == 0:
-                                nola = '0'
-                            else:
-                                km = postkills_liga / postmuertes_liga
-                                km = Decimal(km)
-                                km = round(km,2)
-                            Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1, posttop5_1=posttop5_1, top5_1=top5_1)
-                            Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
-                            Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, muertes_1=muertes_totales, muertes_2=muertes_totales, kills_2=kills_2, wins_2=wins_2)
-                            Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales, kd=km, kills_liga=postkills_liga, general=nuevogeneral)
-                            Perfil.objects.filter(user__username=u1).update(muertes_liga=postmuertes_liga, muertes_totales=muertes_totales)
+    django_rq.enqueue(finalizar_torneo_rq)
 finalizar_torneo.short_description = "FINALIZAR TORNEO"
 
 def comentario_1(modeladmin, request, queryset):

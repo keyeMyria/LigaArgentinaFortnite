@@ -88,7 +88,7 @@ class SetPasswordField(PasswordField):
 
 class LoginForm(forms.Form):
 
-    password = PasswordField(label=_("Contrsena"))
+    password = PasswordField(label=_("Contraseña"))
     remember = forms.BooleanField(label=_("Recordarme"),
                                   required=False)
 

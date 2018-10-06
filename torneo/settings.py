@@ -152,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_USERNAME_VALIDATORS = 'some.module.validators.custom_username_validators'
+#ACCOUNT_USERNAME_VALIDATORS = 
 
 
 # Internationalization

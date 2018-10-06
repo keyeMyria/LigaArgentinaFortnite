@@ -152,6 +152,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_USERNAME_VALIDATORS = 'some.module.validators.custom_username_validators'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

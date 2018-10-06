@@ -14,7 +14,7 @@ import os
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
-from validators import user_val
+from .validators import user_val
 
 SEND_BROKEN_LINK_EMAILS=True
 

@@ -152,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_USERNAME_VALIDATORS = user_val
+#ACCOUNT_USERNAME_VALIDATORS = user_val
 
 
 # Internationalization

@@ -13,7 +13,6 @@ def comenzar_torneo_rq():
     #    send_mail('EL TORNEO ACABA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])
 
     #VARIABLES API
-    time.sleep(1.5)
     URL = "https://api.fortnitetracker.com/v1/profile/"
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
     usuarios = Perfil.verificados.order_by('user__date_joined')
@@ -28,10 +27,10 @@ def comenzar_torneo_rq():
             url1 = URL + plataforma + '/' + u1
             url2 = URL + plataforma + '/' + u2
             respuesta_1 = requests.get(url1, headers=headers)
-            time.sleep(1.5)
+            time.sleep(2)
             resultado_1 = respuesta_1.json()
             respuesta_2 = requests.get(url2, headers=headers)
-            time.sleep(1.5)
+            time.sleep(2)
             resultado_2 = respuesta_2.json()
             if 'lifeTimeStats' in resultado_1.keys():
                 prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
@@ -47,7 +46,7 @@ def comenzar_torneo_rq():
 
 def finalizar_torneo_rq():
         #VARIABLES API
-        time.sleep(1.5)
+        time.sleep(2)
         URL = "https://api.fortnitetracker.com/v1/profile/"
         headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
         usuarios = Perfil.verificados.all()

@@ -179,3 +179,8 @@ def calcular_puntajes_general_rq():
             km = round(km,2)
 
         Perfil.objects.filter(user__username=u1).update(kd=km, general=nuevogeneral, muertes_liga=postmuertes_liga, kills_liga=postkills_liga)
+
+def verificar_usuario_rq():
+    for user in queryset:
+        user.perfil.VERIFICACION_2 = True
+        book.save()

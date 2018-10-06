@@ -11,25 +11,38 @@
 <section class='section'>
 
 </section>
-    <div class="container">
-        <h1 class='title'>{% trans "Registrate" %}</h1>
-        <h1 class='subtitle'>(Usuarios de PS4 ver la guia para obtener su usuario de epic mas abajo!)</h1>
+<div class="container">
+    <div class="columns">
+      <div class="column">
+          <h1 class='title'>{% trans "Registrate" %}</h1>
+          <h1 class='subtitle'>(Usuarios de PS4 ver la guia para obtener su usuario de epic mas abajo!)</h1>
 
-        <p>{% blocktrans %}Ya tienes una cuenta? <a href="{{ login_url }}">Iniciar Sesion</a>.{% endblocktrans %}</p>
+          <p>{% blocktrans %}Ya tienes una cuenta? <a href="{{ login_url }}">Iniciar Sesion</a>.{% endblocktrans %}</p>
 
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-          {% csrf_token %}
-          {{ form.as_p }}
-          {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-          {% endif %}
-          <section class='section section-padding-large'>
-              <p></p>
-              <p></p>
-              <button class="button is-primary" type="submit">{% trans "Registrarme" %} &raquo;</button>
-          </section>
-        </form>
+          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <section class='section section-padding-large'>
+                <p></p>
+                <p></p>
+                <button class="button is-primary" type="submit">{% trans "Registrarme" %} &raquo;</button>
+            </section>
+          </form>
+      </div>
+      <div class="column">
+        Second column
+      </div>
     </div>
+</div>
+
+
+<!-- 
+    <div class="container">
+
+    </div> -->
 
         <div class="container">
         <div class="content has-text-centered">

@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, verificar_usuario_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq
 from rq import Queue
 from worker import conn
 import django_rq
@@ -44,7 +44,9 @@ def calcular_puntajes_general(modeladmin, request, queryset):
 calcular_puntajes_general.short_description = "--CALCULAR GENERALES--"
 
 def verificar_usuario(modeladmin, request, queryset):
-    django_rq.enqueue(verificar_usuario_rq)
+    for user in queryset:
+        user.perfil.VERIFICACION_2 = True
+        user.save()
 verificar_usuario.short_description = "VERIFICAR USUARIO"
 
 class UserAdmin(BaseUserAdmin):

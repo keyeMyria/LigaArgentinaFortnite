@@ -248,7 +248,7 @@ class DefaultAccountAdapter(object):
         Validates the username. You can hook into this if you want to
         (dynamically) restrict what usernames can be chosen.
         """
-        for validator in app_settings.USERNAME_VALIDATORS:
+        #for validator in app_settings.USERNAME_VALIDATORS:
             validator(username)
 
         # TODO: Add regexp support to USERNAME_BLACKLIST

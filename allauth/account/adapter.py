@@ -249,7 +249,7 @@ class DefaultAccountAdapter(object):
         (dynamically) restrict what usernames can be chosen.
         """
         #for validator in app_settings.USERNAME_VALIDATORS:
-            validator(username)
+            #validator(username)
 
         # TODO: Add regexp support to USERNAME_BLACKLIST
         username_blacklist_lower = [ub.lower()

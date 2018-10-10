@@ -65,6 +65,8 @@ class UserAdmin(BaseUserAdmin):
     # form = MyUserChangeForm
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
+    class Meta:
+        model = User
 
 
 

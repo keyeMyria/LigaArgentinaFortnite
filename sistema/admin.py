@@ -65,7 +65,9 @@ class UserAdmin(BaseUserAdmin):
     # form = MyUserChangeForm
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
-
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        super().save_model(request, obj, form, change)
 
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2

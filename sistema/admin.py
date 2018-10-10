@@ -63,7 +63,7 @@ class MyUserChangeForm(UserChangeForm):
         fields = ('username', 'first_name' , 'last_name', )
 
 class UserAdmin(BaseUserAdmin):
-    form = MyUserChangeForm
+    add_form = MyUserChangeForm
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
 

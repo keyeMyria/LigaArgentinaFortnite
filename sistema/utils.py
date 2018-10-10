@@ -33,12 +33,12 @@ def comenzar_torneo_rq():
             respuesta_2 = requests.get(url2, headers=headers)
             time.sleep(2)
             resultado_2 = respuesta_2.json()
-            if 'p10' in resultado_1.keys():
+            if 'stats' in resultado_1.keys():
                 prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
                 prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
                 pretop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
                 prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
-                if 'p10' in resultado_2.keys():
+                if 'stats' in resultado_2.keys():
                     prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
                     prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
                     #top2 = respuesta_2.json()['stats']['p10']['top5']['value']

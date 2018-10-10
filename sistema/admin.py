@@ -60,6 +60,8 @@ class MyArticleAdminForm(forms.ModelForm):
 class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = User
+    def clean_username(self):
+        username = self.cleaned_data['username']
 
 class UserAdmin(BaseUserAdmin):
     form = MyUserChangeForm

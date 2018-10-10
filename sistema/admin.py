@@ -60,6 +60,7 @@ class MyArticleAdminForm(forms.ModelForm):
 class MyUserChangeForm(UserChangeForm):
    class Meta(UserChangeForm.Meta):
         model = User
+        fields = ('username', 'first_name' , 'last_name', )
 
 class UserAdmin(BaseUserAdmin):
     form = MyUserChangeForm

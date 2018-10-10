@@ -70,6 +70,7 @@ class UserAdmin(BaseUserAdmin):
 
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2
+    ver.boolean = True
     def equipo(self, obj):
         return obj.perfil.equipo
     def prekills(self, obj):

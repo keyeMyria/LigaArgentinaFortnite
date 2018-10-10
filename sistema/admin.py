@@ -60,6 +60,13 @@ class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
     #form = MyArticleAdminForm
+
+    fields = (
+        'user',
+        'last_name',
+        'first_name,
+    )
+
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2
     def equipo(self, obj):

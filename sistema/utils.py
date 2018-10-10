@@ -20,6 +20,7 @@ def comenzar_torneo_rq():
     for user in usuarios:
         if user.prekills_1 == 0:
             plataforma = user.user.last_name
+            cuenta = user.user.username
             u1 = user.user.username
             u2 = user.user.first_name
             u1 = u1.replace(" ", "%20")
@@ -42,7 +43,7 @@ def comenzar_torneo_rq():
                     prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
                     #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
                     prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
-                    Perfil.objects.filter(user__username=u1).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+                    Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 
 def finalizar_torneo_rq():
         #VARIABLES API

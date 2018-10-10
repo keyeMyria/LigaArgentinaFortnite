@@ -58,8 +58,8 @@ class MyArticleAdminForm(forms.ModelForm):
         return user
 
 class MyUserChangeForm(UserChangeForm):
-#     class Meta(UserChangeForm.Meta):
-#         model = User
+   class Meta(UserChangeForm.Meta):
+        model = User
 
 class UserAdmin(BaseUserAdmin):
     form = MyUserChangeForm

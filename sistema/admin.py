@@ -56,7 +56,7 @@ class MyArticleAdminForm(forms.ModelForm):
         # do something that validates your data
         return user
 
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
     #form = MyArticleAdminForm

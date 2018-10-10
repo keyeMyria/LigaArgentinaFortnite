@@ -309,8 +309,8 @@ class AppSettings(object):
                     'ACCOUNT_USERNAME_VALIDATORS is expected to be a list')
         else:
             if self.USER_MODEL_USERNAME_FIELD is not None:
-                ret = get_user_model()._meta.get_field(
-                    self.USER_MODEL_USERNAME_FIELD).validators
+                #ret = get_user_model()._meta.get_field(
+                    #self.USER_MODEL_USERNAME_FIELD).validators
             else:
                 ret = []
         return ret

@@ -57,12 +57,12 @@ class MyArticleAdminForm(forms.ModelForm):
         # do something that validates your data
         return user
 
-# class MyUserChangeForm(UserChangeForm):
+class MyUserChangeForm(UserChangeForm):
 #     class Meta(UserChangeForm.Meta):
 #         model = User
 
 class UserAdmin(BaseUserAdmin):
-    # form = MyUserChangeForm
+    form = MyUserChangeForm
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
 

@@ -65,9 +65,6 @@ class UserAdmin(BaseUserAdmin):
     # form = MyUserChangeForm
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
-    class Meta:
-        model = User
-
 
 
     def ver(self, obj):
@@ -95,14 +92,10 @@ class UserAdmin(BaseUserAdmin):
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario]
 
-class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('user', 'equipo', 'VERIFICACION_2')
-    ordering = ('VERIFICACION_2', )
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo]
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-admin.site.register(Perfil, PerfilAdmin)
+
 
 
 

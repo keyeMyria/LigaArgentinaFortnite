@@ -11,6 +11,7 @@ from rq import Queue
 from worker import conn
 import django_rq
 from django import forms
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 q = Queue(connection=conn)
 
 class PerfilInline (admin.StackedInline):

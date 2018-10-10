@@ -51,21 +51,13 @@ def verificar_usuario(modeladmin, request, queryset):
         send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])
 verificar_usuario.short_description = "VERIFICAR USUARIO"
 
-class UserChangeForm(forms.ModelForm):
-    """A form for updating users. Includes all the fields on
-    the user, but replaces the password field with admin's
-    password hash display field.
-    """
-
-    class Meta:
-        model = User
-
-
+class MyArticleAdminForm(forms.ModelForm):
+        return self.cleaned_data["username"]
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
-    form = UserChangeForm
+    form = MyArticleAdminForm
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2
     def equipo(self, obj):

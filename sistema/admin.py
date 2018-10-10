@@ -64,7 +64,7 @@ class UserAdmin(BaseUserAdmin):
     fields = (
         'user',
         'last_name',
-        'first_name,
+        'first_name'
     )
 
     def ver(self, obj):

@@ -56,16 +56,11 @@ class MyArticleAdminForm(forms.ModelForm):
         # do something that validates your data
         return user
 
-class UserAdmin(BaseUserAdmin):
+class UserAdmin(admin.ModelAdmin):
     inlines = [PerfilInline]
     list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
     #form = MyArticleAdminForm
 
-    fields = (
-        'user',
-        'last_name',
-        'first_name'
-    )
 
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2

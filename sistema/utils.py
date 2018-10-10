@@ -34,16 +34,18 @@ def comenzar_torneo_rq():
             time.sleep(2)
             resultado_2 = respuesta_2.json()
             if 'stats' in resultado_1.keys():
-                prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
-                prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
-                pretop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
-                prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
-                if 'stats' in resultado_2.keys():
-                    prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
-                    prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
-                    #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
-                    prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
-                    Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+                resultado_1 = respuesta_1.json()['stats']
+                if 'p10' in resultado_1.keys():
+                    prewins_1 = respuesta_1.json()['stats']['p10']['top1']['value']
+                    prekills_1 = respuesta_1.json()['stats']['p10']['kills']['value']
+                    pretop5_1 = respuesta_1.json()['stats']['p10']['top5']['value']
+                    prepartidas_1 = respuesta_1.json()['stats']['p10']['matches']['value']
+                    if 'stats' in resultado_2.keys():
+                        prewins_2 = respuesta_2.json()['stats']['p10']['top1']['value']
+                        prekills_2 = respuesta_2.json()['stats']['p10']['kills']['value']
+                        #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
+                        prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
+                        Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 
 def finalizar_torneo_rq():
         #VARIABLES API

@@ -57,6 +57,7 @@ def finalizar_torneo_rq():
         for user in usuarios:
             if user.prekills_1 != 0:
                 if user.postkills_1 == 0:
+                    cuenta = user.user.username
                     plataforma = user.user.last_name
                     u1 = user.user.username
                     u2 = user.user.first_name
@@ -148,11 +149,11 @@ def finalizar_torneo_rq():
                                         km = postkills_liga / postmuertes_liga
                                         km = Decimal(km)
                                         km = round(km,2)
-                                    Perfil.objects.filter(user__username=u1).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1, posttop5_1=posttop5_1, top5_1=top5_1)
-                                    Perfil.objects.filter(user__username=u1).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
-                                    Perfil.objects.filter(user__username=u1).update(kills_1=kills_1, wins_1=wins_1, muertes_1=muertes_totales, muertes_2=muertes_totales, kills_2=kills_2, wins_2=wins_2)
-                                    Perfil.objects.filter(user__username=u1).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales)
-                                    Perfil.objects.filter(user__username=u1).update(muertes_totales=muertes_totales)
+                                    Perfil.objects.filter(user__username=cuenta).update(postkills_1=postkills_1, postwins_1=postwins_1, postpartidas_1=postpartidas_1, posttop5_1=posttop5_1, top5_1=top5_1)
+                                    Perfil.objects.filter(user__username=cuenta).update(postkills_2=postkills_2, postwins_2=postwins_2, postpartidas_2=postpartidas_2)
+                                    Perfil.objects.filter(user__username=cuenta).update(kills_1=kills_1, wins_1=wins_1, muertes_1=muertes_totales, muertes_2=muertes_totales, kills_2=kills_2, wins_2=wins_2)
+                                    Perfil.objects.filter(user__username=cuenta).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales)
+                                    Perfil.objects.filter(user__username=cuenta).update(muertes_totales=muertes_totales)
 
 def mail_comienzo_torneo_rq():
     for user in User.objects.all():

@@ -54,7 +54,7 @@ verificar_usuario.short_description = "VERIFICAR USUARIO"
 class MyArticleAdminForm(forms.ModelForm):
     def clean_username(self):
         # do something that validates your data
-        return self.cleaned_data["Username"]
+        return self.cleaned_data["username"]
 
 class UserAdmin(BaseUserAdmin):
     inlines = [PerfilInline]

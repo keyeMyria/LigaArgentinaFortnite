@@ -10,6 +10,7 @@ from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo
 from rq import Queue
 from worker import conn
 import django_rq
+from django import forms
 q = Queue(connection=conn)
 
 class PerfilInline (admin.StackedInline):

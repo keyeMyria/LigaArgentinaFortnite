@@ -9,6 +9,10 @@ class PerfilManager(models.Manager):
     def get_queryset(self):
         return super(PerfilManager, self).get_queryset().filter(VERIFICACION_2=True)
 
+class PerfilManagerNO(models.Manager):
+    def get_queryset(self):
+        return super(PerfilManager, self).get_queryset().filter(VERIFICACION_2=False)
+
 
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -55,6 +59,7 @@ class Perfil(models.Model):
 #MANAGERS
     objects = models.Manager()
     verificados = PerfilManager()
+    noverificados = PerfilManagerNO()
 
     def __str__(self):
         return self.user.username

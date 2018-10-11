@@ -32,8 +32,6 @@ def mail_prueba_rq():
     }
     send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/por_comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
 
-
-
 def comenzar_torneo_rq():
     URL = "https://api.fortnitetracker.com/v1/profile/"
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
@@ -58,7 +56,7 @@ def comenzar_torneo_rq():
                 'u1': cuenta,
                 'u2': cuenta2
             }
-            send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/cambio.html', context=context, sender="ligafortnitearg@gmail.com")
+            send_html_email(emails, subject='CAMBIO EN LA MODALIDAD DEL TORNEO! LEER!', template_name='sistema/email/cambio.html', context=context, sender="ligafortnitearg@gmail.com")
             # API REQUESTS
             respuesta_1 = requests.get(url1, headers=headers)
             time.sleep(2)
@@ -207,6 +205,16 @@ def mail_comienzo_torneo_rq():
             'equipo': equipo
         }
         send_html_email(emails, subject='EL TORNEO ESTA POR COMENZAR!', template_name='sistema/email/por_comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
+
+def mail_no_verificados_rq():
+    usuarios = Perfil.noverificados.order_by('user__date_joined')
+    for user in usuarios:
+        equipo = 'hola'
+        emails = [user.user.email]
+        context = {
+            'equipo': equipo
+        }
+        send_html_email(emails, subject='Todavia puedes corregir tu inscripcion!', template_name='sistema/email/no_verificados.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def calcular_puntajes_general_rq():
     usuarios = Perfil.verificados.order_by('user__date_joined')

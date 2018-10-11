@@ -24,8 +24,8 @@ from django.template import Context
 
 def mail_prueba_rq():
     equipo = 'hola'
-    u1 = 'u1'
-    u2 = 'dd'
+    cuenta = 'u1'
+    full_name = 'dd'
     send_mail(
         'COMIENZA EL TORNEO!',
         get_template('sistema/email/comenzar.html').render(

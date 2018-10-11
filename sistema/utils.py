@@ -22,7 +22,7 @@ def mail_prueba_rq():
     equipo = 'hola'
     cuenta = 'u1'
     full_name = 'dd'
-    emails = ['mmquiroga10@gmail.com']
+    emails = ['mmquirhgtyhfsthththththtasoga10@gmail.com']
     context = {
         'equipo': equipo,
         'u1': cuenta,

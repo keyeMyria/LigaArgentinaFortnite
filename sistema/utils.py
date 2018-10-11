@@ -23,13 +23,16 @@ from django.template import Context
 
 
 def mail_prueba_rq():
+    equipo = 'hola'
+    u1 = 'u1'
+    u2 = 'dd'
     send_mail(
         'COMIENZA EL TORNEO!',
         get_template('sistema/email/comenzar.html').render(
             Context({
-                # 'equipo': equipo,
-                # 'u1': cuenta,
-                # 'u2': full_name
+                'equipo': equipo,
+                'u1': cuenta,
+                'u2': full_name
             })
         ),
         'ligafortnitearg@gmail.com',

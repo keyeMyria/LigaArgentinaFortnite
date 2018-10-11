@@ -61,14 +61,14 @@ class MyUserChangeForm(forms.ModelForm):
    class Meta:
         model = User
         fields = ('username', 'first_name' , 'last_name', )
-        def clean(self):
+        def clean_username(self):
             username = username
 
 class MyUserCreateForm(forms.ModelForm):
    class Meta:
         model = User
         fields = ('username', 'first_name' , 'last_name', )
-        def clean(self):
+        def clean_username(self):
             username = username
 
 

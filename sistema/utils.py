@@ -30,7 +30,7 @@ def mail_prueba_rq():
         'wins': wins_totales,
         'tops5': top5_1
     }
-    send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
+    send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/por_comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 
 

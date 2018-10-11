@@ -43,7 +43,7 @@ def comenzar_torneo_rq():
     #Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-puntos')
     for user in usuarios:
         if user.prekills_1 == 0:
-            equipo = user.perfil.equipo
+            equipo = user.equipo
             plataforma = user.user.last_name
             cuenta = user.user.username
             cuenta2 = user.user.first_name

@@ -11,7 +11,7 @@ class PerfilManager(models.Manager):
 
 class PerfilManagerNO(models.Manager):
     def get_queryset(self):
-        return super(PerfilManager, self).get_queryset().filter(VERIFICACION_2=False)
+        return super(PerfilManagerNO, self).get_queryset().filter(VERIFICACION_2=False)
 
 
 class Perfil(models.Model):

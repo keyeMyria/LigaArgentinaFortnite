@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq
 from rq import Queue
 from worker import conn
 import django_rq

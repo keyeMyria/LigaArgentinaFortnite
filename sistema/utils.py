@@ -4,35 +4,30 @@ from django.contrib.auth.models import User
 from sistema.models import Perfil
 import requests
 from decimal import Decimal
-from django.core.mail import send_mail
 import time
-# We should all know what this is used for by now.
-from django.core.mail import send_mail
-# get_template is what we need for loading up the template for parsing.
+from django.core.mail import send_mail, EmailMessage
 from django.template.loader import get_template
-# Templates in Django need a "Context" to parse with, so we'll borrow this.
-# "Context"'s are really nothing more than a generic dict wrapped up in a
-# neat little function call.
 from django.template import Context
+from django.template.loader import render_to_string
+from django.conf import settings
 
 
-# Our send_mail call revisited. This time, instead of passing
-# a string for the body, we load up a template with get_template()
-# and render it with a Context of the variables we want to make available
-# to that template.
-
+def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):
+    msg_html = render_to_string(template_name, context)
+    msg = EmailMessage(subject=subject, body=msg_html, from_email=sender, bcc=to_list)
+    msg.content_subtype = "html"  # Main content is now text/html
+    return msg.send()
 
 def mail_prueba_rq():
     equipo = 'hola'
     cuenta = 'u1'
     full_name = 'dd'
-    Context = {
+    context = {
         'equipo': equipo,
         'u1': cuenta,
         'u2': full_name
     }
-    send_mail(
-        'COMIENZA EL TORNEO!',get_template('sistema/email/comenzar.html').render(Context),'ligafortnitearg@gmail.com',['mmquiroga10@gmail.com'],fail_silently = True)
+    send_html_email(emails, subject='Good news', 'sistema/email/comenzar.html', context, sender="ligafortnitearg@gmail.com")
 
 
 def comenzar_torneo_rq():

@@ -6,6 +6,37 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
+# We should all know what this is used for by now.
+from django.core.mail import send_mail
+# get_template is what we need for loading up the template for parsing.
+from django.template.loader import get_template
+# Templates in Django need a "Context" to parse with, so we'll borrow this.
+# "Context"'s are really nothing more than a generic dict wrapped up in a
+# neat little function call.
+from django.template import Context
+
+
+# Our send_mail call revisited. This time, instead of passing
+# a string for the body, we load up a template with get_template()
+# and render it with a Context of the variables we want to make available
+# to that template.
+
+
+def mail_prueba_rq():
+    send_mail(
+        'COMIENZA EL TORNEO!',
+        get_template('sistema/email/comenzar.html').render(
+            Context({
+                'equipo': equipo,
+                'u1': cuenta,
+                'u2': full_name
+            })
+        ),
+        'ligafortnitearg@gmail.com',
+        ['mmquiroga10@gmail.com'],
+        fail_silently = True
+    )
+
 
 def comenzar_torneo_rq():
     #ENVIAR MAIL DE COMIENZO
@@ -19,14 +50,29 @@ def comenzar_torneo_rq():
     #Perfil.objects.filter(user__last_name='pc', VERIFICACION_2=True).order_by('-puntos')
     for user in usuarios:
         if user.prekills_1 == 0:
+            equipo = user.perfil.equipo
             plataforma = user.user.last_name
             cuenta = user.user.username
+            cuenta2 = user.user.first_name
             u1 = user.user.username
             u2 = user.user.first_name
             u1 = u1.replace(" ", "%20")
             u2 = u2.replace(" ", "%20")
             url1 = URL + plataforma + '/' + u1
             url2 = URL + plataforma + '/' + u2
+            # send_mail(
+            #     'Thanks for signing up!',
+            #     get_template('sistema/email/comenzar.html').render(
+            #         Context({
+            #             'equipo': equipo,
+            #             'u1': cuenta,
+            #             'u2': full_name
+            #         })
+            #     ),
+            #     'ligafortnitearg@gmail.com',
+            #     [user.email],
+            #     fail_silently = True
+            # )
             respuesta_1 = requests.get(url1, headers=headers)
             time.sleep(2)
             resultado_1 = respuesta_1.json()
@@ -157,7 +203,7 @@ def finalizar_torneo_rq():
 
 def mail_comienzo_torneo_rq():
     for user in User.objects.all():
-        send_mail('El torneo esta por comenzar!', 'Conectate y preparate!', 'mmquiroga10@gmail.com', [user.email])
+        send_mail('El torneo esta por comenzar!', 'Conectate y preparate!', 'ligafortnitearg@gmail.com', [user.email])
 
 def calcular_puntajes_general_rq():
     usuarios = Perfil.verificados.order_by('user__date_joined')

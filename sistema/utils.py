@@ -20,23 +20,21 @@ def send_html_email(to_list, subject, template_name, context, sender=settings.DE
 
 def mail_prueba_rq():
     equipo = 'hola'
-    cuenta = 'u1'
-    full_name = 'dd'
+    kills_totales = 'u1'
+    wins_totales = 'dd'
+    top5_1 = 'kk'
     emails = ['mmquiroga10@gmail.com']
     context = {
         'equipo': equipo,
-        'u1': cuenta,
-        'u2': full_name
+        'kills': kills_totales,
+        'wins': wins_totales,
+        'tops5': top5_1
     }
-    send_html_email(emails, subject='Good news', template_name='sistema/email/cambio.html', context=context, sender="ligafortnitearg@gmail.com")
+    send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
+
 
 
 def comenzar_torneo_rq():
-    #ENVIAR MAIL DE COMIENZO
-    #for user in User.objects.all():
-    #    send_mail('EL TORNEO ACABA DE COMENZAR!', 'Conectate y comienza a jugar ya!', 'mmquiroga10@gmail.com', [user.email])
-
-    #VARIABLES API
     URL = "https://api.fortnitetracker.com/v1/profile/"
     headers = {'TRN-Api-Key':'f22aa3c4-fb80-4658-9e5b-6b1ec7708b84'}
     usuarios = Perfil.verificados.order_by('user__date_joined')
@@ -100,6 +98,7 @@ def finalizar_torneo_rq():
                     u2 = u2.replace(" ", "%20")
                     url1 = URL + plataforma + '/' + u1
                     url2 = URL + plataforma + '/' + u2
+                    # API REQUESTS
                     respuesta_1 = requests.get(url1, headers=headers)
                     time.sleep(2)
                     resultado_1 = respuesta_1.json()
@@ -189,6 +188,15 @@ def finalizar_torneo_rq():
                                     Perfil.objects.filter(user__username=cuenta).update(kills_1=kills_1, wins_1=wins_1, muertes_1=muertes_totales, muertes_2=muertes_totales, kills_2=kills_2, wins_2=wins_2)
                                     Perfil.objects.filter(user__username=cuenta).update(puntos=puntos, wins_totales=wins_totales, kills_totales=kills_totales)
                                     Perfil.objects.filter(user__username=cuenta).update(muertes_totales=muertes_totales)
+                                    # MAIL FINALIZAR TORNEO
+                                    emails = [user.user.email]
+                                    context = {
+                                        'equipo': equipo,
+                                        'kills': kills_totales,
+                                        'wins': wins_totales,
+                                        'tops5': top5_1
+                                    }
+                                    send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def mail_comienzo_torneo_rq():
     for user in User.objects.all():

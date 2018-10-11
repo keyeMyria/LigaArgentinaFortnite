@@ -62,18 +62,18 @@ class MyUserChangeForm(forms.ModelForm):
         model = User
         fields = ('username', 'first_name' , 'last_name', )
         def clean(self):
-            username = self.cleaned_data.get('username')
+            username = username
 
 class MyUserCreateForm(forms.ModelForm):
    class Meta:
         model = User
         fields = ('username', 'first_name' , 'last_name', )
         def clean(self):
-            username = self.cleaned_data.get('username')
+            username = username
 
 
 
-class UserAdmin(BaseUserAdmin):
+class UserAdmin(admin.ModelAdmin):
     form = MyUserChangeForm
     add_form = MyUserCreateForm
     inlines = [PerfilInline]

@@ -22,12 +22,13 @@ def mail_prueba_rq():
     equipo = 'hola'
     cuenta = 'u1'
     full_name = 'dd'
+    emails = ['mmquiroga10@gmail.com']
     context = {
         'equipo': equipo,
         'u1': cuenta,
         'u2': full_name
     }
-    send_html_email(emails, subject='Good news', 'sistema/email/comenzar.html', context, sender="ligafortnitearg@gmail.com")
+    send_html_email(emails, subject='Good news', template_name='sistema/email/comenzar.html', context, sender="ligafortnitearg@gmail.com")
 
 
 def comenzar_torneo_rq():

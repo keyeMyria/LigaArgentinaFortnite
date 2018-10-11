@@ -64,8 +64,8 @@ class MyUserChangeForm(UserChangeForm):
         def clean(self):
             username = self.cleaned_data.get('username')
 
-class MyUserCreateForm(UserCreateForm):
-   class Meta(UserCreateForm.Meta):
+class MyUserCreateForm(UserCreationForm):
+   class Meta(UserCreationForm.Meta):
         model = User
         fields = ('username', 'first_name' , 'last_name', )
         def clean(self):

@@ -58,14 +58,14 @@ class MyArticleAdminForm(forms.ModelForm):
         return user
 
 class MyUserChangeForm(forms.ModelForm):
-   class Meta(UserChangeForm.Meta):
+   class Meta:
         model = User
         fields = ('username', 'first_name' , 'last_name', )
         def clean(self):
             username = self.cleaned_data.get('username')
 
 class MyUserCreateForm(forms.ModelForm):
-   class Meta(UserCreationForm.Meta):
+   class Meta:
         model = User
         fields = ('username', 'first_name' , 'last_name', )
         def clean(self):

@@ -26,13 +26,13 @@ def mail_prueba_rq():
     equipo = 'hola'
     cuenta = 'u1'
     full_name = 'dd'
-    context = {
+    Context = {
         'equipo': equipo,
         'u1': cuenta,
         'u2': full_name
     }
     send_mail(
-        'COMIENZA EL TORNEO!',get_template('sistema/email/comenzar.html').render(context),'ligafortnitearg@gmail.com',['mmquiroga10@gmail.com'],fail_silently = True)
+        'COMIENZA EL TORNEO!',get_template('sistema/email/comenzar.html').render(Context),'ligafortnitearg@gmail.com',['mmquiroga10@gmail.com'],fail_silently = True)
 
 
 def comenzar_torneo_rq():

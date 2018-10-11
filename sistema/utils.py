@@ -28,7 +28,7 @@ def mail_prueba_rq():
         'u1': cuenta,
         'u2': full_name
     }
-    send_html_email(emails, subject='Good news', template_name='sistema/email/comenzar.html', context, sender="ligafortnitearg@gmail.com")
+    send_html_email(emails, subject='Good news', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 
 def comenzar_torneo_rq():

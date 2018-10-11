@@ -28,7 +28,7 @@ def mail_prueba_rq():
         'u1': cuenta,
         'u2': full_name
     }
-    send_html_email(emails, subject='Good news', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
+    send_html_email(emails, subject='Good news', template_name='sistema/email/cambio.html', context=context, sender="ligafortnitearg@gmail.com")
 
 
 def comenzar_torneo_rq():
@@ -53,19 +53,15 @@ def comenzar_torneo_rq():
             u2 = u2.replace(" ", "%20")
             url1 = URL + plataforma + '/' + u1
             url2 = URL + plataforma + '/' + u2
-            # send_mail(
-            #     'Thanks for signing up!',
-            #     get_template('sistema/email/comenzar.html').render(
-            #         Context({
-            #             'equipo': equipo,
-            #             'u1': cuenta,
-            #             'u2': full_name
-            #         })
-            #     ),
-            #     'ligafortnitearg@gmail.com',
-            #     [user.email],
-            #     fail_silently = True
-            # )
+            # MAIL COMIENZO TORNEO
+            emails = [user.user.email]
+            context = {
+                'equipo': equipo,
+                'u1': cuenta,
+                'u2': cuenta2
+            }
+            send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/cambio.html', context=context, sender="ligafortnitearg@gmail.com")
+            # API REQUESTS
             respuesta_1 = requests.get(url1, headers=headers)
             time.sleep(2)
             resultado_1 = respuesta_1.json()

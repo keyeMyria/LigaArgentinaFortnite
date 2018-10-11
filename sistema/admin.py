@@ -57,7 +57,7 @@ def verificar_usuario(modeladmin, request, queryset):
         send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])
 verificar_usuario.short_description = "// VERIFICAR USUARIO //"
 
-def mail_no_verificados():
+def mail_no_verificados(modeladmin, request, queryset):
     django_rq.enqueue(mail_no_verificados_rq)
 mail_no_verificados.short_description = "// MAIL A NO VERIFICADOS //"
 

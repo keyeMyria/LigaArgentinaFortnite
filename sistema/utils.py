@@ -199,8 +199,14 @@ def finalizar_torneo_rq():
                                     send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def mail_comienzo_torneo_rq():
-    for user in User.objects.all():
-        send_mail('El torneo esta por comenzar!', 'Conectate y preparate!', 'ligafortnitearg@gmail.com', [user.email])
+    usuarios = Perfil.verificados.order_by('user__date_joined')
+    for user in usuarios:
+        equipo = 'hola'
+        emails = [user.user.email]
+        context = {
+            'equipo': equipo
+        }
+        send_html_email(emails, subject='EL TORNEO ESTA POR COMENZAR!', template_name='sistema/email/por_comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def calcular_puntajes_general_rq():
     usuarios = Perfil.verificados.order_by('user__date_joined')

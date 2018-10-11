@@ -25,7 +25,7 @@ mail_prueba.short_description = "MAIL PRUEBA"
 
 def mail_comienzo_torneo(modeladmin, request, queryset):
     django_rq.enqueue(mail_comienzo_torneo_rq)
-mail_comienzo_torneo.short_description = "MAIL POR COMENZAR"
+mail_comienzo_torneo.short_description = "1 - MAIL POR COMENZAR"
 
 def resetear_todo(modeladmin, request, queryset):
     Perfil.objects.update(prekills_1='0', postkills_1='0', prewins_1='0', postwins_1='0', kills_1='0', wins_1='0', puntos='0', general='0', prepartidas_1='0', postpartidas_1='0', muertes_1='0', kd='0')
@@ -40,22 +40,22 @@ resetear_torneo.short_description = "XXX Resetear torneo XXX"
 
 def comenzar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(comenzar_torneo_rq)
-comenzar_torneo.short_description = "COMENZAR TORNEO"
+comenzar_torneo.short_description = "2 - COMENZAR TORNEO"
 
 def finalizar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(finalizar_torneo_rq)
-finalizar_torneo.short_description = "FINALIZAR TORNEO"
+finalizar_torneo.short_description = "3 - FINALIZAR TORNEO"
 
 def calcular_puntajes_general(modeladmin, request, queryset):
     django_rq.enqueue(calcular_puntajes_general_rq)
-calcular_puntajes_general.short_description = "--CALCULAR GENERALES--"
+calcular_puntajes_general.short_description = "4 - CALCULAR GENERALES"
 
 def verificar_usuario(modeladmin, request, queryset):
     for user in queryset:
         user.perfil.VERIFICACION_2 = True
         user.save()
         send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])
-verificar_usuario.short_description = "VERIFICAR USUARIO"
+verificar_usuario.short_description = "// VERIFICAR USUARIO //"
 
 class MyArticleAdminForm(forms.ModelForm):
     def clean_username(self):
@@ -107,6 +107,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, mail_prueba]
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, mail_prueba]
 
 

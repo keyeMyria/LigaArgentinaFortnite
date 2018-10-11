@@ -57,14 +57,14 @@ class MyArticleAdminForm(forms.ModelForm):
         # do something that validates your data
         return user
 
-class MyUserChangeForm(UserChangeForm):
+class MyUserChangeForm(forms.ModelForm):
    class Meta(UserChangeForm.Meta):
         model = User
         fields = ('username', 'first_name' , 'last_name', )
         def clean(self):
             username = self.cleaned_data.get('username')
 
-class MyUserCreateForm(UserCreationForm):
+class MyUserCreateForm(forms.ModelForm):
    class Meta(UserCreationForm.Meta):
         model = User
         fields = ('username', 'first_name' , 'last_name', )

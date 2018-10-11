@@ -21,7 +21,7 @@ class PerfilInline (admin.StackedInline):
 
 def mail_prueba(modeladmin, request, queryset):
     django_rq.enqueue(mail_prueba_rq)
-mail_prueba.short_description = "MAIL PRUEBA"
+mail_prueba.short_description = "// MAIL PRUEBA //"
 
 def mail_comienzo_torneo(modeladmin, request, queryset):
     django_rq.enqueue(mail_comienzo_torneo_rq)
@@ -111,8 +111,8 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, mail_prueba]
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, mail_prueba]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, mail_no_verificados, mail_prueba]
+
 
 
 admin.site.unregister(User)

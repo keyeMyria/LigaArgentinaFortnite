@@ -34,30 +34,30 @@ USERNAME_SUFFIX_CHARS = (
 
 
 def _generate_unique_username_base(txts, regex=None):
-    # from .account.adapter import get_adapter
-    # adapter = get_adapter()
-    # username = None
-    # regex = regex or r'[^\w\s@+.-]'
-    # for txt in txts:
-    #     if not txt:
-    #         continue
-    #     username = unicodedata.normalize('NFKD', force_text(txt))
-    #     username = username.encode('ascii', 'ignore').decode('ascii')
-    #     username = force_text(re.sub(regex, '', username).lower())
-    #     # Django allows for '@' in usernames in order to accomodate for
-    #     # project wanting to use e-mail for username. In allauth we don't
-    #     # use this, we already have a proper place for putting e-mail
-    #     # addresses (EmailAddress), so let's not use the full e-mail
-    #     # address and only take the part leading up to the '@'.
-    #     username = username.split('@')[0]
-    #     username = username.strip()
-    #     username = re.sub(r'\s+', '_', username)
-    #     # Finally, validating base username without database lookups etc.
-    #     try:
-    #         username = adapter.clean_username(username, shallow=True)
-    #         break
-    #     except ValidationError:
-    #         pass
+    from .account.adapter import get_adapter
+    adapter = get_adapter()
+    username = None
+    regex = regex or r'[^\w\s@+.-]'
+    for txt in txts:
+        if not txt:
+            continue
+        username = unicodedata.normalize('NFKD', force_text(txt))
+        username = username.encode('ascii', 'ignore').decode('ascii')
+        username = force_text(re.sub(regex, '', username).lower())
+        # Django allows for '@' in usernames in order to accomodate for
+        # project wanting to use e-mail for username. In allauth we don't
+        # use this, we already have a proper place for putting e-mail
+        # addresses (EmailAddress), so let's not use the full e-mail
+        # address and only take the part leading up to the '@'.
+        username = username.split('@')[0]
+        username = username.strip()
+        username = re.sub(r'\s+', '_', username)
+        # Finally, validating base username without database lookups etc.
+        try:
+            username = adapter.clean_username(username, shallow=True)
+            break
+        except ValidationError:
+            pass
     return username or 'user'
 
 

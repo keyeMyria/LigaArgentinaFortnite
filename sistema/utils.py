@@ -27,9 +27,9 @@ def mail_prueba_rq():
         'COMIENZA EL TORNEO!',
         get_template('sistema/email/comenzar.html').render(
             Context({
-                'equipo': equipo,
-                'u1': cuenta,
-                'u2': full_name
+                # 'equipo': equipo,
+                # 'u1': cuenta,
+                # 'u2': full_name
             })
         ),
         'ligafortnitearg@gmail.com',

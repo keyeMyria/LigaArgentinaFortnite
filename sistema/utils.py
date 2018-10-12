@@ -56,7 +56,7 @@ def comenzar_torneo_rq():
                 'u1': cuenta,
                 'u2': cuenta2
             }
-            send_html_email(emails, subject='CAMBIO EN LA MODALIDAD DEL TORNEO! LEER!', template_name='sistema/email/cambio.html', context=context, sender="ligafortnitearg@gmail.com")
+            send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
             # API REQUESTS
             respuesta_1 = requests.get(url1, headers=headers)
             time.sleep(2)

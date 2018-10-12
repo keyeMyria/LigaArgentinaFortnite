@@ -72,7 +72,7 @@ def usuarios_mal(modeladmin, request, queryset):
         u1 = user.username
         u2 = user.first_name
         equipo = user.perfil.equipo
-        emails = [user.user.email]
+        emails = [user.email]
         context = {
             'u1': u1,
             'u2': u2,

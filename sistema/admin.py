@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq, send_html_email
 from rq import Queue
 from worker import conn
 import django_rq
@@ -63,7 +63,23 @@ verificar_usuario.short_description = "// VERIFICAR USUARIO //"
 
 def mail_no_verificados(modeladmin, request, queryset):
     django_rq.enqueue(mail_no_verificados_rq)
-mail_no_verificados.short_description = "// MAIL A NO VERIFICADOS //"
+mail_no_verificados.short_description = "// MAIL A LOS NO VERIFICADOS //"
+
+def usuarios_mal(modeladmin, request, queryset):
+    for user in queryset:
+        user.perfil.comentario = 'USUARIO NO EXISTE / PLATAFORMA'
+        user.save()
+        u1 = user.username
+        u2 = user.first_name
+        equipo = user.perfil.equipo
+        emails = [user.user.email]
+        context = {
+            'u1': u1,
+            'u2': u2
+            'equipo': equipo
+        }
+        send_html_email(emails, subject='Tenemos problemas para verificar sus usuarios de Epic', template_name='sistema/email/usuarios_mal.html', context=context, sender="ligafortnitearg@gmail.com")
+usuarios_mal.short_description = "// USUARIOS MAL / PLATAFORMA //"
 
 class MyArticleAdminForm(forms.ModelForm):
     def clean_username(self):
@@ -115,7 +131,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, comenzar_torneo_prueba, mail_no_verificados, mail_prueba]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba]
 
 
 

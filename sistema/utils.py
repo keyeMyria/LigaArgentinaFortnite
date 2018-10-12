@@ -25,10 +25,10 @@ def mail_prueba_rq():
     top5_1 = 'kk'
     emails = ['mmquiroga10@gmail.com']
     context = {
-        'equipo': equipo,
-        'kills': kills_totales,
-        'wins': wins_totales,
-        'tops5': top5_1
+        'equipo' : equipo,
+        'kills' : kills_totales,
+        'wins' : wins_totales,
+        'tops5' : top5_1
     }
     send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/por_comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
 

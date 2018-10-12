@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq
 from rq import Queue
 from worker import conn
 import django_rq
@@ -45,6 +45,10 @@ comenzar_torneo.short_description = "2 - COMENZAR TORNEO"
 def finalizar_torneo(modeladmin, request, queryset):
     django_rq.enqueue(finalizar_torneo_rq)
 finalizar_torneo.short_description = "3 - FINALIZAR TORNEO"
+
+def comenzar_torneo_prueba(modeladmin, request, queryset):
+    django_rq.enqueue(comenzar_torneo_prueba_rq)
+comenzar_torneo_prueba.short_description = "// COMENZAR PRUEBA //"
 
 def calcular_puntajes_general(modeladmin, request, queryset):
     django_rq.enqueue(calcular_puntajes_general_rq)
@@ -111,7 +115,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, mail_no_verificados, mail_prueba]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, comenzar_torneo_prueba, mail_no_verificados, mail_prueba]
 
 
 

@@ -75,7 +75,7 @@ def usuarios_mal(modeladmin, request, queryset):
         emails = [user.user.email]
         context = {
             'u1': u1,
-            'u2': u2
+            'u2': u2,
             'equipo': equipo
         }
         send_html_email(emails, subject='Tenemos problemas para verificar sus usuarios de Epic', template_name='sistema/email/usuarios_mal.html', context=context, sender="ligafortnitearg@gmail.com")

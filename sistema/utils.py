@@ -88,6 +88,7 @@ def finalizar_torneo_rq():
         for user in usuarios:
             if user.prekills_1 != 0:
                 if user.postkills_1 == 0:
+                    equipo = user.equipo
                     cuenta = user.user.username
                     plataforma = user.user.last_name
                     u1 = user.user.username

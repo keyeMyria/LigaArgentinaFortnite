@@ -1,6 +1,7 @@
 from django import forms
 from . import models
-
+import tkinter
+from tkinter import Label
 
 class Inscripcion(forms.ModelForm):
     class Meta:

@@ -23,7 +23,7 @@ class SignupForm(forms.Form):
         user.perfil.equipo = self.cleaned_data['equipo']
         user.perfil.twitch_1 = self.cleaned_data['twitch_1']
         user.perfil.twitch_2 = self.cleaned_data['twitch_2']
-        user.perfil.black_pan = black_pan
+        user.perfil.black_pan = self.cleaned_data['black_pan']
         user.perfil.telefono = self.cleaned_data['telefono']
         user.save()
         #user.Perfil.equipo = self.cleaned_data['equipo']

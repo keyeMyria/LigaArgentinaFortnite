@@ -288,9 +288,10 @@ class BaseSignupForm(_base_signup_form_class()):
 
         default_field_order = [
             'email',
-            'email2',  # ignored when not present
+            'email2',
+            'black_pan',
+            'plataforma', # ignored when not present
             'username',
-            'plataforma',
             'password1',
             'password2'  # ignored when not present
         ]

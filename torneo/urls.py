@@ -12,10 +12,10 @@ urlpatterns = [
     url(r'^sistema/', include('sistema.urls')),
     url(r'^reglas/', views.reglas, name='reglas' ),
     url(r'^premios/', views.premios, name='premios' ),
-    url(r'^blackpan/', views.blackpan, name='black_pan' )
-    url(r'^blackpan/participantes', views.blackpan_participantes, name='black_pan_participantes' )
-    url(r'^blackpan/resultados', views.blackpan_resultados, name='black_pan_resultados' )
-    url(r'^blackpan/premios', views.blackpan_premios, name='black_pan_premios' )
+    url(r'^blackpan/', views.blackpan, name='black_pan' ),
+    url(r'^blackpan/participantes', views.blackpan_participantes, name='black_pan_participantes' ),
+    url(r'^blackpan/resultados', views.blackpan_resultados, name='black_pan_resultados' ),
+    url(r'^blackpan/premios', views.blackpan_premios, name='black_pan_premios' ),
     url(r'^blackpan/terminos', views.blackpan_terminos, name='black_pan_terminos' )
 
 ]

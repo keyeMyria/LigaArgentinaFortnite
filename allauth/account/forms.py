@@ -287,9 +287,9 @@ class BaseSignupForm(_base_signup_form_class()):
             username_field.max_length)
 
         default_field_order = [
+            'black_pan',
             'email',
             'email2',
-            'black_pan',
             'plataforma', # ignored when not present
             'username',
             'password1',

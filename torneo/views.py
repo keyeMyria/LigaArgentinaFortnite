@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from allauth.account.decorators import verified_email_required
-from .models import Perfil
+from sistema.models import Perfil
 from django.contrib.auth.models import User
 
 

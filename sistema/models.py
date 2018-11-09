@@ -61,7 +61,7 @@ class Perfil(models.Model):
     comentario = models.CharField(max_length=100, blank=True)
 #BLACK PAN
     telefono = models.IntegerField(blank=True, default=0)
-    black_pan = models.BooleanField(default=False)
+    black_pan = models.CharField(max_length=100, blank=True, default='NO')
 #MANAGERS
     objects = models.Manager()
     verificados = PerfilManager()

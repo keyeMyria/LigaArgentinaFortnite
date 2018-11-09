@@ -15,4 +15,4 @@ def premios(request):
 
 def blackpan(request):
     #return HttpResponse('homepage')
-    return render(request, '/black_pan/principal.html')
+    return render(request, 'black_pan/principal.html')

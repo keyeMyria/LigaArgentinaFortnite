@@ -13,6 +13,9 @@ class PerfilManagerNO(models.Manager):
     def get_queryset(self):
         return super(PerfilManagerNO, self).get_queryset().filter(VERIFICACION_2=False)
 
+class PerfilManagerBLACK(models.Manager):
+    def get_queryset(self):
+        return super(PerfilManagerBLACK, self).get_queryset().filter(black_pan=False, VERIFICACION_2=True)
 
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -56,10 +59,14 @@ class Perfil(models.Model):
     general = models.IntegerField(blank=True, default=0)
     equipo = models.CharField(max_length=20, blank=True, default=0)
     comentario = models.CharField(max_length=100, blank=True)
+#BLACK PAN
+    telefono = models.IntegerField(blank=True, default=0)
+    black_pan = models.BooleanField(default=False)
 #MANAGERS
     objects = models.Manager()
     verificados = PerfilManager()
     noverificados = PerfilManagerNO()
+    black_pan_verificados = PerfilManagerBLACK()
 
     def __str__(self):
         return self.user.username

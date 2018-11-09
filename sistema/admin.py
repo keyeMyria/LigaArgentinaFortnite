@@ -132,7 +132,7 @@ class UserAdmin(BaseUserAdmin):
     #get_author.admin_order_field = 'book__author'
 
     ordering = ('-date_joined', )
-    list_filter = ('perfil__VERIFICACION_2', 'last_name', 'black_pan')
+    list_filter = ('perfil__VERIFICACION_2', 'last_name', 'perfil__black_pan')
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba]
 
 

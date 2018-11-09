@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^sistema/', include('sistema.urls')),
     url(r'^reglas/', views.reglas, name='reglas' ),
     url(r'^premios/', views.premios, name='premios' )
-    url(r'^blackpan/', views.premios, name='black_pan' )
+    url(r'^blackpan/', views.blackpan, name='black_pan' )
 
 ]
 

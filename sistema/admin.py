@@ -106,7 +106,7 @@ class UserAdmin(BaseUserAdmin):
     form = MyUserChangeForm
     add_form = MyUserCreateForm
     inlines = [PerfilInline]
-    list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'prekills', 'postkills')
+    list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'black_pan', 'prekills', 'postkills')
 
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2
@@ -125,14 +125,14 @@ class UserAdmin(BaseUserAdmin):
         return obj.last_name
     def comentario(self, obj):
         return obj.perfil.comentario
-    # def black_pan(self, obj):
-    #     return obj.perfil.black_pan
+    def black_pan(self, obj):
+        return obj.perfil.black_pan
 
     #get_author.short_description = 'Author'
     #get_author.admin_order_field = 'book__author'
 
     ordering = ('-date_joined', )
-    list_filter = ('perfil__VERIFICACION_2', 'last_name')
+    list_filter = ('perfil__VERIFICACION_2', 'last_name', 'perfil__black_pan')
     actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba]
 
 

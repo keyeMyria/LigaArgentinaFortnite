@@ -1,0 +1,47 @@
+{% extends 'base_black.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+
+<section class='section'>
+<div class="container">
+      <article class="tile is-info is-12 is-child notification">
+        <p class="title has-text-centered">Resultados del torneo BLACK PAN!</p>
+
+</div>
+</section>
+<section>
+    <div class="container">
+        <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                  <th><abbr title="Posicion">Pos</abbr></th>
+                  <th><abbr title="Usuario">Team</abbr></th>
+                  <th><abbr title="Twitch">Players</abbr></th>
+                  <th><abbr title="Twitch">Kills</abbr></th>
+                  <th><abbr title="Twitch">Top 5</abbr></th>
+                  <th><abbr title="Twitch">Wins</abbr></th>
+                  <th><abbr title="Puntaje">Puntos</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for usuario in participantes %}
+              <tr>
+                  <th>{{ forloop.counter }}</th>
+                  <th>{{ usuario.equipo }}</th>
+                  <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
+                  <td>{{ usuario.kills_totales }}</td>
+                  <td>{{ usuario.top5_1 }}</td>
+                  <td>{{ usuario.wins_totales }}</td>
+                  <td><strong>{{ usuario.puntos }}</strong></td>
+              </tr>
+              {% endfor %}
+
+        </table>
+    </div>
+</section>
+
+
+{% endblock %}

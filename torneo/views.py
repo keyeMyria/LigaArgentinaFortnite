@@ -12,3 +12,7 @@ def reglas(request):
 def premios(request):
     #return HttpResponse('homepage')
     return render(request, 'premios.html')
+
+def blackpan(request):
+    #return HttpResponse('homepage')
+    return render(request, '/blackpan/principal.html')

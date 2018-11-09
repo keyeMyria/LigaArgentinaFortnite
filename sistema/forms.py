@@ -1,17 +1,14 @@
 from django import forms
 from . import models
-import tkinter
-from tkinter import Label
+
 
 class Inscripcion(forms.ModelForm):
     class Meta:
         model = models.Perfil
         fields = []
 
-label = Label(frame1, text="Soy de Cordoba y quiro participar del torneo BLACK PAN", font=('bold'))
-
 class SignupForm(forms.Form):
-    black_pan = forms.ChoiceField(label=label, choices= ( ('NO', 'NO'), ('SI', 'SI'), ) ,widget=forms.Select(attrs={ 'class': 'input','autofocus': 'autofocus'}))
+    black_pan = forms.ChoiceField(label='Soy de Cordoba y quiro participar del torneo BLACK PAN', choices= ( ('NO', 'NO'), ('SI', 'SI'), ) ,widget=forms.Select(attrs={ 'class': 'input','autofocus': 'autofocus'}))
     first_name = forms.CharField(max_length=30, label='Segundo Participante (USUARIO DE EPIC GAMES, NO PSN)', required=True, widget=forms.TextInput(attrs={ 'class': 'input' ,'placeholder':('Usuario de Epic del segundo participante'),'autofocus': 'autofocus'}))
     last_name = forms.ChoiceField(label='Plataforma ( PC o PSN )', choices= ( ('pc', 'pc'), ('psn', 'psn'), ) ,widget=forms.Select(attrs={ 'class': 'input' ,'placeholder':('pc, ps4 (minusculas)'),'autofocus': 'autofocus'}))
     equipo = forms.CharField(max_length=30, label='Nombre del Equipo', required=True, widget=forms.TextInput(attrs={ 'class': 'input' ,'placeholder':('Equipo'),'autofocus': 'autofocus'}))

@@ -15,7 +15,7 @@ class PerfilManagerNO(models.Manager):
 
 class PerfilManagerBLACK(models.Manager):
     def get_queryset(self):
-        return super(PerfilManagerBLACK, self).get_queryset().filter(black_pan=False, VERIFICACION_2=True)
+        return super(PerfilManagerBLACK, self).get_queryset().filter(black_pan='SI', VERIFICACION_2=True)
 
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

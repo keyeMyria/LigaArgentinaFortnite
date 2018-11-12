@@ -81,6 +81,30 @@ def usuarios_mal(modeladmin, request, queryset):
         send_html_email(emails, subject='Tenemos problemas para verificar sus usuarios de Epic', template_name='sistema/email/usuarios_mal.html', context=context, sender="ligafortnitearg@gmail.com")
 usuarios_mal.short_description = "// USUARIOS MAL / PLATAFORMA //"
 
+#BLACK PAN importar funciones rq de utils despues de creearlas
+
+def mail_comienzo_torneo_black_pan(modeladmin, request, queryset):
+    django_rq.enqueue(mail_comienzo_torneo_black_pan_rq)
+mail_comienzo_torneo.short_description = "1BP - MAIL POR COMENZAR"
+
+def comenzar_torneo_black_pan(modeladmin, request, queryset):
+    django_rq.enqueue(comenzar_torneo_black_pan_rq)
+comenzar_torneo.short_description = "2BP - COMENZAR TORNEO"
+
+def finalizar_torneo_black_pan(modeladmin, request, queryset):
+    django_rq.enqueue(finalizar_torneo_black_pan_rq)
+finalizar_torneo.short_description = "3BP - FINALIZAR TORNEO"
+
+def calcular_puntajes_general_black_pan(modeladmin, request, queryset):
+    django_rq.enqueue(calcular_puntajes_general_black_pan_rq)
+calcular_puntajes_general.short_description = "4BP - CALCULAR GENERALES"
+
+def comenzar_torneo_prueba_black_pan(modeladmin, request, queryset):
+    django_rq.enqueue(comenzar_torneo_prueba_black_pan_rq)
+comenzar_torneo_prueba.short_description = "5BP - // COMENZAR PRUEBA BP //"
+
+
+
 class MyArticleAdminForm(forms.ModelForm):
     def clean_username(self):
         # do something that validates your data

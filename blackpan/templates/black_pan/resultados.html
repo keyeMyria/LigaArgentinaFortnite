@@ -37,22 +37,25 @@
             </thead>
             <tbody>
 
-                {% for usuario in participantes_clasificados %}
-                <tr class="is-selected">
-                    <th>{{ forloop.counter }}</th>
-                    <th>{{ usuario.equipo }}</th>
-                    <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
-                    <td>{{ usuario.kills_totales }}</td>
-                    <td>{{ usuario.top5_1 }}</td>
-                    <td>{{ usuario.wins_totales }}</td>
-                    <td><strong>{{ usuario.puntos }}</strong></td>
-                </tr>
-                {% endfor %}
+
 
 
                 {% for usuario in participantes %}
+
+                        {% for usuario in participantes_clasificados %}
+                        <tr class="is-selected">
+                            <th>{{forloop.parentloop.counter}}</th>
+                            <th>{{ usuario.equipo }}</th>
+                            <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
+                            <td>{{ usuario.kills_totales }}</td>
+                            <td>{{ usuario.top5_1 }}</td>
+                            <td>{{ usuario.wins_totales }}</td>
+                            <td><strong>{{ usuario.puntos }}</strong></td>
+                        </tr>
+                        {% endfor %}
+
                 <tr>
-                  <th>{{ forloop.counter32 }}</th>
+                  <th>{{ forloop.counter }}</th>
                   <th>{{ usuario.equipo }}</th>
                   <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                   <td>{{ usuario.kills_totales }}</td>

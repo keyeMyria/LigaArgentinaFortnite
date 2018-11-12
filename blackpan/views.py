@@ -23,7 +23,7 @@ def blackpan_participantes(request):
     return render(request, 'black_pan/participantes.html')
 
 def blackpan_resultados(request):
-    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True, blackpan='SI').order_by('-puntos')
+    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True, black_pan='SI').order_by('-puntos')
     return render(request, 'black_pan/resultados.html', {'participantes': userobjectpc})
 
 def blackpan_premios(request):

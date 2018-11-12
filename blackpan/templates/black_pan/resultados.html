@@ -52,7 +52,7 @@
 
                 {% for usuario in participantes %}
                 <tr>
-                  <th>{{ forloop.counter + 32 }}</th>
+                  <th>{{ forloop.counter32 }}</th>
                   <th>{{ usuario.equipo }}</th>
                   <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                   <td>{{ usuario.kills_totales }}</td>

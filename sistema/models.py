@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import requests
+from django.core.validators import RegexValidator
+
 # Create your models here.
 
 class PerfilManager(models.Manager):
@@ -60,7 +62,8 @@ class Perfil(models.Model):
     equipo = models.CharField(max_length=20, blank=True, default=0)
     comentario = models.CharField(max_length=100, blank=True)
 #BLACK PAN
-    telefono = models.IntegerField(blank=True, default=0)
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="El telefono tiene que ser ingresado con el formato: '+999999999'")
+    telefono = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     black_pan = models.CharField(max_length=100, blank=True, default='NO')
 #MANAGERS
     objects = models.Manager()

@@ -85,29 +85,29 @@ usuarios_mal.short_description = "// USUARIOS MAL / PLATAFORMA //"
 
 def mail_comienzo_torneo_black_pan(modeladmin, request, queryset):
     django_rq.enqueue(mail_comienzo_torneo_black_pan_rq)
-mail_comienzo_torneo.short_description = "1BP - MAIL POR COMENZAR"
+mail_comienzo_torneo_black_pan.short_description = "1BP - MAIL POR COMENZAR"
 
 def comenzar_torneo_black_pan(modeladmin, request, queryset):
     django_rq.enqueue(comenzar_torneo_black_pan_rq)
-comenzar_torneo.short_description = "2BP - COMENZAR TORNEO"
+comenzar_torneo_black_pan.short_description = "2BP - COMENZAR TORNEO"
 
 def finalizar_torneo_black_pan(modeladmin, request, queryset):
     django_rq.enqueue(finalizar_torneo_black_pan_rq)
-finalizar_torneo.short_description = "3BP - FINALIZAR TORNEO"
+finalizar_torneo_black_pan.short_description = "3BP - FINALIZAR TORNEO"
 
 def calcular_puntajes_general_black_pan(modeladmin, request, queryset):
     django_rq.enqueue(calcular_puntajes_general_black_pan_rq)
-calcular_puntajes_general.short_description = "4BP - CALCULAR GENERALES"
+calcular_puntajes_general_black_pan.short_description = "4BP - CALCULAR GENERALES"
 
 def comenzar_torneo_prueba_black_pan(modeladmin, request, queryset):
     django_rq.enqueue(comenzar_torneo_prueba_black_pan_rq)
-comenzar_torneo_prueba.short_description = "5BP - // COMENZAR PRUEBA BP //"
+comenzar_torneo_prueba_black_pan.short_description = "5BP - // COMENZAR PRUEBA BP //"
 
 def resetear_todo_black_pan(modeladmin, request, queryset):
     Perfil.objects.filter(black_pan='SI').update(prekills_1='0', postkills_1='0', prewins_1='0', postwins_1='0', kills_1='0', wins_1='0', puntos='0', general='0', prepartidas_1='0', postpartidas_1='0', muertes_1='0', kd='0')
     Perfil.objects.filter(black_pan='SI').update(prekills_2='0', postkills_2='0', prewins_2='0', postwins_2='0', kills_2='0', wins_2='0', prepartidas_2='0', postpartidas_2='0', muertes_2='0')
     Perfil.objects.filter(black_pan='SI').update(kills_totales='0', wins_totales='0', kills_liga='0', muertes_liga='0', muertes_totales='0', pretop5_1='0', posttop5_1='0', top5_1='0')
-resetear_todo.short_description = "6BP - XXX Resetear TODO XXX"
+resetear_todo_black_pan.short_description = "6BP - XXX Resetear TODO XXX"
 
 class MyArticleAdminForm(forms.ModelForm):
     def clean_username(self):

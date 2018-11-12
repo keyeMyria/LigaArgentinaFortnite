@@ -55,7 +55,7 @@
                         {% endfor %}
 
                 <tr>
-                  <th>{{ forloop.counter }}</th>
+                  <th>{{ forloop.parentloop.counter }}</th>
                   <th>{{ usuario.equipo }}</th>
                   <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                   <td>{{ usuario.kills_totales }}</td>

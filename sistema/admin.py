@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq, send_html_email
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq, send_html_email, mail_comienzo_torneo_black_pan_rq,comenzar_torneo_black_pan_rq, finalizar_torneo_black_pan_rq, calcular_puntajes_general_black_pan_rq, comenzar_torneo_prueba_black_pan_rq
 from rq import Queue
 from worker import conn
 import django_rq
@@ -103,7 +103,11 @@ def comenzar_torneo_prueba_black_pan(modeladmin, request, queryset):
     django_rq.enqueue(comenzar_torneo_prueba_black_pan_rq)
 comenzar_torneo_prueba.short_description = "5BP - // COMENZAR PRUEBA BP //"
 
-
+def resetear_todo_black_pan(modeladmin, request, queryset):
+    Perfil.objects.filter(black_pan='SI').update(prekills_1='0', postkills_1='0', prewins_1='0', postwins_1='0', kills_1='0', wins_1='0', puntos='0', general='0', prepartidas_1='0', postpartidas_1='0', muertes_1='0', kd='0')
+    Perfil.objects.filter(black_pan='SI').update(prekills_2='0', postkills_2='0', prewins_2='0', postwins_2='0', kills_2='0', wins_2='0', prepartidas_2='0', postpartidas_2='0', muertes_2='0')
+    Perfil.objects.filter(black_pan='SI').update(kills_totales='0', wins_totales='0', kills_liga='0', muertes_liga='0', muertes_totales='0', pretop5_1='0', posttop5_1='0', top5_1='0')
+resetear_todo.short_description = "6BP - XXX Resetear TODO XXX"
 
 class MyArticleAdminForm(forms.ModelForm):
     def clean_username(self):
@@ -157,7 +161,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name', 'perfil__black_pan')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan]
 
 
 

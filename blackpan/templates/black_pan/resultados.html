@@ -52,10 +52,10 @@
                             <td>{{ usuario.wins_totales }}</td>
                             <td><strong>{{ usuario.puntos }}</strong></td>
                         </tr>
-                        {% assign outer_forloop = forloop %}
+                        
                             {% for usuario in participantes %}
                             <tr>
-                              <th>{{ outer_forloop.counter }}</th>
+                              <th>{{ forloop.parentloop.counter }}</th>
                               <th>{{ usuario.equipo }}</th>
                               <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                               <td>{{ usuario.kills_totales }}</td>

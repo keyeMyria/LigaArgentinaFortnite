@@ -6,13 +6,13 @@
 {% if user.is_authenticated %}
 <div class="">
         <article class="tile is-dark is-12 is-child notification">
-            <p class="title has-text-centered">Acordate! La fase clasificatora se juega el 25/11 a las 16hs!!</p/>
+            <p class="title has-text-centered">Acordate! La fase clasificatoria se juega el 25/11 a las 16hs!!</p/>
         </article>
 {% else %}
 <div class="">
         <article class="tile is-dark is-12 is-child notification">
             <a href="{% url 'account_signup' %}">
-                <p class="title has-text-centered">¡Inscribite acá!</p/>
+                <p class="title has-text-centered">¡Inscribite!</p/>
             </a>
         </article>
 {% endif %}
@@ -20,40 +20,39 @@
 
 
 <section class='section'>
-
     <nav class="level">
         <div class="level-item has-text-centered">
             <figure class="image image is-128x128">
-              <img src="{% static '/images/logo_chico_black.png' %}">
-        </div>
+                <img src="{% static '/images/logo_chico_black.png' %}">
+            </div>
         </nav>
-
-
-
-    <div class="container">
-        <div class="content has-text-centered">
-          <h1 class="title">
-            Reglas del Torneo
-          </h1>
-          <p class="subtitle">
-            Como funciona, <strong>Terminos y condiciones</strong>!
-          </p>
-          <p class='content has-text-centered'>1. El torneo se realizara en equipos de 2 usuarios (dúos).</p>
-          <p class='content has-text-centered'>2. Se realizaran x torneos por mes en los que sumaras puntos para mejorar tu posición en la tabla general.</p>
-          <p class='content has-text-centered'>3. Se dará a conocer el día de cada torneo y la duración de los mismos mediante las redes
-sociales de la Liga.</p>
-          <p class='content has-text-centered'>4. Los puntos se darán por: a) Asesinatos (1 punto)
-b) Victorias (15 puntos)</p>
-          <p class='content has-text-centered'>5. Habrá 1 Liga por cada plataforma, PS4 y PC, por separado; los premios también serán
-por separado.</p>
-          <p class='content has-text-centered'>6. En la portada principal de la página se puede ver las instrucciones de inscripción</p>
-          <p class='content has-text-centered'>7. El sistema de conteo de puntos es automático, los usuarios no tienen que hacer nada
-más que jugar y divertirse.</p>
-          <p class='content has-text-centered'>8. El sistema de conteo automático no tiene margen de error, las estadísticas son
-obtenidas a través de los servidores del juego.</p>
-         </div>
-    </div>
-  </section>
+        <div class="container">
+            <div class="content">
+                <h1 class="title">
+                    Reglas del Torneo
+                </h1>
+                <p class="subtitle">
+                    Como funciona, <strong>Terminos y condiciones</strong>!
+                </p>
+                <div class="content is-medium">
+                <ol type="1">
+                    <li>El torneo se realizara en equipos de 2 usuarios (dúos).</li>
+                    <li>Se realizaran x torneos por mes en los que sumaras puntos para mejorar tu posición en la tabla general.</li>
+                    <li>Se dará a conocer el día de cada torneo y la duración de los mismos mediante las redes
+            sociales de la Liga.</li>
+                    <li>Los puntos se darán por: a) Asesinatos (1 punto)
+          b) Victorias (15 puntos)</li>
+                    <li>Habrá 1 Liga por cada plataforma, PS4 y PC, por separado; los premios también serán
+          por separado.</li>
+                    <li>En la portada principal de la página se puede ver las instrucciones de inscripción.</li>
+                    <li>El sistema de conteo de puntos es automático, los usuarios no tienen que hacer nada
+          más que jugar y divertirse.</li>
+                    <li>El sistema de conteo automático no tiene margen de error, las estadísticas son
+          obtenidas a través de los servidores del juego.</li>
+                </ol>
+            </div>
+        </div>
+</section>
 
 
 

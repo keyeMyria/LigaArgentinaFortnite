@@ -48,7 +48,7 @@
                 </tr>
                 {% endfor %}
                 {% for usuario in participantes %}
-                {% counter = counter + 1 %}
+                {{ counter = counter + 1 }}
                 <tr>
                   <th>{{ counter }}</th>
                   <th>{{ usuario.equipo }}</th>

@@ -7,26 +7,28 @@
 <div class="">
         <article class="tile is-dark is-12 is-child notification">
             <p class="title has-text-centered">Acordate! La fase clasificatoria se juega el 25/11 a las 16hs!!</p/>
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <figure class="image">
+                          <img src="{% static '/images/logo_chico_black.png' %}">
+                    </div>
+                </nav>
         </article>
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <figure class="image">
-                  <img src="{% static '/images/logo_chico_black.png' %}">
-            </div>
-        </nav>
+
 {% else %}
 <div class="">
         <article class="tile is-dark is-12 is-child notification">
             <a href="{% url 'account_signup' %}">
                 <p class="title has-text-centered">¡Inscribite a la fase clasificatoria!</p/>
             </a>
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <figure class="image">
+                      <img src="{% static '/images/logo_chico_black.png' %}">
+                </div>
+            </nav>
         </article>
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <figure class="image">
-                  <img src="{% static '/images/logo_chico_black.png' %}">
-            </div>
-        </nav>
+
 {% endif %}
 
 

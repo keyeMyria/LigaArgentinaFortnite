@@ -20,6 +20,12 @@
     border-radius: 0px;
 }
 
+.tile.is-dark2{
+    background-color:#1e1e1e;
+    border-color:transparent;
+    color:#f5f5f5;
+}
+
 .hero-text {
     font-family: 'iciel_crocanteregular'
   text-align: center;

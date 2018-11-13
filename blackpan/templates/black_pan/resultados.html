@@ -15,11 +15,10 @@
 </div>
 
 <section class='section'>
-<div class="container">
-      <article class="tile is-dark is-12 is-child notification">
-        <p class="title has-text-centered">Resultados del torneo BLACK PAN!</p>
-
-</div>
+    <div class="container">
+        <article class="tile is-dark is-12 is-child notification">
+            <p class="title has-text-centered">Clasificados al torneo presencial en BLACK PAN!</p>
+    </div>
 </section>
 <section>
     <div class="container">
@@ -38,7 +37,7 @@
             <tbody>
                 {% for usuario in participantes_clasificados %}
                 <tr class="is-selected">
-                    <th>{{forloop.counter}}</th>
+                    <th>{{ forloop.counter }}</th>
                     <th>{{ usuario.equipo }}</th>
                     <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                     <td>{{ usuario.kills_totales }}</td>
@@ -47,10 +46,36 @@
                     <td><strong>{{ usuario.puntos }}</strong></td>
                 </tr>
                 {% endfor %}
+        </table>
+    </div>
+</section>
+
+
+section class='section'>
+<div class="container">
+      <article class="tile is-dark is-12 is-child notification">
+        <p class="title has-text-centered">Tabla de resultados completa</p>
+
+</div>
+</section>
+<section>
+    <div class="container">
+        <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                  <th><abbr title="Posicion">Pos</abbr></th>
+                  <th><abbr title="Usuario">Team</abbr></th>
+                  <th><abbr title="Twitch">Players</abbr></th>
+                  <th><abbr title="Twitch">Kills</abbr></th>
+                  <th><abbr title="Twitch">Top 5</abbr></th>
+                  <th><abbr title="Twitch">Wins</abbr></th>
+                  <th><abbr title="Puntaje">Puntos</abbr></th>
+              </tr>
+            </thead>
+            <tbody>
                 {% for usuario in participantes %}
-                {{ counter = counter + 1 }}
                 <tr>
-                  <th>{{ counter }}</th>
+                  <th>{{ forloop.counter }}</th>
                   <th>{{ usuario.equipo }}</th>
                   <td>{{ usuario.user }}, {{ usuario.user.first_name }}</td>
                   <td>{{ usuario.kills_totales }}</td>
@@ -64,6 +89,7 @@
         </table>
     </div>
 </section>
+
 
 
 {% endblock %}

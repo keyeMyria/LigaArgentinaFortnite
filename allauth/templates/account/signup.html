@@ -16,7 +16,7 @@
                 <h1 class='title'>{% trans "Registrate" %}</h1>
                 <h1 class='subtitle'>(Usuarios de PS4 ver la guia para obtener su usuario de epic mas abajo!)</h1>
                 <p>{% blocktrans %}Ya tienes una cuenta? <a href="{{ login_url }}">Iniciar Sesion</a>.{% endblocktrans %}</p>
-                <section class='section'>
+                <section class='section section-padding-small'>
                     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
@@ -24,11 +24,12 @@
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                         {% endif %}
                         <div class="content has-text-centered">
+                            <p></p>
+                            <p></p>
                             <button class="button is-primary" type="submit">{% trans "Registrarme" %} &raquo;</button>
                         </div>
                         <!-- <section class='section section-padding-medium'>
-                            <p></p>
-                            <p></p>
+
 
                         </section> -->
                     </form>

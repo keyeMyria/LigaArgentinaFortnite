@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 
 {% block content %}
-<div class="" href="{% url 'black_pan' %}">
+<a href="{% url 'black_pan' %}">
+<div class="">
         <article class="tile is-dark is-12 is-child notification">
             <p class="title has-text-centered">Próximamente torneo presencial en BLACK PAN! 1 y 2 de Diciembre! <a href="{% url 'black_pan' %}">Mas info</a> </p/>
         <!-- <div class="image">
@@ -18,7 +19,7 @@
         <!-- <article class="tile is-danger is-12 is-child notification">
         <p class="title has-text-centered">Los resultados ya estan disponibles!!</p/> -->
 </div>
-
+</a>
 <div class="hero-image">
     <div class="hero-text">
     <img src="{% static 'logo.png' %}">

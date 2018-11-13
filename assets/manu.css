@@ -13,7 +13,12 @@
 
 .button.is-dark{background-color:#1e1e1e;border-color:transparent;color:#f5f5f5}
 
-.tile.is-dark{background-color:#1e1e1e;border-color:transparent;color:#f5f5f5}
+.tile.is-dark{
+    background-color:#1e1e1e;
+    border-color:transparent;
+    color:#f5f5f5;
+    border-radius: 0px;
+}
 
 .hero-text {
     font-family: 'iciel_crocanteregular'

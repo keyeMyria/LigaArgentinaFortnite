@@ -65,6 +65,8 @@ class Perfil(models.Model):
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="El telefono tiene que ser ingresado con el formato: '+999999999'")
     telefono = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     black_pan = models.CharField(max_length=100, blank=True, default='NO')
+    id1 = models.CharField(max_length=100, blank=True)
+    id2 = models.CharField(max_length=100, blank=True)
 #MANAGERS
     objects = models.Manager()
     verificados = PerfilManager()

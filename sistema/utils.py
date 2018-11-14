@@ -11,7 +11,10 @@ from django.template import Context
 from django.template.loader import render_to_string
 from django.conf import settings
 
+# SCOUT API HEADERS
+headers = {"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
 
+# FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):
     msg_html = render_to_string(template_name, context)
     msg = EmailMessage(subject=subject, body=msg_html, from_email=sender, bcc=to_list)
@@ -551,3 +554,107 @@ def comenzar_torneo_prueba_black_pan_rq():
                             #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
                             prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
                             Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+
+def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
+    request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
+    if request.status_code == 200:
+        return request.json()
+    else:
+        raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+
+def comenzar_torneo_prueba_black_pan_GRAPHQL_rq():
+    usuarios = Perfil.black_pan_verificados.order_by('user__date_joined')
+    for user in usuarios:
+        if user.prekills_1 == 0:
+            equipo = user.equipo
+            cuenta = user.user.username
+            cuenta2 = user.user.first_name
+            u1 = user.user.username
+            u2 = user.user.first_name
+            # u1 = u1.replace(" ", "%20")
+            # u2 = u2.replace(" ", "%20")
+            # API REQUESTS
+            plataforma = '"ps4"'
+            usuario = '"quiromaniaco"'
+
+            # The GraphQL query (with a few aditional bits included) itself defined as a multi-line string.
+            query1 = """
+            {
+              players(title: "fortnite", platform: "epic", console: """
+
+            query2 = """, identifier: """
+
+            query3 = """) {
+                results {
+                  player {
+                    playerId
+                    handle
+                  }
+                  persona {
+                    id
+                    handle
+                  }
+                }
+              }
+            }
+            """
+            query_u1 = query1 + '"' + plataforma + '"' + query2 + '"' + u1 + '"' + query3
+            query_u2 = query1 + '"' + plataforma + '"' + query2 + '"' + u2 + '"' + query3
+            ID1 = run_query(query_u1) # Execute the query
+            ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+            ID2 = run_query(query_u2) # Execute the query
+            ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+
+            query_stats1 = """
+            {
+              player(title: "fortnite", id: """
+
+            query_stats2 = """, segment: "p10.br.m0.alltime") {
+                id
+                metadata {
+                  key
+                  name
+                  value
+                  displayValue
+                }
+                stats {
+                  metadata {
+                    key
+                    name
+                    isReversed
+                  }
+                  value
+                  displayValue
+                }
+                segments {
+                  metadata {
+                    key
+                    name
+                    value
+                    displayValue
+                  }
+                  stats {
+                    metadata {
+                      key
+                      name
+                      isReversed
+                    }
+                    value
+                    displayValue
+                  }
+                }
+              }
+            }
+            """
+            query_u1 = query_stats1 + '"' + ID1 + '"' + query_stats2
+            query_u2 = query_stats1 + '"' + ID2 + '"' + query_stats2
+            stats1 = run_query(query_u1)
+            stats2 = run_query(query_u2)
+            prekills_1 = stats1['data']['player']['segments'][0]['stats'][0]['value']
+            prewins_1 = stats1['data']['player']['segments'][0]['stats'][3]['value']
+            pretop5_1 = stats1['data']['player']['stats'][5]['value']
+            prepartidas_1 = stats1['data']['player']['segments'][0]['stats'][2]['value']
+            prekills_2 = stats2['data']['player']['segments'][0]['stats'][0]['value']
+            prewins_2 = stats2['data']['player']['segments'][0]['stats'][3]['value']
+            prepartidas_2 = stats2['data']['player']['segments'][0]['stats'][2]['value']
+            Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)

@@ -6,7 +6,7 @@ import requests
 from decimal import Decimal
 from django.core.mail import send_mail
 import time
-from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq, send_html_email, mail_comienzo_torneo_black_pan_rq,comenzar_torneo_black_pan_rq, finalizar_torneo_black_pan_rq, calcular_puntajes_general_black_pan_rq, comenzar_torneo_prueba_black_pan_rq, comenzar_torneo_prueba_black_pan_GRAPHQL_rq
+from .utils import comenzar_torneo_rq, finalizar_torneo_rq, mail_comienzo_torneo_rq, calcular_puntajes_general_rq, mail_prueba_rq, mail_no_verificados_rq, comenzar_torneo_prueba_rq, send_html_email, mail_comienzo_torneo_black_pan_rq,comenzar_torneo_black_pan_rq, finalizar_torneo_black_pan_rq, calcular_puntajes_general_black_pan_rq, comenzar_torneo_prueba_black_pan_rq, comenzar_torneo_prueba_black_pan_GRAPHQL_rq, id_rq
 from rq import Queue
 from worker import conn
 import django_rq
@@ -81,6 +81,9 @@ def usuarios_mal(modeladmin, request, queryset):
         send_html_email(emails, subject='Tenemos problemas para verificar sus usuarios de Epic', template_name='sistema/email/usuarios_mal.html', context=context, sender="ligafortnitearg@gmail.com")
 usuarios_mal.short_description = "// USUARIOS MAL / PLATAFORMA //"
 
+def id(modeladmin, request, queryset):
+    jango_rq.enqueue(id_rq)
+id.short_description = "/////////// ID TODOS"
 #BLACK PAN importar funciones rq de utils despues de creearlas
 
 def mail_comienzo_torneo_black_pan(modeladmin, request, queryset):
@@ -165,7 +168,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name', 'perfil__black_pan')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan, resetear_todo_black_pan, comenzar_torneo_prueba_black_pan_GRAPHQL]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan, resetear_todo_black_pan, comenzar_torneo_prueba_black_pan_GRAPHQL, id]
 
 
 

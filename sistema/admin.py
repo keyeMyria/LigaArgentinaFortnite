@@ -82,7 +82,7 @@ def usuarios_mal(modeladmin, request, queryset):
 usuarios_mal.short_description = "// USUARIOS MAL / PLATAFORMA //"
 
 def id(modeladmin, request, queryset):
-    jango_rq.enqueue(id_rq)
+    django_rq.enqueue(id_rq)
 id.short_description = "/////////// ID TODOS"
 #BLACK PAN importar funciones rq de utils despues de creearlas
 

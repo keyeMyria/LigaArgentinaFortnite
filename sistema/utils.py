@@ -574,7 +574,7 @@ def comenzar_torneo_prueba_black_pan_GRAPHQL_rq():
             # u1 = u1.replace(" ", "%20")
             # u2 = u2.replace(" ", "%20")
             # API REQUESTS
-            plataforma = '"ps4"'
+            plataforma = 'ps4'
             usuario = '"quiromaniaco"'
 
             # The GraphQL query (with a few aditional bits included) itself defined as a multi-line string.

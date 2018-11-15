@@ -99,6 +99,7 @@ def verificar_usuario(modeladmin, request, queryset):
         user.perfil.id1 = ID1
         user.perfil.id2 = ID2
         user.perfil.VERIFICACION_2 = True
+        user.perfil.comentario = ''
         user.save()
         send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])
 verificar_usuario.short_description = "// VERIFICAR USUARIO //"

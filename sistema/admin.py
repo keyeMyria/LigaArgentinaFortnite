@@ -18,6 +18,8 @@ class PerfilInline (admin.StackedInline):
     model = Perfil
     can_delete = False
 
+headers = {"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
+
 
 def mail_prueba(modeladmin, request, queryset):
     django_rq.enqueue(mail_prueba_rq)
@@ -55,7 +57,47 @@ def calcular_puntajes_general(modeladmin, request, queryset):
 calcular_puntajes_general.short_description = "4 - CALCULAR GENERALES"
 
 def verificar_usuario(modeladmin, request, queryset):
+    def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
+        request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
+        if request.status_code == 200:
+            return request.json()
+        else:
+            raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+        query1 = """
+        {
+          players(title: "fortnite", platform: "epic", identifier: """
+
+        query3 = """) {
+            results {
+              player {
+                playerId
+                handle
+              }
+              persona {
+                id
+                handle
+              }
+            }
+          }
+        }
+        """
     for user in queryset:
+        plataforma = user.user.last_name
+        u1 = user.user.username
+        u2 = user.user.first_name
+        query_u1 = query1 + '"' + u1 + '"' + query3
+        query_u2 = query1 + '"' + u2 + '"' + query3
+        ID1 = run_query(query_u1) # Execute the query
+        ID2 = run_query(query_u2) # Execute the query
+        if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
+            if plataforma == 'psn':
+                ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+                ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+            else:
+                ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
+                ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
+        user.perfil.id1 = ID1
+        user.perfil.id2 = ID2   
         user.perfil.VERIFICACION_2 = True
         user.save()
         send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])

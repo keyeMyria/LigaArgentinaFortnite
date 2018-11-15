@@ -73,8 +73,6 @@ def id_rq():
             Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
 
 
-
-
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):
     msg_html = render_to_string(template_name, context)

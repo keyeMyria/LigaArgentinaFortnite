@@ -68,6 +68,7 @@ mail_no_verificados.short_description = "// MAIL A LOS NO VERIFICADOS //"
 def usuarios_mal(modeladmin, request, queryset):
     for user in queryset:
         user.perfil.comentario = 'USUARIO NO EXISTE / PLATAFORMA'
+        user.perfil.VERIFICACION_2=False
         user.save()
         u1 = user.username
         u2 = user.first_name

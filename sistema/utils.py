@@ -12,14 +12,68 @@ from django.template.loader import render_to_string
 from django.conf import settings
 
 # SCOUT API HEADERS
-headers = {"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
 
-def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
-    request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
-    if request.status_code == 200:
-        return request.json()
-    else:
-        raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+headers_token = {'Content-Type':'application/x-www-form-urlencoded'}
+API_ENDPOINT = "https://api.scoutsdk.com/connect/token"
+data = {'grant_type': 'client_credentials',
+        'client_id': 'ae45e214-016c-421c-aef1-35aaa1fe1201',
+        'client_secret': '3b5efcc90bb3438e11cf49be6837854c7ba509fbb5eaa8374802326656476920',
+        'scope': 'public.read'
+        }
+
+
+def id_rq():
+    usuarios = Perfil.verificados.order_by('user__date_joined')
+    r = requests.post(url = API_ENDPOINT, headers=headers_token, data=data)
+    hola = r.json()
+    token = hola['access_token']
+    bearer = 'Bearer ' + token
+    headers = {"Authorization": bearer ,"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
+    for user in usuarios:
+        plataforma = user.user.last_name
+        cuenta = user.user.username
+        cuenta2 = user.user.first_name
+        u1 = user.user.username
+        u2 = user.user.first_name
+        query1 = """
+        {
+          players(title: "fortnite", platform: "epic", identifier: """
+
+        query3 = """) {
+            results {
+              player {
+                playerId
+                handle
+              }
+              persona {
+                id
+                handle
+              }
+            }
+          }
+        }
+        """
+        def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
+            request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
+            if request.status_code == 200:
+                return request.json()
+            else:
+                raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+        query_u1 = query1 + '"' + u1 + '"' + query3
+        query_u2 = query1 + '"' + u2 + '"' + query3
+        ID1 = run_query(query_u1) # Execute the query
+        ID2 = run_query(query_u2) # Execute the query
+        if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
+            if plataforma == 'psn':
+                ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+                ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+            else:
+                ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
+                ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
+            Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
+
+
+
 
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):
@@ -306,44 +360,6 @@ def calcular_puntajes_general_rq():
 
         Perfil.objects.filter(user__username=u1).update(kd=km, general=nuevogeneral, muertes_liga=postmuertes_liga, kills_liga=postkills_liga)
 
-def id_rq():
-    usuarios = Perfil.verificados.order_by('user__date_joined')
-    for user in usuarios:
-        plataforma = user.user.last_name
-        cuenta = user.user.username
-        cuenta2 = user.user.first_name
-        u1 = user.user.username
-        u2 = user.user.first_name
-        query1 = """
-        {
-          players(title: "fortnite", platform: "epic", identifier: """
-
-        query3 = """) {
-            results {
-              player {
-                playerId
-                handle
-              }
-              persona {
-                id
-                handle
-              }
-            }
-          }
-        }
-        """
-        query_u1 = query1 + '"' + u1 + '"' + query3
-        query_u2 = query1 + '"' + u2 + '"' + query3
-        ID1 = run_query(query_u1) # Execute the query
-        ID2 = run_query(query_u2) # Execute the query
-        if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
-            if plataforma == 'psn':
-                ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-                ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
-            else:
-                ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
-                ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
-            Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
 #black_pan
 
 def mail_comienzo_torneo_black_pan_rq():

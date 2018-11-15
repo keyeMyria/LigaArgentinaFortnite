@@ -18,8 +18,8 @@ def run_query(query): # A simple function to use requests.post to make the API c
     request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
     if request.status_code == 200:
         return request.json()
-    # else:
-    #     raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+    else:
+        raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
 
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):

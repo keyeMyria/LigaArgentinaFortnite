@@ -14,6 +14,13 @@ from django.conf import settings
 # SCOUT API HEADERS
 headers = {"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
 
+def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
+    request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
+    if request.status_code == 200:
+        return request.json()
+    # else:
+    #     raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):
     msg_html = render_to_string(template_name, context)
@@ -592,13 +599,6 @@ def comenzar_torneo_prueba_black_pan_rq():
                             #top2 = respuesta_2.json()['stats']['p10']['top5']['value']
                             prepartidas_2 = respuesta_2.json()['stats']['p10']['matches']['value']
                             Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
-
-def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
-    request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
-    if request.status_code == 200:
-        return request.json()
-    else:
-        raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
 
 def comenzar_torneo_prueba_black_pan_GRAPHQL_rq():
     usuarios = Perfil.black_pan_verificados.order_by('user__date_joined')

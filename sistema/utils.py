@@ -329,15 +329,14 @@ def id_rq():
         query_u2 = query1 + '"' + u2 + '"' + query3
         ID1 = run_query(query_u1) # Execute the query
         ID2 = run_query(query_u2) # Execute the query
-        if ID1 != "{'data': {'players': {'results': []}}}":
-            if ID2 != "{'data': {'players': {'results': []}}}":
-                if plataforma == 'psn':
-                    ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-                    ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
-                else:
-                    ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
-                    ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
-                Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
+        if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
+            if plataforma == 'psn':
+                ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+                ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+            else:
+                ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
+                ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
+            Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
 #black_pan
 
 def mail_comienzo_torneo_black_pan_rq():

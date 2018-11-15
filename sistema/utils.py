@@ -29,6 +29,12 @@ def id_rq():
     token = hola['access_token']
     bearer = 'Bearer ' + token
     headers = {"Authorization": bearer ,"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
+    def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
+        request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
+        if request.status_code == 200:
+            return request.json()
+        else:
+            raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
     for user in usuarios:
         plataforma = user.user.last_name
         cuenta = user.user.username
@@ -53,12 +59,6 @@ def id_rq():
           }
         }
         """
-        def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
-            request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
-            if request.status_code == 200:
-                return request.json()
-            else:
-                raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
         query_u1 = query1 + '"' + u1 + '"' + query3
         query_u2 = query1 + '"' + u2 + '"' + query3
         ID1 = run_query(query_u1) # Execute the query

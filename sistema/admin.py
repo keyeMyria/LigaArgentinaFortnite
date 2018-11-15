@@ -63,24 +63,24 @@ def verificar_usuario(modeladmin, request, queryset):
             return request.json()
         else:
             raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
-        query1 = """
-        {
-          players(title: "fortnite", platform: "epic", identifier: """
+    query1 = """
+    {
+      players(title: "fortnite", platform: "epic", identifier: """
 
-        query3 = """) {
-            results {
-              player {
-                playerId
-                handle
-              }
-              persona {
-                id
-                handle
-              }
-            }
+    query3 = """) {
+        results {
+          player {
+            playerId
+            handle
+          }
+          persona {
+            id
+            handle
           }
         }
-        """
+      }
+    }
+    """
     for user in queryset:
         plataforma = user.last_name
         u1 = user.username

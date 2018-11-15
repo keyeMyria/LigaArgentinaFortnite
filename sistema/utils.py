@@ -335,8 +335,8 @@ def id_rq():
             ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
             ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
         else:
-            ID1 = ID1["data"]["players"]["results"][1]['persona']['id']
-            ID2 = ID2["data"]["players"]["results"][1]['persona']['id']
+            ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
+            ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
         Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
 #black_pan
 

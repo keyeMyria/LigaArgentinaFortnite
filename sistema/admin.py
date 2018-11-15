@@ -82,9 +82,9 @@ def verificar_usuario(modeladmin, request, queryset):
         }
         """
     for user in queryset:
-        plataforma = user.user.last_name
-        u1 = user.user.username
-        u2 = user.user.first_name
+        plataforma = user.last_name
+        u1 = user.username
+        u2 = user.first_name
         query_u1 = query1 + '"' + u1 + '"' + query3
         query_u2 = query1 + '"' + u2 + '"' + query3
         ID1 = run_query(query_u1) # Execute the query
@@ -97,7 +97,7 @@ def verificar_usuario(modeladmin, request, queryset):
                 ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
                 ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
         user.perfil.id1 = ID1
-        user.perfil.id2 = ID2   
+        user.perfil.id2 = ID2
         user.perfil.VERIFICACION_2 = True
         user.save()
         send_mail('TU TEAM YA ESTA VERIFICADO!', 'Completaste el proceso de verificacion. YA ESTAS PARTICIPANDO!', 'ligafortnitearg@gmail.com', [user.email])

@@ -309,9 +309,7 @@ def id_rq():
         u2 = user.user.first_name
         query1 = """
         {
-          players(title: "fortnite", platform: "epic", console: """
-
-        query2 = """, identifier: """
+          players(title: "fortnite", platform: "epic", identifier: """
 
         query3 = """) {
             results {
@@ -327,8 +325,8 @@ def id_rq():
           }
         }
         """
-        query_u1 = query1 + '"' + plataforma + '"' + query2 + '"' + u1 + '"' + query3
-        query_u2 = query1 + '"' + plataforma + '"' + query2 + '"' + u2 + '"' + query3
+        query_u1 = query1 + '"' + u1 + '"' + query3
+        query_u2 = query1 + '"' + u2 + '"' + query3
         ID1 = run_query(query_u1) # Execute the query
         ID2 = run_query(query_u2) # Execute the query
         if plataforma == 'psn':

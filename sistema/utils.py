@@ -339,14 +339,15 @@ def comenzar_torneo_prueba_rq():
             query_u2 = query_stats1 + '"' + ID2 + '"' + query_stats2
             stats1 = run_query(query_u1)
             stats2 = run_query(query_u2)
-            prekills_1 = stats1['data']['player']['segments'][0]['stats'][0]['value']
-            prewins_1 = stats1['data']['player']['segments'][0]['stats'][3]['value']
-            pretop5_1 = stats1['data']['player']['stats'][5]['value']
-            prepartidas_1 = stats1['data']['player']['segments'][0]['stats'][2]['value']
-            prekills_2 = stats2['data']['player']['segments'][0]['stats'][0]['value']
-            prewins_2 = stats2['data']['player']['segments'][0]['stats'][3]['value']
-            prepartidas_2 = stats2['data']['player']['segments'][0]['stats'][2]['value']
-            Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
+            try:
+                prekills_1 = stats1['data']['player']['segments'][0]['stats'][0]['value']
+                prewins_1 = stats1['data']['player']['segments'][0]['stats'][3]['value']
+                pretop5_1 = stats1['data']['player']['stats'][5]['value']
+                prepartidas_1 = stats1['data']['player']['segments'][0]['stats'][2]['value']
+                prekills_2 = stats2['data']['player']['segments'][0]['stats'][0]['value']
+                prewins_2 = stats2['data']['player']['segments'][0]['stats'][3]['value']
+                prepartidas_2 = stats2['data']['player']['segments'][0]['stats'][2]['value']
+                Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 
 
 def mail_comienzo_torneo_rq():

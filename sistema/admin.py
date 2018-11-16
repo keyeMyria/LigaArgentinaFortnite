@@ -65,7 +65,10 @@ def verificar_usuario(modeladmin, request, queryset):
             raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
     query1 = """
     {
-      players(title: "fortnite", platform: "epic", identifier: """
+      players(title: "fortnite", platform: "epic", console: """
+
+    query2 = """ identifier: """
+
 
     query3 = """) {
         results {
@@ -85,17 +88,43 @@ def verificar_usuario(modeladmin, request, queryset):
         plataforma = user.last_name
         u1 = user.username
         u2 = user.first_name
-        query_u1 = query1 + '"' + u1 + '"' + query3
-        query_u2 = query1 + '"' + u2 + '"' + query3
+        if plataforma == 'psn':
+            plataforma = 'ps4'
+        query_u1 = query1 + '"' + plataforma + '"'+ query2 + '"' + u1 + '"' + query3
+        query_u2 = query1 + '"' + plataforma + '"'+ query2 + '"' + u2 + '"' + query3
         ID1 = run_query(query_u1) # Execute the query
         ID2 = run_query(query_u2) # Execute the query
-        if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
-            if plataforma == 'psn':
-                ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-                ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+
+        if plataforma == 'ps4':
+
+            ID_test1 = ID1["data"]["players"]["results"][-1]['player']
+            if ID_test1:
+                ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
             else:
-                ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
-                ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
+                ID_test1 = ID1["data"]["players"]["results"][-2]['player']
+                if ID_test1:
+                    ID1 = ID1["data"]["players"]["results"][-2]['player']['playerId']
+                else:
+                    ID_test1 = ID1["data"]["players"]["results"][-1]['player']
+                    if ID_test1:
+                        ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
+                    else:
+                        ID1 = ID1["data"]["players"]["results"][-3]['player']['playerId']
+
+            ID_test2 = ID2["data"]["players"]["results"][-1]['player']
+            if ID_test2:
+                ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
+            else:
+                ID_test2 = ID2["data"]["players"]["results"][-2]['player']
+                if ID_test2:
+                    ID2 = ID2["data"]["players"]["results"][-2]['player']['playerId']
+                else:
+                    ID_test2 = ID2["data"]["players"]["results"][-1]['player']
+                    if ID_test2:
+                        ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
+                    else:
+                        ID2 = ID2["data"]["players"]["results"][-3]['player']['playerId']
+
         user.perfil.id1 = ID1
         user.perfil.id2 = ID2
         user.perfil.VERIFICACION_2 = True

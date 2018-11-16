@@ -635,7 +635,6 @@ def comenzar_torneo_prueba_black_pan_GRAPHQL_rq():
             u2 = user.user.first_name
             ID1 = user.id1
             ID2 = user.id2
-            plataforma = 'ps4'
 
             query_stats1 = """
             {

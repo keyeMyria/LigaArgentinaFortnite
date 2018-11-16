@@ -72,13 +72,19 @@ def id_rq():
             ID1 = run_query(query_u1) # Execute the query
             ID2 = run_query(query_u2) # Execute the query
             if plataforma == 'ps4':
-                ID1 = ID1["data"]["players"]["results"][-2]['player']['playerId']
-                ID2 = ID2["data"]["players"]["results"][-2]['player']['playerId']
-                Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
+                ID_test1 = ID1["data"]["players"]["results"][-2]['player']
+                if ID_test1:
+                    ID1 = ID1["data"]["players"]["results"][-2]['player']['playerId']
+                else:
+                    ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
+                ID_test2 = ID2["data"]["players"]["results"][-2]['player']
+                if ID_test2:
+                    ID2 = ID2["data"]["players"]["results"][-2]['player']['playerId']
+                else:
+                    ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
             else:
                 ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
                 ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
-                Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
 
 
             # if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":

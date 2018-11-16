@@ -129,6 +129,7 @@ def id_mal(modeladmin, request, queryset):
     for user in queryset:
         user.perfil.id1 = ''
         user.perfil.id2 = ''
+        user.save()
 id_mal.short_description = "// ID MAL //"
 
 def id(modeladmin, request, queryset):

@@ -36,52 +36,54 @@ def id_rq():
         else:
             raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
     for user in usuarios:
-        plataforma = user.user.last_name
-        cuenta = user.user.username
-        cuenta2 = user.user.first_name
-        u1 = user.user.username
-        u2 = user.user.first_name
+        if user.id1 == '':
+            plataforma = user.user.last_name
+            cuenta = user.user.username
+            cuenta2 = user.user.first_name
+            u1 = user.user.username
+            u2 = user.user.first_name
 
-        if plataforma == 'psn':
-            plataforma = 'ps4'
+            if plataforma == 'psn':
+                plataforma = 'ps4'
 
-        query1 = """
-        {
-          players(title: "fortnite", platform: "epic", console: """
+            query1 = """
+            {
+              players(title: "fortnite", platform: "epic", console: """
 
-        query2 = """ identifier: """
+            query2 = """ identifier: """
 
 
-        query3 = """) {
-            results {
-              player {
-                playerId
-                handle
-              }
-              persona {
-                id
-                handle
+            query3 = """) {
+                results {
+                  player {
+                    playerId
+                    handle
+                  }
+                  persona {
+                    id
+                    handle
+                  }
+                }
               }
             }
-          }
-        }
-        """
-        query_u1 = query1 + '"' + plataforma + '"'+ query2 + '"' + u1 + '"' + query3
-        query_u2 = query1 + '"' + plataforma + '"'+ query2 + '"' + u2 + '"' + query3
-        ID1 = run_query(query_u1) # Execute the query
-        ID2 = run_query(query_u2) # Execute the query
+            """
+            query_u1 = query1 + '"' + plataforma + '"'+ query2 + '"' + u1 + '"' + query3
+            query_u2 = query1 + '"' + plataforma + '"'+ query2 + '"' + u2 + '"' + query3
+            ID1 = run_query(query_u1) # Execute the query
+            ID2 = run_query(query_u2) # Execute the query
 
-        ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-        ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+            ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+            ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
 
-        # if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
-        #     if plataforma == 'psn':
-        #         ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-        #         ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
-        #     else:
-        #         ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
-        #         ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
-        Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
+            # if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
+            #     if plataforma == 'psn':
+            #         ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+            #         ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+            #     else:
+            #         ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
+            #         ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
+            Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
+
 
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):

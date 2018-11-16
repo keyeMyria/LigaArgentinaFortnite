@@ -272,7 +272,7 @@ def finalizar_torneo_rq():
                                     send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def comenzar_torneo_prueba_rq():
-    usuarios = Perfil.verificados.order_by('user__date_joined')
+    usuarios = Perfil.verificados.order_by('-user__date_joined')
     r = requests.post(url = API_ENDPOINT, headers=headers_token, data=data)
     hola = r.json()
     token = hola['access_token']

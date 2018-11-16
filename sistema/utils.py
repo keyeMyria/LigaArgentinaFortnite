@@ -72,7 +72,6 @@ def id_rq():
                 ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
             Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
 
-
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):
     msg_html = render_to_string(template_name, context)
@@ -623,39 +622,9 @@ def comenzar_torneo_prueba_black_pan_GRAPHQL_rq():
             cuenta2 = user.user.first_name
             u1 = user.user.username
             u2 = user.user.first_name
-            # u1 = u1.replace(" ", "%20")
-            # u2 = u2.replace(" ", "%20")
-            # API REQUESTS
+            ID1 = user.id1
+            ID2 = user.id2
             plataforma = 'ps4'
-            usuario = '"quiromaniaco"'
-
-            # The GraphQL query (with a few aditional bits included) itself defined as a multi-line string.
-            query1 = """
-            {
-              players(title: "fortnite", platform: "epic", console: """
-
-            query2 = """, identifier: """
-
-            query3 = """) {
-                results {
-                  player {
-                    playerId
-                    handle
-                  }
-                  persona {
-                    id
-                    handle
-                  }
-                }
-              }
-            }
-            """
-            query_u1 = query1 + '"' + plataforma + '"' + query2 + '"' + u1 + '"' + query3
-            query_u2 = query1 + '"' + plataforma + '"' + query2 + '"' + u2 + '"' + query3
-            ID1 = run_query(query_u1) # Execute the query
-            ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-            ID2 = run_query(query_u2) # Execute the query
-            ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
 
             query_stats1 = """
             {

@@ -71,8 +71,8 @@ def id_rq():
         ID1 = run_query(query_u1) # Execute the query
         ID2 = run_query(query_u2) # Execute the query
 
-        ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
-        ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
+        # ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+        # ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
 
         # if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
         #     if plataforma == 'psn':
@@ -81,7 +81,7 @@ def id_rq():
         #     else:
         #         ID1 = ID1["data"]["players"]["results"][0]['persona']['id']
         #         ID2 = ID2["data"]["players"]["results"][0]['persona']['id']
-        Perfil.objects.filter(user__username=cuenta).update(id1=ID1, id2=ID2)
+        Perfil.objects.filter(user__username=cuenta).update(id1='', id2='')
 
 # FUNCIONES PARA LLAMRA DESDE ADMIN
 def send_html_email(to_list, subject, template_name, context, sender=settings.DEFAULT_FROM_EMAIL):

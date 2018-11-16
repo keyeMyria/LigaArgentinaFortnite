@@ -74,7 +74,7 @@ def id_rq():
             if plataforma == 'ps4':
 
 
-                ID_test1 = ID1 = ID1["data"]["players"]["results"][-1]['player']
+                ID_test1 = ID1["data"]["players"]["results"][-1]['player']
                 if ID_test1:
                     ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
                 else:
@@ -91,7 +91,7 @@ def id_rq():
                             ID1 = ID1["data"]["players"]["results"][-3]['player']['playerId']
                             Perfil.objects.filter(user__username=cuenta).update(id1=ID1)
 
-                ID_test2 = ID2 = ID2["data"]["players"]["results"][-1]['player']
+                ID_test2 = ID2["data"]["players"]["results"][-1]['player']
                 if ID_test2:
                     ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
                 else:

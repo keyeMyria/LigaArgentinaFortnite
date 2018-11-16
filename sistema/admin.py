@@ -125,6 +125,12 @@ def usuarios_mal(modeladmin, request, queryset):
         send_html_email(emails, subject='Tenemos problemas para verificar sus usuarios de Epic', template_name='sistema/email/usuarios_mal.html', context=context, sender="ligafortnitearg@gmail.com")
 usuarios_mal.short_description = "// USUARIOS MAL / PLATAFORMA //"
 
+def id_mal(modeladmin, request, queryset):
+    for user in queryset:
+        user.perfil.id1 = ''
+        user.perfil.id2 = ''
+id_mal.short_description = "// ID MAL //"
+
 def id(modeladmin, request, queryset):
     django_rq.enqueue(id_rq)
 id.short_description = "/////////// ID TODOS"
@@ -214,7 +220,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name', 'perfil__black_pan')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan, resetear_todo_black_pan, comenzar_torneo_prueba_black_pan_GRAPHQL, id]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan, resetear_todo_black_pan, comenzar_torneo_prueba_black_pan_GRAPHQL, id, id_mal]
 
 
 

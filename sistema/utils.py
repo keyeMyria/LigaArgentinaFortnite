@@ -615,6 +615,17 @@ def comenzar_torneo_prueba_black_pan_rq():
 
 def comenzar_torneo_prueba_black_pan_GRAPHQL_rq():
     usuarios = Perfil.black_pan_verificados.order_by('user__date_joined')
+    r = requests.post(url = API_ENDPOINT, headers=headers_token, data=data)
+    hola = r.json()
+    token = hola['access_token']
+    bearer = 'Bearer ' + token
+    headers = {"Authorization": bearer ,"Scout-App": "ae45e214-016c-421c-aef1-35aaa1fe1201"}
+    def run_query(query): # A simple function to use requests.post to make the API call. Note the json= section.
+        request = requests.post('https://api.scoutsdk.com/graph', json={'query': query}, headers=headers)
+        if request.status_code == 200:
+            return request.json()
+        else:
+            raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
     for user in usuarios:
         if user.prekills_1 == 0:
             equipo = user.equipo

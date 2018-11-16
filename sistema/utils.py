@@ -342,7 +342,7 @@ def comenzar_torneo_prueba_rq():
             # if 'stats' in stats1.keys():
 
             stats1 = stats1['data']['player']['segments']
-            if stats:
+            if stats1:
                 prekills_1 = stats1[0]['stats'][0]['value']
                 prewins_1 = stats1[0]['stats'][3]['value']
                 pretop5_1 = stats1[5]['value']

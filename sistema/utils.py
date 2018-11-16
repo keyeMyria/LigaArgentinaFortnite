@@ -72,8 +72,8 @@ def id_rq():
             ID1 = run_query(query_u1) # Execute the query
             ID2 = run_query(query_u2) # Execute the query
 
-            ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
-            ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
+            ID1 = ID1["data"]["players"]["results"][0]['player']['playerId']
+            ID2 = ID2["data"]["players"]["results"][0]['player']['playerId']
 
             # if ID1 != "{'data': {'players': {'results': []}}}" or ID2 != "{'data': {'players': {'results': []}}}":
             #     if plataforma == 'psn':

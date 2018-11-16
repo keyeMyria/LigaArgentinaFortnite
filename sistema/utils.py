@@ -41,6 +41,10 @@ def id_rq():
         cuenta2 = user.user.first_name
         u1 = user.user.username
         u2 = user.user.first_name
+
+        if plataforma == 'psn':
+            plataforma = 'ps4'
+
         query1 = """
         {
           players(title: "fortnite", platform: "epic", console: """

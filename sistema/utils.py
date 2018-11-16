@@ -77,6 +77,7 @@ def id_rq():
                 ID_test1 = ID1["data"]["players"]["results"][-1]['player']
                 if ID_test1:
                     ID1 = ID1["data"]["players"]["results"][-1]['player']['playerId']
+                    Perfil.objects.filter(user__username=cuenta).update(id1=ID1)
                 else:
                     ID_test1 = ID1["data"]["players"]["results"][-2]['player']
                     if ID_test1:
@@ -94,6 +95,7 @@ def id_rq():
                 ID_test2 = ID2["data"]["players"]["results"][-1]['player']
                 if ID_test2:
                     ID2 = ID2["data"]["players"]["results"][-1]['player']['playerId']
+                    Perfil.objects.filter(user__username=cuenta).update(id2=ID2)
                 else:
                     ID_test2 = ID2["data"]["players"]["results"][-2]['player']
                     if ID_test2:

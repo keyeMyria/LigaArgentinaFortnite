@@ -350,9 +350,9 @@ def comenzar_torneo_prueba_rq():
 
             stats2 = stats2['data']['player']['segments']
             if stats2:
-                prekills_2 = stats2['data']['player']['segments'][0]['stats'][0]['value']
-                prewins_2 = stats2['data']['player']['segments'][0]['stats'][3]['value']
-                prepartidas_2 = stats2['data']['player']['segments'][0]['stats'][2]['value']
+                prekills_2 = stats2[0]['stats'][0]['value']
+                prewins_2 = stats2[0]['stats'][3]['value']
+                prepartidas_2 = stats2[0]['stats'][2]['value']
                 Perfil.objects.filter(user__username=cuenta).update(prekills_1=prekills_1, prewins_1=prewins_1, prepartidas_1=prepartidas_1, pretop5_1=pretop5_1, prekills_2=prekills_2, prewins_2=prewins_2, prepartidas_2=prepartidas_2)
 
 

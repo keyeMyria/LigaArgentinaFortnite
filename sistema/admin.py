@@ -192,7 +192,7 @@ class UserAdmin(BaseUserAdmin):
     form = MyUserChangeForm
     add_form = MyUserCreateForm
     inlines = [PerfilInline]
-    list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'black_pan', 'prekills', 'postkills', 'id_epic')
+    list_display = ( 'equipo', 'usuario1', 'usuario2', 'plataforma', 'email', 'comentario', 'ver', 'black_pan', 'prekills', 'postkills', 'id_epic1', 'id_epic2')
 
     def ver(self, obj):
         return obj.perfil.VERIFICACION_2
@@ -213,7 +213,9 @@ class UserAdmin(BaseUserAdmin):
         return obj.perfil.comentario
     def black_pan(self, obj):
         return obj.perfil.black_pan
-    def id_epic(self, obj):
+    def id_epic1(self, obj):
+        return obj.perfil.id1
+    def id_epic2(self, obj):
         return obj.perfil.id2
 
     #get_author.short_description = 'Author'

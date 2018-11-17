@@ -86,7 +86,7 @@ def verificar_usuario(modeladmin, request, queryset):
     """
     for user in queryset:
         plataforma = user.last_name
-        cuenta = user.user.username
+        cuenta = user.username
         u1 = user.username
         u2 = user.first_name
         if plataforma == 'psn':

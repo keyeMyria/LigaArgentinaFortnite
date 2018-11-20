@@ -57,6 +57,15 @@ and (min-width : 600px) {
       background-size: cover;
       position: relative;
     }
+    .banner {
+      background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
+      background-color: #cccccc;
+      height: 600px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
 }
 
 @media only screen
@@ -70,4 +79,15 @@ and (max-width : 600px) {
       background-size: cover;
       position: relative;
     }
+    .banner {
+      background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
+      background-color: #cccccc;
+      height: 600px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+
 }

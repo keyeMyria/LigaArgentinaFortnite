@@ -60,7 +60,6 @@ and (min-width : 600px) {
     .banner {
       background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
       background-color: #cccccc;
-      height: 600px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -82,7 +81,6 @@ and (max-width : 600px) {
     .banner {
       background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
       background-color: #cccccc;
-      height: 600px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;

@@ -75,6 +75,7 @@ and (min-width : 600px) {
       position: relative;
       margin-top: 10px;
       margin-bottom: 30px;
+    }
 }
 
 @media only screen
@@ -97,6 +98,30 @@ and (max-width : 600px) {
       background-size: cover;
       position: relative;
     }
+}
 
+@media only screen
+and (min-width : 600px) {
+    .hero-image {
+      background-image: url('/static/season_6.jpg');
+      background-color: #cccccc;
+      height: 800px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+}
 
+@media only screen
+and (max-width : 600px) {
+    .hero-image {
+      background-image: url('/static/season_6.jpg');
+      background-color: #cccccc;
+      height: 600px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
 }

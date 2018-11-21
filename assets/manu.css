@@ -10,7 +10,6 @@
 }
 
 
-
 .button.is-dark{background-color:#1e1e1e;border-color:transparent;color:#f5f5f5}
 
 .tile.is-dark{
@@ -65,6 +64,8 @@ and (min-width : 600px) {
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 }
 

@@ -64,9 +64,17 @@ and (min-width : 600px) {
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
+    }
+    .banner.tabla {
+      background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
+      background-color: #cccccc;
+      height: 100px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
       margin-top: 10px;
       margin-bottom: 30px;
-    }
 }
 
 @media only screen

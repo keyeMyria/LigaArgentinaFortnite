@@ -270,7 +270,7 @@ class UserAdmin(BaseUserAdmin):
 
     ordering = ('-date_joined', )
     list_filter = ('perfil__VERIFICACION_2', 'last_name', 'perfil__black_pan')
-    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan, resetear_todo_black_pan, comenzar_torneo_prueba_black_pan_GRAPHQL, id, id_mal]
+    actions = [resetear_torneo, resetear_todo, mail_comienzo_torneo, comenzar_torneo, finalizar_torneo, calcular_puntajes_general, verificar_usuario, usuarios_mal, comenzar_torneo_prueba, mail_no_verificados, mail_prueba, mail_comienzo_torneo_black_pan, comenzar_torneo_black_pan, finalizar_torneo_black_pan, calcular_puntajes_general_black_pan, comenzar_torneo_prueba_black_pan, resetear_todo_black_pan, id, id_mal]
 
 
 

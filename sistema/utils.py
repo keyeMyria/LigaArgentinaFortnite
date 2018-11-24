@@ -699,7 +699,7 @@ def finalizar_torneo_black_pan_rq():
                     'tops5': top5_1,
                     'puntos': puntos
                 }
-                send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
+                # send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 
 def calcular_puntajes_general_black_pan_rq():

@@ -561,7 +561,7 @@ def finalizar_torneo_black_pan_rq():
             else:
                 raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
         for user in usuarios:
-            if user.prekills_1 == 0:
+            if user.postkills_1 == 0:
                 equipo = user.equipo
                 cuenta = user.user.username
                 cuenta2 = user.user.first_name

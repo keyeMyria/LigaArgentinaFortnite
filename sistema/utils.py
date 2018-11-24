@@ -492,7 +492,7 @@ def comenzar_torneo_black_pan_rq():
                 'u1': cuenta,
                 'u2': cuenta2
             }
-            send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
+            # send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
             query_stats1 = """
             {
               player(title: "fortnite", id: """

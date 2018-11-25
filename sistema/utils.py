@@ -137,18 +137,14 @@ def send_html_email(to_list, subject, template_name, context, sender=settings.DE
     return msg.send()
 
 def mail_prueba_rq():
-    equipo = 'hola'
-    kills_totales = 'u1'
-    wins_totales = 'dd'
-    top5_1 = 'kk'
-    emails = ['mmquiroga10@gmail.com']
-    context = {
-        'equipo': equipo,
-        'kills': kills_totales,
-        'wins': wins_totales,
-        'tops5': top5_1
-    }
-    send_html_email(emails, subject='LA CLASIFICACION SE JUEGA HOY 19:30 HS!', template_name='sistema/email/posponer_black_pan.html', context=context, sender="ligafortnitearg@gmail.com")
+    usuarios = Perfil.black_pan_verificados.order_by('user__date_joined')
+    for user in usuarios:
+        equipo = user.equipo
+        emails = [user.user.email]
+        context = {
+            'equipo': equipo,
+        }
+        send_html_email(emails, subject='LA CLASIFICACION SE JUEGA HOY 19:30 HS!', template_name='sistema/email/posponer_black_pan.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def comenzar_torneo_rq():
     URL = "https://api.fortnitetracker.com/v1/profile/"

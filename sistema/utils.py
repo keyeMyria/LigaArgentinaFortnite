@@ -488,7 +488,7 @@ def comenzar_torneo_black_pan_rq():
                 'u1': cuenta,
                 'u2': cuenta2
             }
-            # send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
+            send_html_email(emails, subject='COMIENZA EL TORNEO! A JUGAR!', template_name='sistema/email/comenzar.html', context=context, sender="ligafortnitearg@gmail.com")
             query_stats1 = """
             {
               player(title: "fortnite", id: """
@@ -695,7 +695,7 @@ def finalizar_torneo_black_pan_rq():
                     'tops5': top5_1,
                     'puntos': puntos
                 }
-                # send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
+                send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/finalizar.html', context=context, sender="ligafortnitearg@gmail.com")
 
 
 def calcular_puntajes_general_black_pan_rq():

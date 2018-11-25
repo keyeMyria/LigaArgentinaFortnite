@@ -148,7 +148,7 @@ def mail_prueba_rq():
         'wins': wins_totales,
         'tops5': top5_1
     }
-    send_html_email(emails, subject='EL TORNEO ACABA DE FINALIZAR! MIRA TUS RESULTADOS!', template_name='sistema/email/posponer_black_pan.html', context=context, sender="ligafortnitearg@gmail.com")
+    send_html_email(emails, subject='LA CLASIFICACION SE JUEGA HOY 19:30 HS!', template_name='sistema/email/posponer_black_pan.html', context=context, sender="ligafortnitearg@gmail.com")
 
 def comenzar_torneo_rq():
     URL = "https://api.fortnitetracker.com/v1/profile/"

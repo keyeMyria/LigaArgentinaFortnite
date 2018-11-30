@@ -34,3 +34,7 @@ def blackpan_premios(request):
 def blackpan_terminos(request):
     #return HttpResponse('homepage')
     return render(request, 'black_pan/terminos.html')
+
+def blackpan_tabla(request):
+    #return HttpResponse('homepage')
+    return render(request, 'black_pan/tabla.html')

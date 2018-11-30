@@ -1,0 +1,39 @@
+{% extends 'base_black.html' %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+{% block content %}
+
+<div class="">
+        <article class="tile is-dark is-12 is-child notification">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <figure class="image">
+                  <img src="{% static '/images/logo_chico_black.png' %}">
+            </div>
+        </nav>
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="banner">
+
+        </div>
+    </div>
+</section>
+
+<section class='section'>
+    <div class="container">
+        <article class="tile is-12 is-child notification">
+            <p class="title has-text-centered">Resultados de la fase final en tiempo real!!</p>
+    </div>
+</section>
+
+
+
+<section class='section'>
+        <iframe src="https://challonge.com/es/5dh47vhy/module" width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+</section>
+
+
+{% endblock %}

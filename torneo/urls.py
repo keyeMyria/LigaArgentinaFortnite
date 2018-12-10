@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^sistema/', include('sistema.urls')),
+    url(r'^fortnite/sistema/', include('fortnite_apps.sistema.urls')),
     url(r'^reglas/', views.reglas, name='reglas' ),
     url(r'^premios/', views.premios, name='premios' ),
     url(r'^fortnite/blackpan/', include('fortnite_apps.blackpan.urls'))

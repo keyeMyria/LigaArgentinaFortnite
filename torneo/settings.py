@@ -37,7 +37,7 @@ ADMINS = [('Manu', 'mmquiroga10@gmail.com')]
 
 ALLOWED_HOSTS = ['192.168.2.162', '127.0.0.1', 'quiroserver.ddns.net', 'ligafortnitearg.herokuapp.com', 'www.lafortnite.com']
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'sistema.forms.SignupForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'fortnite_apps.sistema.forms.SignupForm'
 # Application definition
 
 INSTALLED_APPS = [

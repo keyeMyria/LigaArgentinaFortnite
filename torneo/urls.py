@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^sistema/', include('sistema.urls')),
     url(r'^reglas/', views.reglas, name='reglas' ),
     url(r'^premios/', views.premios, name='premios' ),
-    url(r'^blackpan/', include('blackpan.urls'))
+    url(r'^fortnite/blackpan/', include('fortnite_apps.blackpan.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -50,7 +50,7 @@ and (min-width : 600px) {
     .hero-image {
       background-image: url('/static/fortnite/season_7.jpg');
       background-color: #cccccc;
-      height: 1000px;
+      height: 900px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;

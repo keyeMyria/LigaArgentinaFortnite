@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'sistema',
     "django_rq",
-    "blackpan"
+    "fortnite_apps.blackpan"
     #'allauth.socialaccount.providers.facebook',
     #'allauth.socialaccount.providers.twitch',
 ]

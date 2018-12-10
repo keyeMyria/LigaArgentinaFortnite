@@ -1,5 +1,5 @@
 import requests
-from sistema.models import Perfil
+from fortnite_apps.sistema.models import Perfil
 from django.db import models
 from django.contrib import messages
 from django.contrib.auth.models import User

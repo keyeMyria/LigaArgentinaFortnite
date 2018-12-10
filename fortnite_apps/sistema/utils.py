@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from sistema.models import Perfil
+from fortnite_apps.sistema.models import Perfil
 import requests
 from decimal import Decimal
 import time

@@ -48,7 +48,7 @@
 @media only screen
 and (min-width : 600px) {
     .hero-image {
-      background-image: url('/static/season_6.jpg');
+      background-image: url('/static/fortnite/season_6.jpg');
       background-color: #cccccc;
       height: 800px;
       background-position: center;
@@ -57,16 +57,16 @@ and (min-width : 600px) {
       position: relative;
     }
     .banner {
-      background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
+      background-image: url('/static/fortnite/sponsors/thermaltake/1000x100_2.png');
       background-color: #cccccc;
-      height: 100px;
+      height: 130px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
     }
     .banner.tabla {
-      background-image: url('/static/sponsors/thermaltake/1000x100_2.png');
+      background-image: url('/static/fortnite/sponsors/thermaltake/1000x100_2.png');
       background-color: #cccccc;
       height: 100px;
       background-position: center;
@@ -81,7 +81,7 @@ and (min-width : 600px) {
 @media only screen
 and (max-width : 600px) {
     .hero-image {
-      background-image: url('/static/season_6.jpg');
+      background-image: url('/static/fortnite/season_6.jpg');
       background-color: #cccccc;
       height: 600px;
       background-position: center;
@@ -90,7 +90,7 @@ and (max-width : 600px) {
       position: relative;
     }
     .banner {
-      background-image: url('/static/sponsors/thermaltake/300x250_2.png');
+      background-image: url('/static/fortnite/sponsors/thermaltake/300x250_2.png');
       background-color: #cccccc;
       height: 250px;
       background-position: center;
@@ -103,7 +103,7 @@ and (max-width : 600px) {
 @media only screen
 and (min-width : 600px) {
     .hero-image {
-      background-image: url('/static/season_6.jpg');
+      background-image: url('/static/fortnite/season_6.jpg');
       background-color: #cccccc;
       height: 800px;
       background-position: center;
@@ -116,7 +116,7 @@ and (min-width : 600px) {
 @media only screen
 and (max-width : 600px) {
     .hero-image {
-      background-image: url('/static/season_6.jpg');
+      background-image: url('/static/fortnite/season_6.jpg');
       background-color: #cccccc;
       height: 600px;
       background-position: center;

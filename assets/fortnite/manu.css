@@ -68,7 +68,7 @@ and (min-width : 600px) {
     .banner.tabla {
       background-image: url('/static/fortnite/sponsors/thermaltake/1000x100_2.png');
       background-color: #cccccc;
-      height: 100px;
+      height: 130px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;

@@ -81,7 +81,7 @@ and (min-width : 600px) {
 @media only screen
 and (max-width : 600px) {
     .hero-image {
-      background-image: url('/static/fortnite/season_6.jpg');
+      background-image: url('/static/fortnite/season_7.jpg');
       background-color: #cccccc;
       height: 600px;
       background-position: center;

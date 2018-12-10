@@ -50,7 +50,7 @@ and (min-width : 600px) {
     .hero-image {
       background-image: url('/static/fortnite/season_6.jpg');
       background-color: #cccccc;
-      height: 800px;
+      height: 1080px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -100,7 +100,7 @@ and (max-width : 600px) {
     }
 }
 
-@media only screen
+/* @media only screen
 and (min-width : 600px) {
     .hero-image {
       background-image: url('/static/fortnite/season_6.jpg');
@@ -124,4 +124,4 @@ and (max-width : 600px) {
       background-size: cover;
       position: relative;
     }
-}
+} */

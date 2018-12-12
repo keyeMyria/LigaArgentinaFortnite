@@ -544,6 +544,12 @@ mark,
   height: auto;
 }
 
+.img-fluid-header {
+  max-width: 100%;
+  height: auto;
+  float: left;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #171941;

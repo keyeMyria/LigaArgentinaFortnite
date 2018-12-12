@@ -17678,12 +17678,12 @@ hr.line-deafult {
 .page-header .content-center {
   position: absolute;
   top: 50%;
-  left: 30%;
+  left: 50%;
   z-index: 2;
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  text-align: left;
+  text-align: center;
   color: #ffffff;
   padding: 0 15px;
   width: 100%;

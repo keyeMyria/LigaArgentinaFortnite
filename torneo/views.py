@@ -19,6 +19,10 @@ def test(request):
     #return HttpResponse('homepage')
     return render(request, 'test.html')
 
+def contacto(request):
+    #return HttpResponse('homepage')
+    return render(request, 'contacto.html')
+
 def homepage(request):
     #return HttpResponse('homepage')
     return render(request, 'homepage.html')

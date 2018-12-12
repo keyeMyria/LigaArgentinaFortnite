@@ -99,81 +99,22 @@
   </nav>
   <!-- End Navbar -->
   <div class="wrapper">
-    <div class="page-header header-filter">
-      <div class="squares square1"></div>
-      <div class="squares square2"></div>
-      <div class="squares square3"></div>
-      <div class="squares square4"></div>
-      <div class="squares square5"></div>
-      <div class="squares square6"></div>
-      <div class="squares square7"></div>
-      <div class="container">
-        <div class="content-center brand">
-          <!-- <h1 class="h1-seo">INFINITE GAMING</h1> -->
-          <img src="{% static 'general/logo_TEXTO.png' %}" class="img-fluid" alt="Responsive image">
-        </div>
-      </div>
+      <div class="page-header">
+        <img src="{% static 'BLK/assets/img/blob.png' %}" class="path">
+        <img src="{% static 'BLK/assets/img/path2.png' %}" class="path2">
+        <img src="{% static 'BLK/assets/img/triunghiuri.png' %}" class="shapes triangle">
+        <img src="{% static 'BLK/assets/img/waves.png' %}" class="shapes wave">
+        <img src="{% static 'BLK/assets/img/patrat.png' %}" class="shapes squares">
+        <img src="{% static 'BLK/assets/img/cercuri.png' %}" class="shapes circle">
       </div>
   </div>
+
+
+  {% block content %}
+  {% endblock %}
+
+
   <div class="main">
-      <!-- nuestros juegos -->
-      <section class='section section-basic'>
-          <div class="container">
-              <div class="row justify-content-md-center">
-                  <div class="text-center col-md-12 col-lg-8">
-                      <h1 class="display-1">Nuestras Ligas</h1>
-                  </div>
-              </div>
-              <div class="container">
-                  <div class="row">
-                      <div class="col-sm">
-                          <img src="{% static 'general/csgo_proximamente.png' %}" class="img-fluid">
-                      </div>
-                      <div class="col-sm">
-                          <img src="{% static 'general/liga_fortnite.png' %}" class="img-fluid">
-                      </div>
-                      <div class="col-sm">
-                          <img src="{% static 'general/cod_proximamente.png' %}" class="img-fluid">
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!-- quienes somos -->
-      <section class="section section-basic">
-          <div class="container">
-              <div class="row justify-content-md-center">
-                  <div class="text-center col-md-12 col-lg-8">
-                      <h1 class="title">Estamos llevando los Esports a otro nivel</h1>
-                      <h3 class="description">Nos dedicamos a la organizacion de eventos y torneos tanto presenciales como virtuales a travez de nuestras plataformas dedicadas para cada uno de los juegos del momento</h3>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!-- newsletter cards -->
-      <section class="section section-basic">
-          <div class="container">
-              <div class="row justify-content-md-center">
-                  <div class="text-center col-md-12 col-lg-8">
-                      <h1 class="title">Ultimas Noticias</h1>
-                      <h3 class="description"></h3>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!-- Galeria de fotos y videos -->
-      <section class="section section-basic">
-          <div class="container">
-              <div class="row justify-content-md-center">
-                  <div class="text-center col-md-12 col-lg-8">
-                      <h1 class="title">Fotos y videos de nuestros eventos</h1>
-                      <h3 class="description"></h3>
-                  </div>
-              </div>
-          </div>
-      </section>
-
-
       <footer class="footer">
             <div class="container">
               <div class="row">

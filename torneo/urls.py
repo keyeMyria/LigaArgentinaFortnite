@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^premios/', views.premios, name='premios' ),
     #Prueba nueva pagina
     url(r'^test/', views.test, name='test' ),
+    url(r'^contacto/', views.contacto, name='contacto' ),
+    #apps
     url(r'^accounts/', include('allauth.urls')),
     url(r'^fortnite/sistema/', include('fortnite_apps.sistema.urls')),
     url(r'^fortnite/blackpan/', include('fortnite_apps.blackpan.urls'))

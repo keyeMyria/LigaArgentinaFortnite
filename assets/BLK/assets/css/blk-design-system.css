@@ -18608,6 +18608,7 @@ hr.line-deafult {
   }
   .page-header .content-center img {
     height: auto;
+    padding-top: -50px;
   }
 }
 

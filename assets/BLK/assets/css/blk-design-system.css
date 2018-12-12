@@ -17683,7 +17683,7 @@ hr.line-deafult {
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  text-align: center;
+  text-align: left;
   color: #ffffff;
   padding: 0 15px;
   width: 100%;

@@ -14,6 +14,11 @@ from fortnite_apps.sistema.models import Perfil
 from django.contrib.auth.models import User
 
 
+#TEST
+def test(request):
+    #return HttpResponse('homepage')
+    return render(request, 'test.html')
+
 def homepage(request):
     #return HttpResponse('homepage')
     return render(request, 'homepage.html')
@@ -25,23 +30,3 @@ def reglas(request):
 def premios(request):
     #return HttpResponse('homepage')
     return render(request, 'premios.html')
-
-def blackpan(request):
-    #return HttpResponse('homepage')
-    return render(request, 'black_pan/principal.html')
-
-def blackpan_participantes(request):
-    #return HttpResponse('homepage')
-    return render(request, 'black_pan/participantes.html')
-
-def blackpan_resultados(request):
-    userobjectpc = Perfil.objects.filter(user__last_name='psn', VERIFICACION_2=True, blackpan='SI').order_by('-puntos')
-    return render(request, 'black_pan/resultados.html', {'participantes': userobjectpc})
-
-def blackpan_premios(request):
-    #return HttpResponse('homepage')
-    return render(request, 'black_pan/premios.html')
-
-def blackpan_terminos(request):
-    #return HttpResponse('homepage')
-    return render(request, 'black_pan/terminos.html')

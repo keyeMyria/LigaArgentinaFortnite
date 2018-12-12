@@ -98,15 +98,10 @@
     </div>
   </nav>
   <!-- End Navbar -->
-  <div class="wrapper">
-      <div class="page-header">
-        <img src="{% static 'BLK/assets/img/blob.png' %}" class="path">
-        {% block content %}
-        {% endblock %}
-      </div>
-  </div>
+ <img src="{% static 'BLK/assets/img/blob.png' %}" class="path">
 
-
+  {% block content %}
+  {% endblock %}
 
 
 

@@ -17678,7 +17678,7 @@ hr.line-deafult {
 .page-header .content-center {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 0%;
   z-index: 2;
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);

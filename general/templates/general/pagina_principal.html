@@ -73,6 +73,18 @@
                 <i class="tim-icons icon-controller"></i> Liga Arg. De Fortnite
               </a>
             </li> -->
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link d-lg-none d-xl-none" href="#" onclick="scrollToDownload()">
+                <i class="tim-icons icon-single-02"></i> {% user_display user %} / Mis Inscripciones
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-lg-none d-xl-none" href="#" onclick="scrollToDownload()">
+                <i class="tim-icons icon-pencil"></i> Cerrar Sesion
+              </a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link d-lg-none d-xl-none" href="#" onclick="scrollToDownload()">
                 <i class="tim-icons icon-single-02"></i> Iniciar Sesion
@@ -83,6 +95,7 @@
                 <i class="tim-icons icon-pencil"></i> Registrarme
               </a>
             </li>
+            {% endif %}
             <ul class="list d-lg-none d-xl-none">
                 <li class="nav-item">
                   <a class="nav-link d-lg-none d-xl-none" href="#" onclick="scrollToDownload()">
@@ -128,7 +141,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link d-lg-none d-xl-none" href="#" onclick="scrollToDownload()">
+                  <a class="nav-link d-lg-none d-xl-none" href="{% url 'contacto' %}" onclick="scrollToDownload()">
                     <i class="tim-icons icon-email-85"></i> Contacto
                   </a>
                 </li>
@@ -178,7 +191,7 @@
               <a href="#" class="dropdown-item">
                 <i class="tim-icons icon-alert-circle-exc"></i> Q&A
               </a>
-              <a href="#" class="dropdown-item">
+              <a href="{% url 'contacto' %}" class="dropdown-item">
                 <i class="tim-icons icon-email-85"></i> Contacto
               </a>
             </div>
